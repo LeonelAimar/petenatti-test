@@ -1,0 +1,487 @@
+{% assign checkoutVersion = 2 %}
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+    
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+	
+    {% if checkoutVersion == 2 %}
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    {{ 'test-checkout.css' | asset_url | stylesheet_tag }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {% endif %}
+    
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    
+    
+    {{ 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js' | script_tag }}
+	{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+    {{ 'https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js' | script_tag }}
+    
+    {{ 'objToFormData.js' | asset_url | script_tag }}
+    
+    {% if checkoutVersion == 2 %}
+    <style>
+        
+      .btn-payment-container{
+          display: block;
+      }
+
+      .payment-type{
+          border: 1px solid;
+          cursor: pointer;
+          display: inline-block;
+          margin: 5px;
+          padding: 10px;
+      }
+
+      .payment-type_active{
+          background-color: black;
+          color: white;
+      }  
+
+      .payment-form{
+          display: none;
+      }
+   
+   .payload--btn{
+     float: right;
+   }
+
+   #alertLoadingPayment {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    z-index: 9999;
+    text-align: center;
+    background: white;
+  }
+
+  #alertLoadingContainer {
+    text-align: center;
+  }
+
+  #alertStatus {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 20px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    line-height: 25px;
+  }
+
+  .notice--error {
+    display: none;
+  }
+      
+  </style>
+    {% endif %}
+    
+  </head>
+  <body>
+	
+    {% if checkoutVersion == 2 %}
+    <div id="alertLoadingPayment">
+      <div class="alertLoadingContainer">
+          <img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px_1.gif?v=1597703364" />
+          <br>
+          <strong>Procesando...</strong>
+          <br>
+          <span id="alertStatus"></span>
+      </div>
+    </div>
+	{% endif %}
+
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+    
+    {% if checkoutVersion == 1 %}
+    <div style="display: none;" id="checkout_id">{{ checkout.id }}</div>
+    {% for item in checkout.line_items %}
+    <div class="data-items" style="display: none;">
+
+      <span id="var_id-{{ forloop.index }}">{{ item.variant_id }}</span>
+      <span id="title-{{ forloop.index }}">{{ item.title }}</span>
+      <span id="image-{{ forloop.index }}">{{ item.image | img_url }}</span>
+      <span id="qty-{{ forloop.index }}">{{ item.quantity }}</span>
+      <span id="unit_price-{{ forloop.index }}">{{ item.variant.price | money }}</span>
+
+    </div>
+    {% endfor %}
+    
+    {% endif %}
+  </body>
+</html>
+
+{% if checkoutVersion == 1 %}
+	<div style="display: none;">{% include 'mp-checkout-custom-innovate' %}</div>
+{% endif %}
+
+{% if checkoutVersion == 2 %}
+	<div style="display: none;">{% include 'new-mp-checkout' %}</div>
+{% endif %}
+
+<script>
+  
+  {% if checkoutVersion == 1 %}
+  
+  $(document).ready(function(){
+  	console.log("CHECKOUT JS CHARGED!")
+   
+    
+    
+    
+    if ( Shopify.Checkout.step === 'contact_information' ) {
+    	const inputZip = document.getElementById('checkout_shipping_address_zip')
+        
+//         inputZip.setAttribute('type', 'number')
+        
+        inputZip.addEventListener('keyup', (evt) => {
+        	let self = evt.target
+            
+            if ( evt.which !== 8 && isNaN(self.value) ) {
+              	evt.preventDefault()
+            	self.setCustomValidity('Ingrese un valor numérico, no se permiten caracteres alfabéticos')
+                self.reportValidity()
+                self.value = self.value.slice(0, self.value.length - 1 )
+                return false
+            } else {
+            	self.setCustomValidity('')
+            }
+        })
+        
+        if ( inputZip.value != '' ) {
+        	let value = inputZip.value
+			let newVal = value.split('').map( char => {
+              return isNaN(char) ? '' : char
+            }).join('')
+            
+            inputZip.value = newVal
+        }
+    }
+    
+    
+    if(Shopify.Checkout.step == "payment_method"){
+      jQuery('#confirm_lock_alert').detach().prependTo('#payment-gateway-subfields-38838239298');
+      jQuery("#container_payment_multiple_cards").detach().appendTo('#payment-gateway-subfields-38838239298');
+      
+      
+      [...document.querySelectorAll('.blank-slate')].forEach(function(elem){
+        if(elem.parentElement.getAttribute('id') == 'payment-gateway-subfields-38838239298'){
+          //console.log(elem)
+          elem.parentNode.removeChild(elem)
+        }
+      })
+      
+      $('#continue_button').hide();
+      
+        let html = `<div class="field field--half field--required field--show-floating-label" data-address-field="facturacion-other-num" data-autocomplete-field-container="true">
+                     	<div class="field__input-wrapper">
+                         <label class="field__label field__label--visible" for="facturacion-num">DNI/CUIT/CUIL:</label>
+                         <input type="text" autocomplete="shipping facturacion-num" data-trekkie-id="shipping_facturacion-num_field" data-backup="facturacion-num" name="checkout[billing_address][facturacion-billing]" id="facturacion-num" required class="field__input required" maxlength="13" data-checkout="facturacion-other-num" placeholder="Número de documento/CUIT/CUIL" />
+                         <span class="error-span" style="display: none;" id="facturacion-num-error"></span>
+                       </div>
+                    </div>`
+
+        $('div[data-address-field="address2"]').before( html );
+        $('div[data-address-field="address2"]').addClass( 'field--half' );
+
+        $('#continue_button').click(function(e){
+          if($('#facturacion-num').val() != ''){
+            var facturacionNum = $('#facturacion-num').val();
+            var facturacionObj = {
+              num: facturacionNum
+            };
+
+            localStorage.setItem('facturacion-billing', JSON.stringify(facturacionObj));
+
+            createInput( 'facturacion-billing', facturacionNum );
+
+            return true;
+
+            $('#continue_button').closest('form').trigger('submit');
+
+          }else{
+            e.preventDefault();
+            $('#facturacion-num').css('border-color','#ff0000');
+            $('#facturacion-num').parent().after('<span style="color:red;">El campo no puede estar vacío</span>');
+            $('#facturacion-num').trigger('focus');
+          }
+
+        });
+
+        if( document.getElementById('facturacion-num').value == '' && document.querySelector('input[name="checkout[attributes][facturacion-billing]"]') != null ){
+            document.getElementById('facturacion-num').value = document.querySelector('input[name="checkout[attributes][facturacion-billing]"]').getAttribute('value')
+        };
+        
+        
+        
+        function createInput( nameInput , valueInput ){
+          let element = document.querySelector(`input[name="checkout[attributes][${nameInput}]"]`);
+          if (element) {
+            element.value = valueInput;
+          } else {
+            let inputEl = document.createElement('input');
+            inputEl.setAttribute('name', `checkout[attributes][${nameInput}]`);
+            inputEl.setAttribute('type', 'hidden');
+            inputEl.setAttribute('value', valueInput );
+            if(document.getElementById('container_payment_multiple_cards')){
+              document.getElementById('container_payment_multiple_cards').appendChild(inputEl);
+            }else{
+              [...document.querySelectorAll('.edit_checkout')].forEach((form, index) => {
+                if(index == 3){
+                  form.appendChild(inputEl);
+                }
+              })
+            }
+          }
+          console.log("Input creado: "+nameInput+" - "+valueInput);
+        };
+      
+    };
+    
+  });
+  
+  {% endif %}
+  
+  
+  {% if checkoutVersion == 2 %}
+  
+  /* ----------------------------- new code for v2 ----------------------------- */
+  
+  $(document).ready(function(){
+  	console.log("CHECKOUT JS CHARGED!")
+    
+    if(Shopify.Checkout.step == "payment_method"){
+      jQuery('.main-mp_container').detach().prependTo('#payment-gateway-subfields-46369439877');
+      
+      [...document.querySelectorAll('.blank-slate')].forEach(function(elem){
+        if(elem.parentElement.getAttribute('id') == 'payment-gateway-subfields-46369439877'){
+          //console.log(elem)
+          elem.parentNode.removeChild(elem)
+        }
+      })
+      
+      $('.shown-if-js').hide();
+      
+    };
+
+    if ( Shopify.Checkout.step === 'contact_information' ) {
+      console.log('contactStep')
+      const divCountry = document.querySelector('div[data-address-field="country"]');
+      const divProvince = document.querySelector('div[data-address-field="province"]');
+      const divZip = document.querySelector('div[data-address-field="zip"]');
+      const divPhone = document.querySelector('div[data-address-field="phone"]');
+      const divAddress = document.querySelector('div[data-address-field="address1"]');
+      const inputZip = document.getElementById('checkout_shipping_address_zip')
+      
+      divCountry.style.display = 'none'
+      setInterval(() => {
+        thirdToHalf( divProvince )
+        thirdToHalf( divZip )
+      }, 200)
+
+      // Functions
+      function thirdToHalf( elem ) {
+        if ( elem.classList.contains('field--third') ) elem.classList.remove('field--third')
+        if ( !elem.classList.contains('field--half') ) elem.classList.add('field--half')
+      }
+
+      function createInput( nameInput , valueInput, formToAppend ){
+        let element = document.querySelector(`input[name="checkout[attributes][${nameInput}]"]`);
+        if (element) {
+            element.value = valueInput;
+        } else {
+            let inputEl = document.createElement('input');
+            inputEl.setAttribute('name', `checkout[attributes][${nameInput}]`);
+            inputEl.setAttribute('type', 'hidden');
+            inputEl.setAttribute('value', valueInput );
+
+            formToAppend.appendChild(inputEl)
+        }
+        console.log(`Input creado: ${nameInput} - ${valueInput}`)
+      }
+
+        
+        let html = `<div class="field field--half field--required field--show-floating-label" data-address-field="facturacion" data-autocomplete-field-container="true">
+                                <div class="field__input-wrapper">
+
+                                    <label class="field__label field__label--visible" for="facturacion">Facturación:</label>
+                                    <select id="facturacion"class="field__input field__input--select" autocomplete="shipping facturacion" data-trekkie-id="shipping_facturacion_field" data-backup="facturacion" name="checkout[shipping_address][facturacion]" placeholder="Facturación" data-checkout="facturacion">
+                                        <option selected value="Consumidor_final">Consumidor Final</option>
+                                        <option value="R.I.">Responsable Inscripto</option>
+                                        <option value="Monotributista">Monotributista</option>
+                                        <option value="Exento">Exento</option>
+                                    </select>
+                                    <span class="error-span" style="display: none;" id="facturacion-error"></span>
+                                </div>
+                            </div>
+
+                            <div class="field field--half field--required field--show-floating-label" data-address-field="facturacion-num" data-autocomplete-field-container="true">
+                                <div class="field__input-wrapper">
+                                    <label class="field__label field__label--visible" for="facturacion-num">DNI/CUIT/CUIL:</label>
+                                    <input type="text" autocomplete="shipping facturacion-num" data-trekkie-id="shipping_facturacion-num_field" data-backup="facturacion-num" name="checkout[shipping_address][facturacion-num]" id="facturacion-num" required class="field__input required" maxlength="13" data-checkout="facturacion-num" placeholder="Número de documento/CUIT/CUIL" />
+                                <span class="error-span" style="display: none;" id="facturacion-num-error"></span>
+                                </div>
+                            </div>`
+        
+        let html_to_recieve = `<div class="field field--required field--show-floating-label" data-address-field="dni-persona-recibe" data-autocomplete-field-container="true">
+                                <div class="field__input-wrapper">
+                                    <label class="field__label field__label--visible" for="dni-persona-recibe">DNI/CUIT/CUIL ( Persona a recibir ):</label>
+                                    <input type="text" autocomplete="shipping dni-persona-recibe" data-trekkie-id="shipping_dni-persona-recibe_field" data-backup="dni-persona-recibe" name="checkout[shipping_address][dni-recibe]" id="dni-persona-recibe" required class="field__input required" maxlength="13" data-checkout="dni-persona-recibe" placeholder="Número de documento/CUIT/CUIL persona a recibir" />
+                                <span class="error-span" style="display: none;" id="dni-persona-recibe-error"></span>
+                                </div>
+                            </div>`
+        
+        divPhone.insertAdjacentHTML('afterend', html)
+        divAddress.insertAdjacentHTML('beforebegin', html_to_recieve)
+        
+
+        const continueBtn = document.getElementById('continue_button');
+        const inputFact   = document.getElementById('facturacion-num');
+        const typeFact    = document.getElementById('facturacion');
+    	const inputDNI    = document.getElementById('dni-persona-recibe');
+    
+    	inputDNI.dispatchEvent( new Event('blur') )
+
+        continueBtn.addEventListener('click', (evt) => {
+            if( inputFact.value != '' && inputDNI.value != '' ) {
+                let facturacionType = typeFact.value;
+                let facturacionNum = inputFact.value;
+              	let dniARecibir    = inputDNI.value;
+              
+                let facturacionObj = {
+                    facturacion_type: facturacionType,
+                    facturacion_num: facturacionNum,
+                  	dni_a_recibir: dniARecibir
+                };
+
+                localStorage.setItem('facturacion', JSON.stringify(facturacionObj))
+
+                createInput( 'facturacion', facturacionType, continueBtn.closest('form' ) )
+                createInput( 'facturacion-num', facturacionNum, continueBtn.closest('form' ) )
+                createInput( 'dni-persona-a-recibir', dniARecibir, continueBtn.closest('form' ) )
+
+                console.log( facturacionType, facturacionNum, dniARecibir )
+                continueBtn.click()
+
+                return true;
+                
+            }else{
+                evt.preventDefault();
+              
+                if ( inputFact.value === '' || inputFact.value === null ) {                  
+					inputFact.style.borderColor = '#ff0000'
+                	inputFact.parentElement.insertAdjacentHTML('afterend', '<span style="color:red;">El campo no puede estar vacío</span>')
+                    inputFact.focus()
+                }
+              
+              	if ( inputDNI.value === '' || inputDNI.value === null ) {
+                 	inputDNI.style.borderColor = '#ff0000'
+                	inputDNI.parentElement.insertAdjacentHTML('afterend', '<span style="color:red;">El campo no puede estar vacío</span>')
+                    inputDNI.focus()
+                }
+              
+            }
+        
+        })
+    
+        if( inputFact.value == '' && document.querySelector('input[name="checkout[attributes][facturacion-num]"]') != null ){
+            inputFact.value = document.querySelector('input[name="checkout[attributes][facturacion-num]"]').getAttribute('value')
+        }
+    	
+    	if( inputDNI.value == '' && document.querySelector('input[name="checkout[attributes][dni-recibe]"]') != null ){
+      		inputFact.value = document.querySelector('input[name="checkout[attributes][dni-recibe]"]').getAttribute('value')
+    	}
+
+        if ( localStorage.getItem('facturacion') ) {
+          let billingData = JSON.parse(localStorage.getItem('facturacion'));
+          inputFact.value = billingData.facturacion_num;
+          if ( billingData.dni_a_recibir ) {
+            inputDNI.value = billingData.dni_a_recibir
+            inputDNI.dispatchEvent( new Event('blur') )
+          }
+          console.log(billingData);
+          [...typeFact.options].forEach(opt => {
+            if ( opt.textContent === billingData.facturacion_type ) {
+                typeFact.selectedIndex = opt.index
+                typeFact.dispatchEvent( new Event('change') )
+            }
+          })
+        }
+    
+        
+        inputZip.addEventListener('keyup', (evt) => {
+        	let self = evt.target
+            
+            if ( evt.which !== 8 && isNaN(self.value) ) {
+              	evt.preventDefault()
+            	self.setCustomValidity('Ingrese un valor numérico, no se permiten caracteres alfabéticos')
+                self.reportValidity()
+                self.value = self.value.slice(0, self.value.length - 1 )
+                return false
+            } else {
+            	self.setCustomValidity('')
+            }
+        })
+        
+        if ( inputZip.value != '' ) {
+        	let value = inputZip.value
+			let newVal = value.split('').map( char => {
+              return isNaN(char) ? '' : char
+            }).join('')
+            
+            inputZip.value = newVal
+        }
+          
+    }
+    
+  })
+  {% endif %}
+  
+  
+</script>

@@ -1,0 +1,679 @@
+<div class="container container--narrow">
+  <header class="page__header page__header--centered">
+    <h1 class="page__title heading h1">{{ page.title }}</h1>
+   
+    
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+    
+
+<style>
+.general-container{
+    width: 45%;
+    height: 100%;
+    position: fixed;
+    background: white;
+    display: flex;
+    overflow: scroll;
+}
+.multiple-credit-cards{
+    background: white;
+    width: 25%;
+    left: 10%;
+    top: 15%;
+    position: fixed;
+    height: 255px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 18px;
+    line-height: 135px;
+    cursor:pointer;
+    z-index: 9999;
+}
+.multiple-credit-cards:hover{
+    box-shadow: 1px 1px 10px black;
+}
+.credit-card-and-cash{
+    background: white;
+    width: 25%;
+    left: 10%;
+    top: 60%;
+    position: fixed;
+    height: 255px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 18px;
+    line-height: 135px;
+    cursor: pointer;
+    z-index: 9999;
+}
+.credit-card-and-cash:hover{
+    box-shadow: 1px 1px 10px black;
+}
+.payment-icons{
+    display: flex;
+    justify-content: space-around;
+}
+.container-payment-1{
+    text-align: center;
+}
+.icon-svg-card{
+    cursor: pointer;
+}
+.icon-svg-cash{
+    cursor: pointer;
+}
+.icon-svg--active{
+    box-shadow: 1px 1px 5px black;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.lock-alert-background{
+  display: none;
+  position: absolute;
+  background: #ccc;
+  width: 95%;
+  opacity: 95%;
+  top: 35%;
+  text-align: center;
+  z-index: 9999;
+}
+.lock-alert-container{
+  height: 100%;
+  padding: 45px;
+  color: black;
+}
+.innovate-disabled{
+	cursor: not-allowed;
+  	
+}
+.error-span{
+  color: red;
+  font-weight: 500;
+
+}
+
+</style>
+    
+  </header>
+  <div class="card">
+    <div class="card-body">
+    <div id="form_credit_card_container" class="card-form">
+                <form class="card-form animate-floating-labels" method="post" id="pay-1" name="pay-1" >
+                    <fieldset>
+                        <span style="font-size: 18px; text-decoration: underline;">Cobro con Tarjeta</span>
+                        <ul style="text-align: center;">
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="parcial-amount-1">Cantidad $</label>
+                                <input type="number" id="parcial-amount-1" name="parcialamount-1" class="field__input parcial-amount money" placeholder="Cantidad $" />
+                              </div>
+                            </div>
+                          <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="parcial-amount-1">Email:</label>
+                                <input type="email" id="email-1" class="field__input" name="email-1" value=""  placeholder="Email"/>
+                              </div>
+                            </div>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="cardNumber-1">Número de Tarjeta de Crédito:</label>
+                                <input type="text" id="cardNumber-1" class="field__input" data-checkout="cardNumber" placeholder="Número de Tarjeta de Crédito (ej. 4509 9535 6623 3704)" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                          	<span class="error-span" style="display: none;" id="cardNumber-error-1"></span>
+                           </div>
+                            </div>
+                            <div id="payment_img-1"></div><br>
+                          <div class="field field--required field--third field--show-floating-label">
+                            <div class="field__input-wrapper">
+                            
+                                <label class="field__label field__label--visible" for="securityCode-1">Código de seguridad:</label>
+                                <input type="text" id="securityCode-1" class="field__input" data-checkout="securityCode" placeholder="Código de seguridad" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            	<span class="error-span" style="display: none;" id="securityCode-error-1"></span>
+                            </div>
+                          </div>
+                            <div class="field field--required field--third field--show-floating-label">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="cardExpirationMonth-1">Mes de expiración:</label>
+                                <input type="text" id="cardExpirationMonth-1" class="field__input" data-checkout="cardExpirationMonth" placeholder="Mes de expiración" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                              <span class="error-span" style="display: none;" id="cardExpirationMonth-error-1"></span>
+                              </div>
+                          </div>
+                            <div class="field field--required field--third field--show-floating-label">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="cardExpirationYear-1">Año de expiración:</label>
+                                <input type="text" id="cardExpirationYear-1" class="field__input" data-checkout="cardExpirationYear" placeholder="Año de expiración" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                              <span class="error-span" style="display: none;" id="cardExpirationYear-error-1"></span>
+                              </div>
+                          </div>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="cardholderName-1">Nombre Titular de Tarjeta:</label>
+                                <input type="text" id="cardholderName-1" class="field__input" data-checkout="cardholderName" placeholder="Nombre Titular de Tarjeta" />
+                           	<span class="error-span" style="display: none;" id="cardholderName-error-1"></span>
+                          </div>
+                          </div>
+                          <div class="field field--half field--required field--show-floating-label">
+                            <div class="field__input-wrapper">
+
+                                <label class="field__label field__label--visible" for="docType-1">Tipo de documento:</label>
+                                <select id="docType-1"class="field__input field__input--select" placeholder="Tipo de documento" data-checkout="docType">
+                                    <option disabled selected>Seleccione un tipo</option>
+                                </select>
+                            </div>
+                          </div>
+                            <div class="field field--half field--required field--show-floating-label">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="docNumber-1">Número de documento:</label>
+                                <input type="text" id="docNumber-1" class="field__input" maxlength="8" minlength="7" data-checkout="docNumber" placeholder="Número de documento" />
+                              </div>
+                          </div>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="installments-1">Cuotas:</label>
+                                <select id="installments-1" class="field__input field__input--select cuotas-select" name="installments-1"></select>
+                            </div>
+                          </div>
+                        </ul>
+                        <input type="hidden" name="amount-1" id="amount-1"/>
+                        <input type="hidden" name="description-1"/>
+                        <input type="hidden" name="paymentMethodId-1" />
+                      <input class="step__footer__continue-btn btn lock-btn" data-button="pay-1" type="submit" value="Pagar!" />
+                  </fieldset>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+<script>
+
+
+$(document).ready(function() {
+  console.log("Custom JS Loaded");
+  
+  var settingsPublicKey = {
+    "url": "https://petenatti.com.ar/checkout-plus/web/v1/payment/public-key",
+    "method": "GET",
+    "timeout": 0,
+    "headers": {
+      "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+  },
+  };
+  
+  var public_key = '';
+  
+  var globalJSON = {
+    payment_data: {
+      token_card: '',
+      amount: '',
+      cuotas: {
+        id: '',
+        description: '',
+        type_id: '',
+        method_id: '',
+        processing_mode: '',
+        issuer_id: '',
+        merchant_account_id: ''
+      }
+    },
+    payer_data: {
+      email: '',
+      name: ''
+    }
+  };
+  
+  //$.ajax(settingsPublicKey).done(function ( key ) {
+    
+    public_key = 'APP_USR-7f83e401-adb7-4936-b946-07148b7239e7';
+    
+    console.log( 'production' , public_key );
+    
+    Mercadopago.setPublishableKey(public_key);
+
+    function addEvent(to, type, fn){ 
+      if(document.addEventListener){
+        to.addEventListener(type, fn, false);
+      } else if(document.attachEvent){
+        to.attachEvent('on'+type, fn);
+      } else {
+        to['on'+type] = fn;
+      }  
+    }; 
+
+
+    function mercadoPagoFunction( index ){
+
+
+      const errorsList          = {
+        205 : {
+          'element_id' : `cardNumber-error-${index}`,
+          'text' : 'El número de la tarjeta no puede estar vacío'
+        },
+        208 : {
+          'element_id' : `cardExpirationMonth-error-${index}`,
+          'text' : 'El mes de vencimiento no puede estar vacío'
+        },
+        209 : {
+          'element_id' : `cardExpirationYear-error-${index}`,
+          'text': 'El año de vencimiento no puede estar vacío'
+        },
+        221 : {
+          'element_id' : `cardholderName-error-${index}`,
+          'text': 'Ingresa el nombre y apellido'
+        },
+        224 : {
+          'element_id' : `securityCode-error-${index}`,
+          'text' : 'Ingresa el código de seguridad'
+        },
+        325 : {
+          'element_id' : `cardExpirationMonth-error-${index}`,
+          'text' : 'El mes de vencimiento es incorrecto'
+        },
+        326 : {
+          'element_id' : `cardExpirationYear-error-${index}`,
+          'text': 'El año de vencimiento es incorrecto'
+        },
+        E301 : {
+          'element_id' : `cardNumber-error-${index}`,
+          'text' : 'El número de tarjeta es incorrecto'
+        },
+        E302 : {
+          'element_id' : `securityCode-error-${index}`,
+          'text' : 'Revisa el código de seguridad.'
+        },
+        316 : {
+          'element_id' : `cardholderName-error-${index}`,
+          'text': 'Ingresa un nombre válido'
+        },
+        214 : {
+          'element_id' : `document-error-${index}`,
+          'text': 'Ingresa un tipo de documento válido'
+        }
+      };
+
+
+      addEvent(document.querySelector(`#cardNumber-${index}`), 'keyup', guessingPaymentMethod);
+      addEvent(document.querySelector(`#cardNumber-${index}`), 'change', guessingPaymentMethod);
+
+      function getBin() {
+        const cardnumber = document.getElementById(`cardNumber-${index}`);
+        return cardnumber.value.substring(0,6);
+      };
+
+      function guessingPaymentMethod(event) {
+        var bin = getBin();
+
+        if (event.type == "keyup") {
+          if (bin.length >= 6) {
+            window.Mercadopago.getPaymentMethod({
+              "bin": bin
+            }, setPaymentMethodInfo);
+          }
+        } else {
+          setTimeout(function() {
+            if (bin.length >= 6) {
+              window.Mercadopago.getPaymentMethod({
+                "bin": bin
+              }, setPaymentMethodInfo);
+            }
+          }, 100);
+        }
+      };
+
+      function setPaymentMethodInfo(status, response) {
+        console.log(response);
+        $(`#payment_img-${index}`).html(`<img src="${response[0].secure_thumbnail}" />`)
+        if (status == 200) {
+          const paymentMethodElement = document.querySelector(`input[name=paymentMethodId-${index}]`);
+
+          if (paymentMethodElement) {
+            paymentMethodElement.value = response[0].id;
+          } else {
+            const input = document.createElement('input');
+            input.setAttribute('name', `paymentMethodId-${index}`);
+            input.setAttribute('type', 'hidden');
+            input.setAttribute('value', response[0].id);     
+
+            form.appendChild(input);
+          }
+
+          Mercadopago.getInstallments({"bin": getBin(),"amount": parseFloat(document.querySelector(`#amount-${index}`).value)}, setInstallmentInfo);
+
+        } else {
+          alert(`payment method info error: ${response}`);  
+        }
+      };
+
+      doSubmit = false;
+      addEvent(document.querySelector(`#pay-${index}`), 'submit', doPay);
+      function doPay(event){
+        event.preventDefault();
+
+        if(!doSubmit){
+          //condicion chequeada al final del codigo. Crear funcion para modificar el total o no, y luego seguir con el submit.
+
+          //-----------------------------------------------------
+          var $form = document.querySelector(`#pay-${index}`);
+          
+          if( document.querySelector('input[name="token"]') ) Mercadopago.clearSession();
+
+		  [...document.querySelectorAll('.error-span')].forEach( item => item.style.display = 'none' )
+          
+          
+          window.Mercadopago.createToken($form, sdkResponseHandler); // The function "sdkResponseHandler" is defined below
+           
+
+          return false;
+        }
+      };
+
+      function sdkResponseHandler(status, response) {
+        console.log(response)
+        if (status != 200 && status != 201 && status != 423) {
+          //alert("verify filled data");
+
+          //var selectorForm = document.getElementById('lock_confirm').getAttribute('data');
+
+          /*var indexForm = 1;//document.getElementById('lock_confirm').getAttribute('data').split('-')[1];
+          $(`#${selectorForm}`).prop('disabled', false);
+          $(`#${selectorForm}`).css('opacity', '100%');
+          [...document.querySelectorAll(`#${selectorForm} input`)].forEach(function(elem){
+            $(elem).prop('disabled', false);
+          });
+
+          [...document.querySelectorAll(`#${selectorForm} select`)].forEach(function(elem){
+            $(elem).prop('disabled', false);
+          });*/
+
+
+          [...response.cause].forEach(function( elem ){
+            $(`#${errorsList[elem.code]['element_id']}`).html(`${errorsList[elem.code]['text']}`);
+            console.log(  $(`#${errorsList[elem.code]['element_id']}`).html(`${errorsList[elem.code]['text']}`) );
+
+            $(`#${errorsList[elem.code]['element_id']}`).show();
+
+          });
+
+        }else{
+
+          [...document.querySelectorAll('.error-span')].forEach(function( error ){
+            error.style.display = "none";
+          });
+
+          var form = document.querySelector(`#pay-${index}`);
+          var card = document.createElement('input');
+          card.setAttribute('name', 'token');
+          card.setAttribute('type', 'hidden');
+          card.setAttribute('value', response.id);
+          form.appendChild(card);
+          //doSubmit=true;
+          //form.submit();
+          var amount = parseFloat(document.querySelector('#parcial-amount-1').value);
+          var email = document.querySelector('#email-1').value;
+          var namePayer = document.querySelector('#cardholderName-1').value;
+          var idCuota = $('#installments-1 option:selected').val();
+          var typeId = $('#installments-1 option:selected').attr('payment_type_id');
+          var methodId = $('#installments-1 option:selected').attr('payment_method_id');
+          var processing_mode = $('#installments-1 option:selected').attr('processing_mode');
+          var descCuota = $('#installments-1 option:selected').text();
+          var issuerId = $('#installments-1 option:selected').attr('issuer_id');
+          var merchantAccountId = $('#installments-1 option:selected').attr('merchant_account_id');
+          
+          globalJSON.payment_data.token_card = response;
+          globalJSON.payment_data.amount = amount;
+          globalJSON.payment_data.cuotas.id = idCuota;
+          globalJSON.payment_data.cuotas.type_id = typeId;
+          globalJSON.payment_data.cuotas.method_id = methodId;
+          globalJSON.payment_data.cuotas.processing_mode = processing_mode;
+          globalJSON.payment_data.cuotas.description = descCuota;
+          globalJSON.payment_data.cuotas.issuer_id = issuerId;
+          globalJSON.payment_data.cuotas.merchant_account_id = merchantAccountId;
+          
+          
+          
+          globalJSON.payer_data.email = email;
+          globalJSON.payer_data.name = namePayer;
+          
+
+          var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/json");
+          myHeaders.append("Authorization", "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog");
+          myHeaders.append("Cache-Control", "no-cache");
+          myHeaders.append("Origin", "https://petenatti-test.myshopify.com");
+          myHeaders.append("Referer", "https://petenatti-test.myshopify.com/");
+          myHeaders.append("sec-fetch-dest", "empty");
+          myHeaders.append("sec-fetch-mode", "cors");
+          myHeaders.append("sec-fetch-site", "cross-site");
+
+		  var raw = JSON.stringify(globalJSON);
+
+          var requestOptions = {
+                  method: 'POST',
+                  headers: myHeaders,
+                  body: raw
+          };
+
+		  var button = document.getElementById('btnSubmit');
+          button.innerText = 'Procesando... Espere por favor.'
+          fetch("https://petenatti.com.ar/checkout/payment/create", requestOptions)
+                  .then(response => response.json())
+          		  .then(result => {
+            			console.log( result )
+                        if( result.status != 'rejected' ){
+							var button = document.getElementById('btnSubmit');
+							button.innerText = result.status_detail;
+                        	button.setAttribute('disabled' , 'disabled' )
+                        }else{
+							alert( result.status_detail )
+                            var button = document.getElementById('btnSubmit');
+                            button.removeAttribute('disabled')
+                            button.innerText = 'Pagar';
+						}
+						
+				  })
+          .catch(error => {
+				  console.log('error', error)
+                  button.innerText = 'Su pago no pudo ser procesado. Hubo un error.'
+                  button.setAttribute('disabled' , 'disabled' )
+		   });
+        }
+      };
+
+
+      function setInstallmentInfo(status, response) {
+        console.log(response)
+        var selectorInstallments = document.querySelector(`#installments-${index}`),
+            fragment = document.createDocumentFragment();
+        selectorInstallments.options.length = 0;
+
+        if (response.length > 0) {
+          var option = new Option("Seleccioná la cantidad de cuotas...", '-1');
+          //payerCosts = response[0].payer_costs;
+          let installments_gateway    = response.filter( installment => installment.processing_mode == 'gateway');
+          //let installments_aggregator = response.filter( installment => installment.processing_mode == 'aggregator');
+
+          console.log( installments_gateway );
+          //console.log( installments_aggregator );
+
+          payerCosts = installments_gateway[0].payer_costs;
+          //payerCostsAggregator = installments_aggregator[0].payer_costs;
+
+          //payerToMerge = [];
+
+          fragment.appendChild(option);
+
+          for (i in payerCosts) {
+            var optNode = new Option(payerCosts[i].recommended_message, payerCosts[i].installments)
+            fragment.appendChild( optNode );
+            optNode.setAttribute('bank', installments_gateway[0].issuer.id)
+            optNode.setAttribute('payment_method_id', installments_gateway[0].payment_method_id);
+            optNode.setAttribute('payment_type_id', installments_gateway[0].payment_type_id)
+            optNode.setAttribute('processing_mode', installments_gateway[0].processing_mode)
+            optNode.setAttribute('issuer_id', installments_gateway[0].issuer.id)
+            optNode.setAttribute('merchant_account_id', installments_gateway[0].merchant_account_id)
+          }
+
+          selectorInstallments.appendChild(fragment);
+          selectorInstallments.removeAttribute('disabled');
+
+          /*
+          installments_aggregator[0].payer_costs.forEach(function(elem){
+            //console.log( elem )
+            var check = [...document.querySelector(`#installments-${index}`).options].filter(option => option.textContent.split(' ')[0] == elem.recommended_message.split(' ')[0])
+            if(check == ''){
+              //console.log( elem.recommended_message )
+              elem.bank = installments_aggregator[0].issuer.id;
+              elem.payment_method_id = installments_aggregator[0].payment_method_id;
+              elem.payment_type_id = installments_aggregator[0].payment_type_id;
+              elem.processing_mode = installments_aggregator[0].processing_mode;
+              payerToMerge.push( elem )
+
+            }
+          });
+          for(k in payerToMerge){
+            var optNode = new Option(payerToMerge[k].recommended_message, payerToMerge[k].installments)
+            fragment.appendChild( optNode );
+            optNode.setAttribute('bank', payerToMerge[k].bank)
+            optNode.setAttribute('payment_method_id', payerToMerge[k].payment_method_id)
+            optNode.setAttribute('payment_type_id', payerToMerge[k].payment_type_id)
+            optNode.setAttribute('processing_mode', payerToMerge[k].processing_mode)
+          }
+          selectorInstallments.appendChild(fragment);
+          console.log( payerToMerge );
+	*/
+        }
+      };
+
+
+    };
+
+
+    var dniMethods = {};
+    window.Mercadopago.getIdentificationTypes((status, data) => {
+      console.log(data);
+      dniMethods = data;
+      
+      $("#docType-1").empty();
+      for (type in dniMethods) {
+        let htmlOptions = `<option value="${dniMethods[type].id}" input-type="${dniMethods[type].type}" input-min="${dniMethods[type].min_length}" input-max="${dniMethods[type].max_length}">${dniMethods[type].name}</option>`;
+        $("#docType-1").append(htmlOptions);
+      }
+      
+    });
+
+    var settings2 = {
+      "url": "https://petenatti.com.ar/checkout-plus/web/v1/payment/get-payment-methods",
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+      },
+    };
+
+    $.ajax(settings2).done(function (response) {
+
+      console.log(response);
+    });
+
+    $.getJSON(`https://api.mercadopago.com/v1/payment_methods?public_key=${public_key}#json`, data => {
+      console.log(data);
+
+
+      let htmlDefault = `<option value="">Cargando datos...</option>`;
+      $("#docType-1").html(htmlDefault);
+
+      mercadoPagoFunction(1);
+
+
+      
+
+
+
+
+      $(document).on("change", "#docType-1", function(e) {
+        console.log("Dni changed");
+        console.log($(this).children("option:selected"));
+        var inputType = $(this)
+        .children("option:selected")
+        .attr("input-type");
+        var minLength = $(this)
+        .children("option:selected")
+        .attr("input-min");
+        var maxLength = $(this)
+        .children("option:selected")
+        .attr("input-max");
+        console.log(minLength, maxLength, inputType);
+
+        //$('#docNumber-1').attr('type', inputType);
+        $("#docNumber-1").attr("maxlength", maxLength);
+        $("#docNumber-1").attr("minlength", minLength);
+      });
+
+
+      var amount_saved = { "amounts": {} };
+
+
+
+      $(document).on('change', '.cuotas-select', function(e){
+        var indexSelectr = e.target.getAttribute('name').split('-')[1];
+        //console.log(indexSelectr);
+
+        var bankVal = e.target.selectedOptions[0].getAttribute('bank');
+        var idInstallment = $(this).val();
+        var paymentMethodId = e.target.selectedOptions[0].getAttribute('payment_method_id');
+        var paymentTypeId = e.target.selectedOptions[0].getAttribute('payment_type_id');
+        var processingMode = e.target.selectedOptions[0].getAttribute('processing_mode')
+
+        /*console.log(bankVal);
+        console.log(idInstallment);
+        console.log(paymentMethodId);
+        console.log(paymentTypeId);
+        console.log(processingMode);*/
+        var textCuota = e.target.selectedOptions[0].textContent;
+
+
+
+        var amountTotal = document.getElementById(`amount-${indexSelectr}`).value;
+
+      });
+
+      var eventCard = new Event('keyup');
+
+
+      var inputsMoney = 0;
+      $(document).on('keyup', '.parcial-amount', function(e){
+        inputsMoney = 0;
+        var indexAmount = this.getAttribute('name').split("-")[1];
+
+        document.getElementById(`amount-${indexAmount}`).value = this.value;
+        amount_saved["amounts"][indexAmount] = parseFloat(this.value);
+        document.querySelector(`#cardNumber-${indexAmount}`).dispatchEvent( eventCard );
+
+        console.log(amount_saved);
+
+        [...document.querySelectorAll('.money')].forEach(function( elem ){
+
+          if(elem.value != ''){
+            inputsMoney = inputsMoney + parseFloat(elem.value);
+          }
+        });
+
+
+      });
+
+
+    });
+
+  //});
+  
+});
+  
+</script>

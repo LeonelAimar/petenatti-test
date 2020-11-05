@@ -1,0 +1,379 @@
+<div id="calculator-payment">
+  <div class="calculator-payment--header">
+    <div class="close"><img src="{{ 'close.png' | asset_img_url: '40x' }}" /></div>
+    <h3>Medios de pago</h3>
+  </div>
+  <div class="calculator-payment--select">
+    <div class="payment__button payment__button--provider">
+      <button id="option1_title">Elegir medios de pago</button>
+    </div>
+    <div class="payment__content payment__content--provider d-none">
+      <div>
+        <form>
+          <ul id="payment_methods">
+            <li>
+              <label for="american">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/amex.gif" />
+                <small>American Express</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/amex.gif" type="radio" class="option1" id="american" name="payment-provider" value="amex" mod="aggregator" bin="371180303257522">
+              </label>
+            </li>
+            <li>
+              <label for="cabal">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/cabal.gif" />
+                <small>Cabal</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/cabal.gif" type="radio" class="option1" id="cabal" name="payment-provider" value="cabal" mod="gateway" bin="6035227716427021">
+              </label>
+            </li>
+            <li>
+              <label for="cencosud">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/cencosud.gif" />
+                <small>Cencosud</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/cencosud.gif" type="radio" class="option1" id="cencosud" name="payment-provider" value="cencosud" mod="aggregator" bin="6034937272862830">
+              </label>
+            </li>
+            <li>
+              <label for="cordobesa">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/cordobesa.gif" />
+                <small>Cordobesa</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/cordobesa.gif" type="radio" class="option1" id="cordobesa" name="payment-provider" value="cordobesa" mod="aggregator" bin="5500732058068364">
+              </label>
+            </li>
+            <li>
+              <label for="visa-debito">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/debvisa.gif" />
+                <small>Visa Débito</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/debvisa.gif" type="radio" class="option1" id="visa-debito" name="payment-provider" value="debvisa" mod="gateway" bin="4055167802302037">
+              </label>
+            </li>
+            <li>
+              <label for="diners-club">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/diners.gif" />
+                <small>Diners Club</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/diners.gif" type="radio" class="option1" id="diners-club" name="payment-provider" value="diners" mod="aggregator" bin="30238030180020">
+              </label>
+            </li>
+            <li>
+              <label for="maestro">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/maestro.gif" />
+                <small>Maestro</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/maestro.gif" type="radio" class="option1" id="maestro" name="payment-provider" value="maestro" bin="0" mod="gateway">
+              </label>
+            </li>
+            <li>
+              <label for="naranja">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/naranja.gif" />
+                <small>Naranja</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/naranja.gif" type="radio" class="option1" id="naranja" name="payment-provider" value="naranja" mod="aggregator" bin="5895627823453005">
+              </label>
+            </li>
+            <li>
+              <label for="nativa">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/nativa.gif" />
+                <small>Nativa</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/nativa.gif" type="radio" class="option1" id="nativa" name="payment-provider" value="nativa" mod="aggregator" bin="5465532683840176">
+              </label>
+            </li>
+            <li>
+              <label for="cabal-green">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/debcabal.gif" />
+                <small>Cabal</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/debcabal.gif" type="radio" id="cabal-green" name="payment-provider" value="debcabal" mod="gateway" bin="6042012045809847">
+              </label>
+            </li>
+            <li>
+              <label for="pago-facil">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/11.gif" />
+                <small>Pago fácil</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/11.gif" type="radio" class="option1" id="pago-facil" name="payment-provider" value="pagofacil" mod="aggregator" bin="0">
+              </label>
+            </li>
+            <li>
+              <label for="mercado-pago">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/2005.gif" />
+                <small>Mercado pago</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/2005.gif" type="radio" class="option1" id="mercado-pago" name="payment-provider" value="account_money" mod="aggregator" bin="0">
+              </label>
+            </li>
+            <li>
+              <label for="visa">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/visa.gif" />
+                <small>Visa</small>
+                <input img="https://www.mercadopago.com/org-img/MP3/API/logos/visa.gif" type="radio" class="option1" id="visa" name="payment-provider" value="visa" mod="gateway" bin="4509953566233704">
+              </label>
+            </li>
+            <li>
+              <label for="rapipago">
+                <img src="https://www.mercadopago.com/org-img/MP3/API/logos/2002.gif" />
+                <small>Rapi pago</small>
+                <input type="radio" img="https://www.mercadopago.com/org-img/MP3/API/logos/2002.gif" class="option1" id="rapipago" name="payment-provider" value="rapipago" mod="aggregator" bin="0">
+              </label>
+            </li>
+          </ul>
+          
+        </form>
+      </div>
+    </div>
+    
+    <br><div id="method_selected" style="text-align: center;"></div>
+    
+    <div class="payment__button payment__button--dues">
+      <button id="installments_btn">Elegir cuotas</button>
+    </div>
+    <div class="payment__content payment__content--dues d-none">
+      <div>
+        <form>
+          <ul id="installments_ul">
+            <!--li>
+              <label for="1-cuotas">
+                <h4>1 CUOTA</h4>
+                <small>DESCUENTO ESPECIAL</small>
+                <input type="radio" id="1-cuotas" name="payment-dues" value="1-cuotas">
+              </label>
+            </li>
+            <li>
+              <label for="3-cuotas">
+                <h4>3 CUOTAS</h4>
+                <small>DESCUENTO ESPECIAL</small>
+                <input type="radio" id="3-cuotas" name="payment-dues" value="3-cuotas">
+              </label>
+            </li>
+            <li>
+              <label for="6-cuotas">
+                <h4>6 CUOTAS</h4>
+                <small>DESCUENTO ESPECIAL</small>
+                <input type="radio" id="6-cuotas" name="payment-dues" value="6-cuotas">
+              </label>
+            </li>
+            <li>
+              <label for="12-cuotas">
+                <h4>12 CUOTAS</h4>
+                <small>DESCUENTO ESPECIAL</small>
+                <input type="radio" id="12-cuotas" name="payment-dues" value="12-cuotas">
+              </label>
+            </li>
+            <li>
+              <label for="18-cuotas">
+                <h4>18 CUOTAS</h4>
+                <small>DESCUENTO ESPECIAL</small>
+                <input type="radio" id="18-cuotas" name="payment-dues" value="18-cuotas">
+              </label>
+            </li-->
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="close close--btn">CERRAR</div>
+  <input type="hidden" id="total" value="{{ product.price | divided_by: 100 }}" />
+</div>
+
+
+<script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+<script>
+  $(document).ready(function(){
+  	console.log("Script cuotas");
+    
+
+    
+    var settingsPublicKey = {
+      "url": "http://petenatti.com.ar/checkout-plus/web/v1/payment/public-key",
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+      },
+    };
+
+    var public_key = '';
+
+    $.ajax(settingsPublicKey).done(function ( key ) {
+      public_key = key;
+
+      console.log( public_key );
+      
+    Mercadopago.setPublishableKey(public_key);
+    
+    var settings = {
+      "url": "http://petenatti.com.ar/checkout-plus/web/v1/payment-condition",
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+      },
+    };
+	
+    var conditions = {};
+    
+    $.ajax(settings).done(function (response) {
+      conditions = response.conditions;
+
+      console.log(conditions);
+    });
+
+    var settings2 = {
+      "url": "https://petenatti.com.ar/checkout-plus/web/v1/payment/get-payment-methods",
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+      },
+    };
+
+    $.ajax(settings2).done(function (response) {
+
+      console.log(response.body);
+    });
+      
+      function setInstallmentInfo( status, response ){
+        console.log( response );
+
+        if (response.length > 0) {
+          //payerCosts = response[0].payer_costs;
+          let installments_gateway    = response.filter( installment => installment.processing_mode == 'gateway');
+          let installments_aggregator = response.filter( installment => installment.processing_mode == 'aggregator');
+          
+          var modelo = $("#img_method_selected").attr('mod');
+
+          console.log( installments_gateway );
+          console.log( installments_aggregator );
+          
+          let installmentsReal = response.filter( installment => installment.processing_mode == `${modelo}`);
+
+          payerCosts = installmentsReal[0].payer_costs;
+
+          for (i in payerCosts) {
+            let html = `<li>
+                      <label for="${payerCosts[i].installments}">
+                      <h4>${payerCosts[i].recommended_message.split(' de')[0]}</h4>
+                      <input type="radio" class="option2" msg="${payerCosts[i].recommended_message}" 
+						id="${payerCosts[i].installments}" name="installment" value="${payerCosts[i].recommended_message.split(' de')[0]}"
+						payment_method_id="${installmentsReal[0].payment_method_id}"
+						payment_type_id="${installmentsReal[0].payment_type_id}"
+                        processing_mode="${installmentsReal[0].processing_mode}"
+                        issuer_id="${installmentsReal[0].issuer.id}"
+                        merchant_account_id="${installmentsReal[0].merchant_account_id}"
+						>
+                        </label>
+                        </li>`
+
+            $('#installments_ul').append( html );
+          }
+
+        }
+
+
+      };
+      
+      function getInstallements( bin, id, modelo ){
+        let amount = document.getElementById('total').value;
+
+        if ( modelo == 'aggregator' ){
+          amount = amount * 0.87
+        }
+
+        Mercadopago.getInstallments({
+          "bin": bin,
+          "amount": amount,
+        }, setInstallmentInfo );
+      };
+    
+    $.getJSON(`https://api.mercadopago.com/v1/payment_methods?public_key=${public_key}#json`, data => {
+      console.log(data);
+    	const payM = data;
+      
+    
+      $(document).on('click', '.option1', function(e){
+        $('#option1_title').trigger('click');
+        var valMethod = e.target.value;
+        var binMethod = e.target.getAttribute('bin');
+        var modMethod = e.target.getAttribute('mod');
+        
+		var imgMethod = e.target.getAttribute('img');
+        
+        $('#installments_ul').empty();
+        
+        $('#method_selected').html(`<img id="img_method_selected" mod="${modMethod}" src="${imgMethod}" />`);
+		
+        
+        getInstallements(binMethod, valMethod, modMethod);
+
+		
+        $('#installments_btn').trigger('click');
+
+      });
+      
+      $(document).on('click', '.option2', function(e){
+        
+        console.log( conditions );
+
+        var bankVal = e.target.getAttribute('issuer_id');
+        var idInstallment = e.target.getAttribute('id');
+        var paymentMethodId = e.target.getAttribute('payment_method_id');
+        var paymentTypeId = e.target.getAttribute('payment_type_id');
+        var processingMode = e.target.getAttribute('processing_mode');
+
+        /*console.log(bankVal);
+        console.log(idInstallment);
+        console.log(paymentMethodId);
+        console.log(paymentTypeId);
+        console.log(processingMode);*/
+        var textCuota = e.target.getAttribute('msg');
+
+        var conditionCheck = conditions.filter(condition => condition.payment_mode == processingMode && condition.payment_type == paymentTypeId && condition.payment_method == paymentMethodId && condition.bank_id == bankVal && condition.installment == parseInt(idInstallment));
+
+        var amountTotal = document.getElementById(`total`).value;
+
+        console.log( conditionCheck );
+        var colorAlert = '';
+        var msgAlert = '';
+
+        if( conditionCheck != '' ){
+          //modificar total.
+          if(conditionCheck[0].type == 1){
+            //ver como capturar el total parcial por tarjeta
+            colorAlert = '#008A00';
+            msgAlert = 'Ahorrás $';
+
+            var discountPerc = conditionCheck[0].percentage;
+            var descuento = amountTotal*parseFloat(`0.${discountPerc}`)
+
+            var newTotal = parseInt(amountTotal) - descuento;
+
+          };
+          if(conditionCheck[0].type == 0){
+            //ver como capturar el total parcial por tarjeta
+            colorAlert = 'red';
+            msgAlert = 'Recargo de $';
+
+            var discountPerc = conditionCheck[0].percentage;
+            var descuento = amountTotal*parseFloat(`0.${discountPerc}`)
+
+            var newTotal = parseFloat(amountTotal) + descuento;
+
+          };
+
+          if($(`#condition_msg`).length == 0){
+            $('#installments_ul').after(`<br><div style="text-align: center; color: white; background: ${colorAlert}; border-radius: 8px; padding: 10px;" id="condition_msg"><small style="font-size: 18px;">${textCuota}</small><br><span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${descuento.toFixed(2)}!</span></div>`)
+          }else{
+            $(`#condition_msg`).fadeIn();
+            $(`#condition_msg`).html(`<small style="font-size: 18px;">${textCuota}</small><br><span style="font-weight: 600; font-size: 24px;">¡Ahorrás $ ${descuento.toFixed(2)}!</span>`)
+          };
+        }else{
+          
+          if($(`#condition_msg`).length == 0){
+            $('#installments_ul').after(`<br><div style="text-align: center;color: white; background: #008A00; border-radius: 8px; padding: 10px;font-size: 24px; font-weight: 600;" id="condition_msg"><span>${textCuota}</span><br></div>`)
+          }else{
+            $(`#condition_msg`).fadeIn();
+            $(`#condition_msg`).html(`<span>${textCuota}</span><br>`)
+          };
+          
+        }
+        
+      });
+
+    });
+    });
+  });
+</script>

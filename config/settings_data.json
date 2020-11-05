@@ -1,0 +1,1922 @@
+{
+  "current": {
+    "heading_color": "#596267",
+    "text_color": "#677279",
+    "accent_color": "#c41363",
+    "link_color": "#00badb",
+    "border_color": "#edefef",
+    "background": "#f3f5f6",
+    "secondary_background": "#ffffff",
+    "error_color": "#ff0000",
+    "success_color": "#00aa00",
+    "primary_button_background": "#0b297f",
+    "primary_button_text_color": "#ffffff",
+    "secondary_button_background": "#c41363",
+    "secondary_button_text_color": "#ffffff",
+    "header_background": "#c41363",
+    "header_text_color": "#ffffff",
+    "header_light_text_color": "#ffffff",
+    "header_accent_color": "#c41363",
+    "product_on_sale_accent": "#ee0000",
+    "product_in_stock_color": "#008a00",
+    "product_low_stock_color": "#ee0000",
+    "product_sold_out_color": "#8a9297",
+    "product_label_1_background": "#008a00",
+    "product_label_2_background": "#00badb",
+    "product_star_color": "#ffbd00",
+    "base_text_font_size": 16,
+    "heading_font": "din_next_n5",
+    "text_font": "din_next_n4",
+    "underline_links": true,
+    "animation_image_zoom": true,
+    "currency_conversion_enabled": false,
+    "currency_conversion_round_amounts": false,
+    "currency_conversion_supported_currencies": "USD CAD EUR GBP",
+    "currency_conversion_money_format": "money_format",
+    "search_mode": "product,page",
+    "show_vendor": true,
+    "show_secondary_image": true,
+    "show_discount": true,
+    "discount_mode": "percentage",
+    "product_price_position": "after_title",
+    "product_image_size": "natural",
+    "show_color_swatch": true,
+    "show_inventory_quantity": false,
+    "low_inventory_threshold": 0,
+    "show_reviews_badge": false,
+    "cart_type": "drawer",
+    "cart_empty_button_link": "shopify:\/\/collections\/all",
+    "cart_show_free_shipping_threshold": false,
+    "cart_free_shipping_threshold": "50",
+    "share_image": "",
+    "social_facebook": "#1",
+    "social_twitter": "",
+    "social_pinterest": "",
+    "social_instagram": "https:\/\/instagram.com\/petenattihogar",
+    "social_vimeo": "",
+    "social_tumblr": "",
+    "social_youtube": "",
+    "social_linkedin": "",
+    "social_snapchat": "",
+    "social_fancy": "",
+    "favicon": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#f3f5f6",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#ce1d76",
+    "checkout_button_color": "#ce1d76",
+    "checkout_error_color": "#ff0000",
+    "social_google_plus": "",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "enable_sticky_header": true,
+          "logo": "shopify:\/\/shop_images\/logo-BLANCO.png",
+          "logo_max_width": 200,
+          "mobile_logo_max_width": 100,
+          "navigation_menu": "main-menu",
+          "desktop_navigation_layout": "inline",
+          "desktop_navigation_open_trigger": "hover",
+          "show_navigation_social_media": false,
+          "navigation_phone_number": "",
+          "navigation_email": "",
+          "show_condensed_search": false,
+          "show_search_filter": true,
+          "search_menu": "",
+          "show_search_menu_title": true
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "text",
+            "settings": {
+              "title": "<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0329\/4458\/6885\/files\/logo_200x_add0469b-7340-47d9-b86c-a76a46ece4dd_200x.png?v=1582721425\">",
+              "content": "<p><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0329\/4458\/6885\/files\/phone.png?v=1582725165\"> Atención al cliente <strong>3462 470600<\/strong><\/p>\n<p><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0329\/4458\/6885\/files\/wp.png?v=1582725164\"> Consultá en Whatsapp <strong>+54 9 3462 609355<\/strong><\/p>\n<p><strong>Contacto<\/strong> Marcelo T. de Alvear 695, Elortondo, Santa Fe. Argentina.<\/p>\n<p><\/p>"
+            }
+          },
+          "1581606304303": {
+            "type": "links",
+            "settings": {
+              "menu": "main-menu"
+            }
+          },
+          "footer-1": {
+            "type": "links",
+            "settings": {
+              "menu": "main-menu"
+            }
+          },
+          "1581606338161": {
+            "type": "links",
+            "settings": {
+              "menu": "main-menu"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "1581606304303",
+          "footer-1",
+          "1581606338161"
+        ],
+        "settings": {
+          "show_social_media": true,
+          "show_payment_icons": false,
+          "show_cookie_bar": false,
+          "text": "<p>Use this bar to show information about your cookie policy.<\/p>",
+          "accept_button": "Acepto"
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "slide-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-1920x400_1600x_7912d25f-591a-4b57-b0e6-712ddaffd8f5.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner-mobile.png",
+              "show_overlay": false,
+              "overlay_opacity": 30,
+              "text_color": "#ffffff",
+              "title": "",
+              "content": "",
+              "content_position": "bottomLeft",
+              "button_background": "#ffffff",
+              "button_text_color": "#000000",
+              "button_text": "Button",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "slide-0"
+        ],
+        "settings": {
+          "edge_to_edge": true,
+          "section_size": "preserve_ratio",
+          "carousel_effect": "slide",
+          "autoplay": true,
+          "cycle_speed": 5
+        }
+      },
+      "collection-list": {
+        "type": "collection-list",
+        "blocks": {
+          "collection-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "televisores-1",
+              "image": "shopify:\/\/shop_images\/TELEVISORES_300x_5fb03c48-72b2-41f8-afa3-d71df337371c.jpg"
+            }
+          },
+          "collection-1": {
+            "type": "collection",
+            "settings": {
+              "collection": "bicicletas",
+              "image": "shopify:\/\/shop_images\/BICICLETAS_300x_c5dc7a29-ea83-4a27-abb0-15e12e787adc.jpg"
+            }
+          },
+          "collection-2": {
+            "type": "collection",
+            "settings": {
+              "collection": "bebes-y-ninos",
+              "image": "shopify:\/\/shop_images\/BEBES-Y-NINOS_300x_7327e0d9-75c5-42ae-bcd1-dd7b8c1ec8d7.jpg"
+            }
+          },
+          "collection-3": {
+            "type": "collection",
+            "settings": {
+              "collection": "dormitorio-1",
+              "image": "shopify:\/\/shop_images\/DORMITORIOS_300x_0153ad16-4ece-4ba2-abc5-40ddc70d8b66.jpg"
+            }
+          },
+          "collection-4": {
+            "type": "collection",
+            "settings": {
+              "collection": "celulares",
+              "image": "shopify:\/\/shop_images\/CELULARES_300x_d40b4d0b-fc1b-4849-92f7-9202e31423a2.jpg"
+            }
+          },
+          "collection-5": {
+            "type": "collection",
+            "settings": {
+              "collection": "jardin",
+              "image": "shopify:\/\/shop_images\/JARDIN_300x_ccde9235-3b5f-40b2-b8e8-d2865af8ad5c.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "collection-0",
+          "collection-1",
+          "collection-2",
+          "collection-3",
+          "collection-4",
+          "collection-5"
+        ],
+        "settings": {
+          "title": "",
+          "link_title": "",
+          "link": "shopify:\/\/collections",
+          "round_images": true,
+          "show_collection_title": true
+        }
+      },
+      "featured-product": {
+        "type": "featured-product",
+        "settings": {
+          "product": "batidora-de-pie-atma-bp8753re-bowl-roja",
+          "title": "Producto Destacado",
+          "link_title": "Ver Detalles",
+          "link_url": "",
+          "show_vendor": true,
+          "show_sku": false,
+          "show_share_buttons": true,
+          "show_description": true,
+          "description_below_add_to_cart": false,
+          "selector_mode": "block",
+          "color_mode": "color",
+          "show_quantity_selector": true,
+          "show_reviews_badge": false,
+          "show_payment_button": true,
+          "image_size": "small",
+          "enable_image_zoom": true,
+          "enable_video_looping": false,
+          "zoom_effect": "outside",
+          "carousel_effect": "fade",
+          "show_inventory_quantity": false,
+          "low_inventory_threshold": 0
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "show_collection_image": true,
+          "collapse_collection_description": false,
+          "collection_image_size": "small",
+          "products_per_row": "4",
+          "default_products_per_page": 24,
+          "default_view_layout": "grid",
+          "show_quick_buy": "list_grid",
+          "show_quick_view": "list",
+          "quick_links": "",
+          "quick_links_show_products_count": true,
+          "show_filters": true,
+          "show_filter_color_swatch": true,
+          "filter_type": "group",
+          "open_group_filters_mode": "all_open",
+          "filter_group_order": ""
+        }
+      },
+      "recently-viewed-products": {
+        "type": "recently-viewed-products",
+        "settings": {
+          "title": "Recently viewed",
+          "show_quick_buy": false
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "show_vendor": true,
+          "show_sku": true,
+          "show_share_buttons": true,
+          "show_taxes_included": true,
+          "selector_mode": "dropdown",
+          "color_mode": "color",
+          "show_quantity_selector": true,
+          "show_payment_button": false,
+          "image_size": "small",
+          "enable_image_zoom": true,
+          "enable_video_looping": false,
+          "zoom_effect": "inside",
+          "carousel_effect": "fade",
+          "show_inventory_quantity": false,
+          "low_inventory_threshold": 0,
+          "content_display_mode": "collapse_all",
+          "tab_page_1_handle": "",
+          "tab_page_2_handle": "",
+          "tab_page_3_handle": "",
+          "enable_reviews": false,
+          "show_reviews_badge": false,
+          "trust_title": "Payment & Security",
+          "show_payment_icons": false,
+          "custom_security_badge": "",
+          "show_shipping_estimator": false,
+          "shipping_estimator_default_country": "Argentina",
+          "show_refunds_policy": false
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "heading": "También te pueden interesar",
+          "show_quick_buy": false
+        }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": true,
+          "background": "#9a0046",
+          "text_color": "#ffffff",
+          "text": "+54 9 3462 609355          ventas@petenattihogar.com.ar",
+          "text_position": "left",
+          "link": "",
+          "show_newsletter": false,
+          "newsletter_button": "Subscribe & Save",
+          "newsletter_title": "Newsletter",
+          "newsletter_content": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+        }
+      },
+      "1542984811767": {
+        "type": "featured-collection",
+        "settings": {
+          "show_on_mobile": false,
+          "collection": "televisores-1",
+          "title": "Televisores",
+          "products_count": 6,
+          "layout": "collage",
+          "stack_desktop": false,
+          "show_quick_buy": false,
+          "link_title": "Ver todos",
+          "link_url": ""
+        }
+      },
+      "1542984842027": {
+        "type": "newsletter",
+        "settings": {
+          "title": "Newsletter",
+          "content": "<p>Recibe nuestras ofertas y novedades en tu email<\/p>"
+        }
+      },
+      "1542984882560": {
+        "type": "blog-posts",
+        "disabled": true,
+        "settings": {
+          "blog": "news",
+          "title": "Blog posts",
+          "link_title": "View all",
+          "show_category": true,
+          "show_author": true,
+          "show_date": true,
+          "show_excerpt": false,
+          "stack_mobile": false
+        }
+      },
+      "popups": {
+        "type": "popups",
+        "settings": {}
+      },
+      "text-with-icons": {
+        "type": "text-with-icons",
+        "blocks": {
+          "text-with-icons-0": {
+            "type": "item",
+            "settings": {
+              "icon": "bi-fast-delivery",
+              "custom_icon": "",
+              "title": "ENVÍOS A TODO EL PAÍS",
+              "content": ""
+            }
+          },
+          "text-with-icons-1": {
+            "type": "item",
+            "settings": {
+              "icon": "bi-returns",
+              "custom_icon": "",
+              "title": "DEVOLUCIÓN GARANTIZADA",
+              "content": ""
+            }
+          },
+          "text-with-icons-3": {
+            "type": "item",
+            "settings": {
+              "icon": "bi-secure-payment",
+              "custom_icon": "",
+              "title": "PAGO SEGURO",
+              "content": ""
+            }
+          },
+          "1581606104317": {
+            "type": "item",
+            "settings": {
+              "icon": "bi-customer-support",
+              "custom_icon": "",
+              "title": "SOPORTE TÉCNICO",
+              "content": ""
+            }
+          }
+        },
+        "block_order": [
+          "text-with-icons-0",
+          "text-with-icons-1",
+          "text-with-icons-3",
+          "1581606104317"
+        ],
+        "settings": {
+          "show_section": false,
+          "stack_mobile": false
+        }
+      },
+      "1581435471704": {
+        "type": "logo-list",
+        "disabled": true,
+        "blocks": {
+          "1581435471704-0": {
+            "type": "logo",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1581435471704-1": {
+            "type": "logo",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1581435471704-2": {
+            "type": "logo",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1581435471704-3": {
+            "type": "logo",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1581435471704-4": {
+            "type": "logo",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1581435471704-5": {
+            "type": "logo",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1581435471704-0",
+          "1581435471704-1",
+          "1581435471704-2",
+          "1581435471704-3",
+          "1581435471704-4",
+          "1581435471704-5"
+        ],
+        "settings": {
+          "title": "",
+          "link_title": "",
+          "link": ""
+        }
+      },
+      "1581435553438": {
+        "type": "collection-with-image",
+        "settings": {
+          "collection": "exprimidores",
+          "products_count": 12,
+          "image": "",
+          "background": "#edefef",
+          "text_color": "#596267",
+          "title": "HASTA 40% OFF",
+          "content": "Hasta 12 cuotas sin interés en exprimidores.",
+          "button_background": "#ffffff",
+          "button_text_color": "#ce1d76",
+          "button_text": "Ver productos",
+          "button_link": "shopify:\/\/collections\/exprimidores"
+        }
+      },
+      "static-promotion-list": {
+        "type": "static-promotion-list",
+        "settings": {
+          "expand_items": false,
+          "section_size": "small",
+          "stack_mobile": false
+        }
+      },
+      "static-recently-viewed-products": {
+        "type": "static-recently-viewed-products",
+        "settings": {
+          "show_section": true,
+          "title": "Visto recientemente",
+          "show_quick_buy": false
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "collections_to_show": "all",
+          "show_collection_title": true,
+          "show_collection_overlay": true,
+          "collection_overlay_opacity": 20
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "turco": false,
+          "enable_order_notes": true,
+          "show_payment_icons": true,
+          "gift_wrap_product": "",
+          "gift_wrap_text": "Do you want a gift wrap?",
+          "gift_wrap_button": "Add a gift wrap",
+          "show_shipping_estimator": false,
+          "shipping_estimator_default_country": "United States",
+          "trust_heading": "Our guarantees",
+          "upsell_heading": "Complete your cart",
+          "upsell_collection": "",
+          "upsell_products_count": 4
+        }
+      },
+      "1581451100641": {
+        "type": "mosaic",
+        "blocks": {
+          "1581451100641-0": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/imagen_01_600x_d1a00dd0-4cbd-450d-8674-ab5ac01c9f76.jpg",
+              "show_overlay": false,
+              "overlay_opacity": 50,
+              "background": "#f3f4f4",
+              "text_color": "#596267",
+              "title": "50% OFF",
+              "content": "",
+              "content_position": "top_left",
+              "button_background": "#4f5558",
+              "button_text_color": "#f3f4f4",
+              "button_text": "",
+              "link": "shopify:\/\/collections\/celulares"
+            }
+          },
+          "1581451100641-1": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/imagen_05_600x_cc36e2cc-464c-42b0-bb0a-94ce6a567ad4.jpg",
+              "show_overlay": false,
+              "overlay_opacity": 50,
+              "background": "#f3f4f4",
+              "text_color": "#4f5558",
+              "title": "45% OFF",
+              "content": "",
+              "content_position": "top_left",
+              "button_background": "#4f5558",
+              "button_text_color": "#f3f4f4",
+              "button_text": "",
+              "link": "shopify:\/\/collections\/televisores-1"
+            }
+          },
+          "1581451100641-2": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/imagen_03_600x_dd6d4243-ef55-4882-a17c-956df327a7ef.jpg",
+              "show_overlay": false,
+              "overlay_opacity": 50,
+              "background": "#f3f4f4",
+              "text_color": "#4f5558",
+              "title": "55% OFF",
+              "content": "",
+              "content_position": "top_left",
+              "button_background": "#4f5558",
+              "button_text_color": "#f3f4f4",
+              "button_text": "",
+              "link": "shopify:\/\/collections\/afeitadoras"
+            }
+          },
+          "1581451100641-3": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/imagen_04_600x_c380eebf-6f22-4b1b-bff2-818d5a9acd95.jpg",
+              "show_overlay": false,
+              "overlay_opacity": 50,
+              "background": "#f3f4f4",
+              "text_color": "#4f5558",
+              "title": "30% OFF",
+              "content": "",
+              "content_position": "top_left",
+              "button_background": "#4f5558",
+              "button_text_color": "#f3f4f4",
+              "button_text": "",
+              "link": "shopify:\/\/collections\/cochecitos"
+            }
+          },
+          "1581451100641-4": {
+            "type": "item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/imagen_02_600x_85ac4ac3-b2d6-42b8-a247-a029e532e1f5.jpg",
+              "show_overlay": false,
+              "overlay_opacity": 50,
+              "background": "#f3f4f4",
+              "text_color": "#4f5558",
+              "title": "25% OFF",
+              "content": "",
+              "content_position": "top_left",
+              "button_background": "#4f5558",
+              "button_text_color": "#f3f4f4",
+              "button_text": "",
+              "link": "shopify:\/\/collections\/piletas-de-lona"
+            }
+          }
+        },
+        "block_order": [
+          "1581451100641-0",
+          "1581451100641-1",
+          "1581451100641-2",
+          "1581451100641-3",
+          "1581451100641-4"
+        ],
+        "settings": {
+          "section_size": "medium"
+        }
+      },
+      "1581452742533": {
+        "type": "slideshow",
+        "blocks": {
+          "1581452742533-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/banner-catalogos_1170x_1100x_e8ab0a51-70d9-455a-9881-cfc42e20b641.png",
+              "mobile_image": "",
+              "show_overlay": false,
+              "overlay_opacity": 30,
+              "text_color": "#ffffff",
+              "title": "",
+              "content": "",
+              "content_position": "middle_center",
+              "button_background": "#ffffff",
+              "button_text_color": "#000000",
+              "button_text": "Button",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1581452742533-0"
+        ],
+        "settings": {
+          "edge_to_edge": false,
+          "section_size": "preserve_ratio",
+          "carousel_effect": "slide",
+          "autoplay": false,
+          "cycle_speed": 5
+        }
+      },
+      "minimal-header": {
+        "type": "minimal-header",
+        "settings": {
+          "logo": "",
+          "logo_max_width": 140,
+          "mobile_logo_max_width": 100
+        }
+      },
+      "gift-card-template": {
+        "type": "gift-card-template",
+        "settings": {
+          "gift_card_image": ""
+        }
+      },
+      "static-newsletter": {
+        "type": "static-newsletter",
+        "settings": {
+          "show_section": false,
+          "title": "Subscribe to our newsletter",
+          "content": "<p>A short sentence describing what someone will receive by subscribing<\/p>",
+          "subtext": "100% free, Unsubscribe any time!",
+          "background": "#1e2d7d",
+          "text": "#ffffff"
+        }
+      },
+      "1581618065795": {
+        "type": "custom-html",
+        "settings": {
+          "title": "",
+          "html": "<div id=\"shopify-section-text-with-icons\" class=\"shopify-section\"><section class=\"section section--tight\" data-section-id=\"text-with-icons\" data-section-type=\"text-with-icons\">\n    <div class=\"container container--flush\">\n      <div class=\"text-with-icons text-with-icons--stacked\">\n<div class=\"text-with-icons__item\" data-block-index=\"0\">\n            <div class=\"text-with-icons__icon-wrapper\">\n<svg viewbox=\"0 0 24 22\" role=\"presentation\">\n      <g transform=\"translate(1 1)\" stroke-width=\"1.5\" fill=\"none\" fill-rule=\"evenodd\">\n        <path d=\"M5 10H2M5 15H4\" stroke=\"#ce1d76\" stroke-linecap=\"square\"><\/path>\n        <path stroke=\"#596267\" d=\"M16.829 16H22v-6l-4-2-1-4H9v12h2.171\"><\/path>\n        <path d=\"M0 5h5\" stroke=\"#ce1d76\" stroke-linecap=\"square\"><\/path>\n        <path stroke=\"#596267\" stroke-linecap=\"square\" d=\"M0 0h9v4\"><\/path>\n        <circle stroke=\"#596267\" stroke-linecap=\"square\" cx=\"14\" cy=\"17\" r=\"3\"><\/circle>\n        <path stroke=\"#596267\" stroke-linecap=\"square\" d=\"M13 7v2h2\"><\/path>\n      <\/g>\n    <\/svg>\n<\/div>\n<div class=\"text-with-icons__content-wrapper\"><p class=\"text-with-icons__title text--strong\">ENVÍOS A TODO EL PAÍS<\/p><\/div>\n<\/div>\n<div class=\"text-with-icons__item\" data-block-index=\"1\">\n            <div class=\"text-with-icons__icon-wrapper\">\n<svg viewbox=\"0 0 23 24\" role=\"presentation\">\n      <g transform=\"translate(1 1)\" stroke-width=\"1.5\" fill=\"none\" fill-rule=\"evenodd\">\n        <path stroke=\"#ce1d76\" d=\"M8 4h8v7\"><\/path>\n        <path stroke=\"#ce1d76\" stroke-linecap=\"square\" d=\"M11 7L8 4l3-3\"><\/path>\n        <circle stroke=\"#596267\" stroke-linecap=\"square\" cx=\"6\" cy=\"20\" r=\"2\"><\/circle>\n        <circle stroke=\"#596267\" stroke-linecap=\"square\" cx=\"18\" cy=\"20\" r=\"2\"><\/circle>\n        <path stroke=\"#596267\" stroke-linecap=\"square\" d=\"M21 5l-2 10H5L3 0H0\"><\/path>\n      <\/g>\n    <\/svg>\n<\/div>\n<div class=\"text-with-icons__content-wrapper\"><p class=\"text-with-icons__title text--strong\">DEVOLUCIÓN GARANTIZADA<\/p><\/div>\n<\/div>\n<div class=\"text-with-icons__item\" data-block-index=\"2\">\n            <div class=\"text-with-icons__icon-wrapper\">\n<svg viewbox=\"0 0 24 24\" role=\"presentation\">\n      <g stroke-width=\"1.5\" fill=\"none\" fill-rule=\"evenodd\" stroke-linecap=\"square\">\n        <path d=\"M1 5h22M1 9h22M9 17H3c-1.105 0-2-.895-2-2V3c0-1.105.895-2 2-2h18c1.105 0 2 .895 2 2v10M5 13h5\" stroke=\"#596267\"><\/path>\n        <path stroke=\"#ce1d76\" d=\"M13 16h8v7h-8zM15 16v-2c0-1.1.9-2 2-2s2 .9 2 2v2M17 19v1\"><\/path>\n      <\/g>\n    <\/svg>\n<\/div>\n<div class=\"text-with-icons__content-wrapper\"><p class=\"text-with-icons__title text--strong\">PAGO SEGURO<\/p><\/div>\n<\/div>\n<div class=\"text-with-icons__item\" data-block-index=\"3\">\n            <div class=\"text-with-icons__icon-wrapper\">\n<svg viewbox=\"0 0 24 24\" role=\"presentation\">\n      <g stroke-width=\"1.5\" fill=\"none\" fill-rule=\"evenodd\" stroke-linecap=\"square\">\n        <path d=\"M10 17H4c-1.7 0-3 1.3-3 3v3h12v-3c0-1.7-1.3-3-3-3zM7 14c-1.7 0-3-1.3-3-3v-1c0-1.7 1.3-3 3-3s3 1.3 3 3v1c0 1.7-1.3 3-3 3z\" stroke=\"#596267\"><\/path>\n        <path stroke=\"#ce1d76\" d=\"M13 1v10l4-3h6V1z\"><\/path>\n      <\/g>\n    <\/svg>\n<\/div>\n<div class=\"text-with-icons__content-wrapper\"><p class=\"text-with-icons__title text--strong\">SOPORTE TÉCNICO<\/p><\/div>\n<\/div>\n<\/div>\n    <\/div>\n  <\/section><\/div>"
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "title": "Newsletter",
+          "content": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+        }
+      },
+      "1584537135237": {
+        "type": "featured-collection",
+        "settings": {
+          "show_on_mobile": true,
+          "collection": "televisores-1",
+          "title": "Televisores",
+          "products_count": 12,
+          "layout": "vertical",
+          "stack_desktop": false,
+          "show_quick_buy": false,
+          "link_title": "Ver todos",
+          "link_url": "shopify:\/\/collections\/televisores-1"
+        }
+      },
+      "section-store-locator": {
+        "type": "section-store-locator",
+        "blocks": {
+          "1524149957303": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Casa Central",
+              "latitude_store": "-33.701594",
+              "longitude_store": "-61.610126",
+              "phone_store": "+54 3462 47-0600",
+              "address_store": "Marcelo T. de Alvear 695, Elortondo (2732)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524152036090": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Alcorta",
+              "latitude_store": "-33.535983",
+              "longitude_store": "-61.124517",
+              "phone_store": "+54 3465 470222",
+              "address_store": "San Martín 351, Alcorta (2117)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1535491677870": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Arias",
+              "latitude_store": "-33.6387736",
+              "longitude_store": "-62.4045437",
+              "phone_store": "+54 3468 440127",
+              "address_store": "San Martin 1231, Arias",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Cordoba, Argentina"
+            }
+          },
+          "1524152296686": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Bigand",
+              "latitude_store": "-33.375",
+              "longitude_store": "-61.184254",
+              "phone_store": "+54 3464 460219",
+              "address_store": "Ma. Eva Duarte de Perón 355, Bigand (2177)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1534451658021": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Bombal",
+              "latitude_store": "-33.4590857",
+              "longitude_store": "-61.3212965,17",
+              "phone_store": "+54 3465 436118",
+              "address_store": "Belgrano 400",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1534452098173": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Chabas",
+              "latitude_store": "-33.2446092",
+              "longitude_store": "-61.3641816,17",
+              "phone_store": "+54 3464 481555",
+              "address_store": "Moreno 1400",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Chabas, Santa Fe"
+            }
+          },
+          "1524152656138": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Chañar Ladeado",
+              "latitude_store": "-33.31658",
+              "longitude_store": "-62.033333",
+              "phone_store": "+54 3468 481200",
+              "address_store": "25 de Mayo 564, Chañar Ladeado (2139)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524153334782": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Chovet",
+              "latitude_store": "-33.59942",
+              "longitude_store": "-61.605421",
+              "phone_store": "+54 3465 493838",
+              "address_store": "Sarmiento 326, Chovet (2633)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524158725357": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Corral de Bustos",
+              "latitude_store": "-33.281757",
+              "longitude_store": "-62.18464",
+              "phone_store": "+54 3468 432444",
+              "address_store": "Italia esq. Belgrano, Corral de Bustos (2645)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Córdoba, Argentina"
+            }
+          },
+          "1524158801789": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Elortondo",
+              "latitude_store": "-33.699415",
+              "longitude_store": "-61.614921",
+              "phone_store": "+54 3462 470345",
+              "address_store": "San Martín 898, Elortondo (2732)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524158923858": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Firmat",
+              "latitude_store": "-33.458134",
+              "longitude_store": "-61.486935",
+              "phone_store": "+54 3465 425726",
+              "address_store": "Buenos Aires 1044, Firmat (2630)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524158973762": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Firmat 2",
+              "latitude_store": "-33.455911",
+              "longitude_store": "-61.489277",
+              "phone_store": "+54 3465 423252",
+              "address_store": "Entre Ríos 1243, Firmat (2630)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524159092105": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Hughes",
+              "latitude_store": "-33.799302",
+              "longitude_store": "-61.331219",
+              "phone_store": "+54 2473 491078",
+              "address_store": "Simón de Iriondo 985, Hughes (2725)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1534191902860": {
+            "type": "Store",
+            "settings": {
+              "title_store": "La Carlota",
+              "latitude_store": "-33.419862",
+              "longitude_store": "-63.301623",
+              "phone_store": "+54 03584 450652",
+              "address_store": "Sarmiento 783",
+              "attention-schedule_store": "De 8:00 a 12::00 y de 16:00 a 20:00 Hs",
+              "description_store": "Cordoba, Argentina"
+            }
+          },
+          "1524159150050": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Maria Teresa",
+              "latitude_store": "-34.00367",
+              "longitude_store": "-61.902624",
+              "phone_store": "+54 3462 480022",
+              "address_store": "Pedro Carlos Loretto 258, María Teresa (2609)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524159233978": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Máximo Paz",
+              "latitude_store": "-33.482386",
+              "longitude_store": "-60.955883",
+              "phone_store": "+54 3460 496071",
+              "address_store": "Ituizango 572 Máximo Paz (2115)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524159310687": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Melincué",
+              "latitude_store": "-33.659301",
+              "longitude_store": "-61.457829",
+              "phone_store": "+54 3465 499548",
+              "address_store": "San Martín y Rivadavia, Melincué (2728)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524159431898": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Monte Maíz",
+              "latitude_store": "-33.205785",
+              "longitude_store": "-62.601564",
+              "phone_store": "+54 3468 473007",
+              "address_store": "Entre Ríos 1969, Monte Maíz (2659)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Córdoba, Argentina"
+            }
+          },
+          "1563827497612": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Murphy",
+              "latitude_store": "-33.6449859",
+              "longitude_store": "-61.8576022",
+              "phone_store": "+54 3462 441 978",
+              "address_store": "San Martín 198, Murphy (2601)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524159566240": {
+            "type": "Store",
+            "settings": {
+              "title_store": "San Gregorio",
+              "latitude_store": "-34.3242976",
+              "longitude_store": "-62.0357761",
+              "phone_store": "+54 3382 470286",
+              "address_store": "San Martín y Augusto Cabanius, San Gregorio (2613)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524159697562": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Sancti Spiritu",
+              "latitude_store": "-34.0086198",
+              "longitude_store": "-62.2397281",
+              "phone_store": "+54 3462 444852",
+              "address_store": "Los Colonizadores 56, Sancti Spiritu (2617)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524159799644": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Santa Isabel",
+              "latitude_store": "-33.889348",
+              "longitude_store": "-61.696078",
+              "phone_store": "+54 3462 490044",
+              "address_store": "Belgrano 1051, Santa Isabel (2605)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524159849075": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Teodelina",
+              "latitude_store": "-34.370222",
+              "longitude_store": "-62.127568",
+              "phone_store": "+54 3462 440888",
+              "address_store": "José Roberti 534, Teodelina (6009)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524159893359": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Venado Tuerto",
+              "latitude_store": "-33.746581",
+              "longitude_store": "-61.969497",
+              "phone_store": "+54 3462 433883",
+              "address_store": "Moreno 850, Venado Tuerto (2600)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524160029168": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Villa Cañás",
+              "latitude_store": "-34.00413",
+              "longitude_store": "-61.60373",
+              "phone_store": "+54 3462 451751",
+              "address_store": "Calle 51 y 56, Villa Cañás (2607)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          },
+          "1524160083435": {
+            "type": "Store",
+            "settings": {
+              "title_store": "Wheelwright",
+              "latitude_store": "-33.794443",
+              "longitude_store": "-61.213292",
+              "phone_store": "+54 2473 480271",
+              "address_store": "H Vila 689, Wheelwright (2722)",
+              "attention-schedule_store": "De 8:00 a 12:00 y de 16:00 a 20:00 hs",
+              "description_store": "Santa Fe, Argentina"
+            }
+          }
+        },
+        "block_order": [
+          "1524149957303",
+          "1524152036090",
+          "1535491677870",
+          "1524152296686",
+          "1534451658021",
+          "1534452098173",
+          "1524152656138",
+          "1524153334782",
+          "1524158725357",
+          "1524158801789",
+          "1524158923858",
+          "1524158973762",
+          "1524159092105",
+          "1534191902860",
+          "1524159150050",
+          "1524159233978",
+          "1524159310687",
+          "1524159431898",
+          "1563827497612",
+          "1524159566240",
+          "1524159697562",
+          "1524159799644",
+          "1524159849075",
+          "1524159893359",
+          "1524160029168",
+          "1524160083435"
+        ],
+        "settings": {
+          "image_point": "shopify:\/\/shop_images\/google-point-petenatti_320x320_ce689a37-9618-4512-8581-0e74ef8c449e.png"
+        }
+      },
+      "page-faq-template": {
+        "type": "page-faq-template",
+        "blocks": {
+          "page-faq-template-1": {
+            "type": "question",
+            "settings": {
+              "title": "1. ¿Cómo me registro?",
+              "answer": "<p>Completando tus datos personales en el formulario que encontras en la opci&oacute;n &ldquo;Registro&rdquo;. Una vez que ya tengas un usuario registrado, podr&aacute;s comprar a trav&eacute;s de nuestra web y recibir informaci&oacute;n de nuestras promociones.<\/p>"
+            }
+          },
+          "page-faq-template-2": {
+            "type": "question",
+            "settings": {
+              "title": "2. ¿Cuáles son las formas de pago?",
+              "answer": "<p>Para comprar en nuestra p&aacute;gina web, podes hacerlo a trav&eacute;s de MercadoPago o transferencia bancaria.<\/p>"
+            }
+          },
+          "page-faq-template-3": {
+            "type": "question",
+            "settings": {
+              "title": "3. ¿Puedo obtener Factura A?",
+              "answer": "<p>Si. Las ventas que se realizan en&nbsp;<a href=\"http:\/\/www.petenattihogar.com.ar%2C\/\">www.petenattihogar.com.ar,<\/a>&nbsp;se pueden emitir con factura: Responsable Inscripto (Comprobantes tipo \"A\") o Consumidor Final (Comprobantes tipo \"B\"), seg&uacute;n los datos proporcionados por el usuario.<\/p>"
+            }
+          },
+          "page-faq-template-5": {
+            "type": "question",
+            "settings": {
+              "title": "4. ¿Cómo funciona el sistema “Retiro en Sucursal”?",
+              "answer": "<p>Este sistema es gratuito y podes retirar el producto dentro del plazo de los 5 d&iacute;as h&aacute;biles. En la orden de compra puedes indicar en cu&aacute;l de nuestras 24 sucursales lo retirar&aacute;s. A la hora de retirar el producto, deber&aacute;s presentarte con DNI y fotocopia del mismo, en la sucursal seleccionada.&nbsp;<a href=\"\/pages\/pages\/sucursales\">Ver sucursales<\/a><\/p>"
+            }
+          },
+          "page-faq-template-6": {
+            "type": "question",
+            "settings": {
+              "title": "5. ¿Cómo funciona el sistema “Envío a domicilio”?",
+              "answer": "<p>Los env&iacute;os se realizan&nbsp;con la empresa de log&iacute;stica&nbsp;ANDREANI. El costo de env&iacute;o podr&aacute;s calcularlo en el proceso de compra. Te enviaremos un c&oacute;digo de seguimiento, para que puedas hacer el seguimiento online de tu compra.<strong>&nbsp;<\/strong><a href=\"https:\/\/seguimiento.andreani.com\/\">Realizar seguimiento<\/a><\/p>"
+            }
+          },
+          "page-faq-template-8": {
+            "type": "question",
+            "settings": {
+              "title": "6. ¿Quién puede recibir el artículo, en caso de no estar quien realizó la compra?",
+              "answer": "<p>El producto podr&aacute; recibirlo cualquier persona mayor de 18 a&ntilde;os, exhibiendo DNI y la confirmaci&oacute;n de compra enviada por correo electr&oacute;nico. Es necesario que el receptor firme el remito de entrega en papel y verifique el estado del producto.<\/p>"
+            }
+          },
+          "1586974647494": {
+            "type": "question",
+            "settings": {
+              "title": "7. ¿Cuánto tiempo tengo para devolver el producto?",
+              "answer": "<p>La devoluci&oacute;n de productos se acepta dentro de los DIEZ (10) d&iacute;as corridos, contados a partir de la fecha de recibida la mercader&iacute;a, absorbiendo el cliente el costo del env&iacute;o. Los cambios se encuentran sujetos a disponibilidad de stock. Ser&aacute; necesario que el producto est&eacute;&nbsp;en perfectas condiciones, con etiquetas, accesorios y empaques originales (incluyendo manuales, gu&iacute;as de uso, certificados de garant&iacute;a, etc.). En todos los casos se deber&aacute; conservar la factura y\/o remito de entrega.&nbsp;<\/p>"
+            }
+          },
+          "1586974689744": {
+            "type": "question",
+            "settings": {
+              "title": "8. ¿Todos los productos tienen devolución?",
+              "answer": "<p>El Usuario puede gestionar la devoluci&oacute;n de la compra dentro de los 10 d&iacute;as de corrido de recibido el producto, cuando:<\/p>\n<p>*El producto no corresponde al detalle de la factura.El producto corresponde al detalle de la factura, pero no es lo solicitado en la orden de compra.<\/p>\n<p>*El producto entregado se encuentra con fallas en su funcionamiento.<\/p>\n<p>Debido a la naturaleza de algunos art&iacute;culos, no aceptamos devoluciones en todos los productos:<\/p>\n<p>*Productos considerados fr&aacute;giles, (art&iacute;culos de vidrio, espejos y vajillas, entre otros)<\/p>\n<p>*Productos de uso personal. (depiladoras, afeitadoras, etc) *Licencias o productos virtuales.<\/p>\n<p>*Productos que requieren instalaci&oacute;n y ya han sido instalados para su uso (estufas,&nbsp;aires acondicionados, calefones, termotanques, anafes, cocinas, campanas, lavarropas, lavasecarropas, lavavajillas, heladeras, freezers, cavas y exhibidoras, una vez instalados no tienen devoluci&oacute;n). En caso de tener alguna falla de funcionamiento, comun&iacute;carse&nbsp;con el servicio t&eacute;cnico del producto.&nbsp;<\/p>\n<p>Al momento de recibir el producto, recomendamos chequear el estado del mismo. Una vez firmado el remito en conformidad, se considerar&aacute; la entrega en buen estado.<\/p>"
+            }
+          },
+          "1586974942892": {
+            "type": "question",
+            "settings": {
+              "title": "9. Detalles estéticos en productos",
+              "answer": "<p>Al momento de la entrega, record&aacute; siempre verificar el buen estado del producto antes de firmar el remito. No se realizar&aacute;n cambios por detalle est&eacute;tico cuando el remito haya sido firmado en conformidad.<\/p>"
+            }
+          },
+          "1586974975988": {
+            "type": "question",
+            "settings": {
+              "title": "10. Mi producto no funciona, ¿Cuál servicio técnico corresponde a mi producto?",
+              "answer": "<p>Se recomienda siempre guardar&nbsp;la factura de compra, para que la garant&iacute;a del producto tenga validez. En el manual de los productos, se encuentra un listado con los service oficiales&nbsp;de la marca. En caso de extrav&iacute;o del mismo, puedes comunicarte con nosotros al&nbsp;(03462) 470600 y te proporcionaremos&nbsp;los contactos de los service oficiales.<\/p>"
+            }
+          },
+          "1586975011633": {
+            "type": "question",
+            "settings": {
+              "title": "11. ¿Cómo me devuelven el dinero?",
+              "answer": "<p>Sabemos que en ocasiones&nbsp;las cosas no salen como uno espera. Lo bueno es que la mayor&iacute;a de las veces es posible volver atr&aacute;s.<\/p>\n<p>Si necesitas que te devuelvan el dinero,&nbsp;comun&iacute;cate con el vendedor&nbsp;para que lo haga desde su cuenta de Mercado Pago.<\/p>"
+            }
+          },
+          "1586975054129": {
+            "type": "question",
+            "settings": {
+              "title": "12. El vendedor ya me devolvió el pago, ¿dónde está el dinero?",
+              "answer": "<p>Si pagaste con el dinero de tu cuenta de Mercado Pago, autom&aacute;ticamente lo encontrar&aacute;s de nuevo disponible.&nbsp;<\/p>"
+            }
+          },
+          "1586975154704": {
+            "type": "question",
+            "settings": {
+              "title": "Pagué con tarjeta de crédito:",
+              "answer": "<p>Ni bien el vendedor te devuelve el pago, pedimos la anulaci&oacute;n del cargo. Sin embargo, es posible que la veas reflejada en el resumen online de tu tarjeta de cr&eacute;dito unos d&iacute;as h&aacute;biles despu&eacute;s.<\/p>\n<p>Ten en cuenta la fecha de cierre de tu tarjeta de cr&eacute;dito. Si la anulaci&oacute;n del pago se hizo despu&eacute;s del cierre, la ver&aacute;s reflejada en el resumen siguiente.<\/p>\n<p>Si pagaste en cuotas, ten en cuenta que cada tarjeta anula los cargos de manera diferente. Es com&uacute;n que devuelvan el dinero de la cuota ya cobrada y anulen las siguientes.&nbsp;<\/p>"
+            }
+          },
+          "1586975214965": {
+            "type": "question",
+            "settings": {
+              "title": "Pagué con un medio de pago en efectivo:",
+              "answer": "<p>Apenas te devolvieron el pago, dejamos el dinero disponible en tu cuenta.&nbsp;Podr&aacute;s usarlo para lo que quieras, cuando quieras. &nbsp;<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "page-faq-template-1",
+          "page-faq-template-2",
+          "page-faq-template-3",
+          "page-faq-template-5",
+          "page-faq-template-6",
+          "page-faq-template-8",
+          "1586974647494",
+          "1586974689744",
+          "1586974942892",
+          "1586974975988",
+          "1586975011633",
+          "1586975054129",
+          "1586975154704",
+          "1586975214965"
+        ],
+        "settings": {
+          "show_contact_info": true,
+          "contact_info_heading": "¿Consultas?",
+          "contact_info_text": "",
+          "contact_1_icon": "bi-phone",
+          "contact_1_heading": "Atención al cliente",
+          "contact_1_text": "<p><strong>3462 470600<\/strong><\/p>",
+          "contact_2_icon": "bi-chat",
+          "contact_2_heading": "Consultá en Whatsapp",
+          "contact_2_text": "<p><strong>+54 9 3462 609355<\/strong><\/p>"
+        }
+      }
+    },
+    "content_for_index": [
+      "slideshow",
+      "1581618065795",
+      "collection-list",
+      "1542984811767",
+      "1584537135237",
+      "featured-product",
+      "1542984882560",
+      "1581435471704",
+      "1581451100641",
+      "1581452742533",
+      "1581435553438",
+      "1542984842027"
+    ]
+  },
+  "presets": {
+    "Metal": {
+      "heading_color": "#1e2d7d",
+      "text_color": "#677279",
+      "accent_color": "#00badb",
+      "link_color": "#00badb",
+      "border_color": "#e1e3e4",
+      "background": "#f3f5f6",
+      "secondary_background": "#ffffff",
+      "error_color": "#ff0000",
+      "success_color": "#00aa00",
+      "primary_button_background": "#00badb",
+      "primary_button_text_color": "#ffffff",
+      "secondary_button_background": "#1e2d7d",
+      "secondary_button_text_color": "#ffffff",
+      "header_background": "#1e2d7d",
+      "header_text_color": "#ffffff",
+      "header_light_text_color": "#a3afef",
+      "header_accent_color": "#00badb",
+      "product_on_sale_accent": "#ee0000",
+      "product_in_stock_color": "#008a00",
+      "product_low_stock_color": "#ee0000",
+      "product_sold_out_color": "#8a9297",
+      "product_label_1_background": "#008a00",
+      "product_label_2_background": "#00a500",
+      "product_star_color": "#ffbd00",
+      "base_text_font_size": 16,
+      "heading_font": "din_next_n5",
+      "text_font": "din_next_n4",
+      "underline_links": true,
+      "animation_image_zoom": true,
+      "currency_conversion_enabled": false,
+      "currency_conversion_round_amounts": false,
+      "currency_conversion_supported_currencies": "USD CAD EUR GBP",
+      "currency_conversion_money_format": "money_format",
+      "search_mode": "product,article",
+      "show_vendor": true,
+      "show_secondary_image": true,
+      "product_price_position": "after_title",
+      "product_image_size": "natural",
+      "show_discount": true,
+      "discount_mode": "saving",
+      "show_color_swatch": false,
+      "show_inventory_quantity": false,
+      "low_inventory_threshold": 0,
+      "show_reviews_badge": false,
+      "cart_type": "drawer",
+      "cart_empty_button_link": "shopify:\/\/collections\/all",
+      "cart_show_free_shipping_threshold": false,
+      "cart_free_shipping_threshold": "50",
+      "share_image": "",
+      "social_facebook": "",
+      "social_twitter": "",
+      "social_google_plus": "",
+      "social_pinterest": "",
+      "social_instagram": "",
+      "social_vimeo": "",
+      "social_tumblr": "",
+      "social_youtube": "",
+      "social_linkedin": "",
+      "social_snapchat": "",
+      "social_fancy": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_accent_color": "#00badb",
+      "checkout_button_color": "#00badb",
+      "checkout_error_color": "#ff0000",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "logo": "",
+            "logo_max_width": 140,
+            "mobile_logo_max_width": 100,
+            "navigation_menu": "main-menu",
+            "desktop_navigation_layout": "inline",
+            "desktop_navigation_open_trigger": "hover",
+            "navigation_phone_number": "Call us 000-000-0000",
+            "navigation_email": "info@yourwebsite.com",
+            "search_menu": ""
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "text",
+              "settings": {
+                "title": "About the shop",
+                "content": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme settings.<\/p>"
+              }
+            },
+            "footer-1": {
+              "type": "links",
+              "settings": {
+                "menu": "footer"
+              }
+            },
+            "footer-2": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Newsletter",
+                "subheading": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1",
+            "footer-2"
+          ],
+          "settings": {
+            "show_social_media": true,
+            "show_payment_icons": true
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slide-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "mobile_image": "",
+                "text_color": "#ffffff",
+                "title": "Tell your story",
+                "content": "Tell your story",
+                "content_position": "bottomLeft",
+                "button_background": "#ffffff",
+                "button_text_color": "#000000",
+                "button_text": "Button",
+                "link": ""
+              }
+            },
+            "slide-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "mobile_image": "",
+                "text_color": "#ffffff",
+                "title": "Tell your story",
+                "content": "Tell your story",
+                "content_position": "bottomLeft",
+                "button_background": "#ffffff",
+                "button_text_color": "#000000",
+                "button_text": "Button",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "slide-0",
+            "slide-1"
+          ],
+          "settings": {
+            "edge_to_edge": true,
+            "section_size": "preserve_ratio",
+            "cycle_speed": 5
+          }
+        },
+        "collection-list": {
+          "type": "collection-list",
+          "blocks": {
+            "collection-0": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-1": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-2": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-3": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-4": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-5": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            }
+          },
+          "block_order": [
+            "collection-0",
+            "collection-1",
+            "collection-2",
+            "collection-3",
+            "collection-4",
+            "collection-5"
+          ],
+          "settings": {
+            "title": "Our collections",
+            "link_title": "View all",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "featured-product": {
+          "type": "featured-product",
+          "settings": {
+            "product": "",
+            "title": "Featured product",
+            "selector_mode": "block",
+            "color_mode": "color",
+            "low_inventory_threshold": 0,
+            "zoom_effect": "outside",
+            "carousel_effect": "fade"
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "collection_image_size": "small",
+            "default_view_layout": "grid",
+            "show_quick_view": "list",
+            "show_quick_buy": "list",
+            "quick_links": "",
+            "filter_type": "tag"
+          }
+        },
+        "recently-viewed-products": {
+          "type": "recently-viewed-products",
+          "settings": {
+            "title": "Recently viewed"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "selector_mode": "block",
+            "color_mode": "color",
+            "low_inventory_threshold": 0,
+            "zoom_effect": "outside",
+            "carousel_effect": "fade",
+            "tab_page_1_handle": "",
+            "tab_page_2_handle": "",
+            "tab_page_3_handle": "",
+            "custom_security_badge": ""
+          }
+        },
+        "product-recommendations": {
+          "type": "product-recommendations",
+          "settings": {}
+        },
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "settings": {
+            "background": "#1e2d7d",
+            "text_color": "#ffffff",
+            "text": "Announce something here",
+            "link": "",
+            "newsletter_button": "Subscribe & Save",
+            "newsletter_title": "Newsletter",
+            "newsletter_content": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+          }
+        },
+        "1542984811767": {
+          "type": "featured-collection",
+          "settings": {
+            "collection": "",
+            "title": "Featured collection",
+            "products_count": 12,
+            "layout": "vertical",
+            "link_title": "View all"
+          }
+        },
+        "1542984842027": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Newsletter",
+            "content": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+          }
+        },
+        "1542984882560": {
+          "type": "blog-posts",
+          "settings": {
+            "blog": "news",
+            "title": "Blog posts"
+          }
+        }
+      },
+      "content_for_index": [
+        "slideshow",
+        "1542984811767",
+        "collection-list",
+        "1542984842027",
+        "featured-product",
+        "1542984882560"
+      ]
+    },
+    "Wood": {
+      "heading_color": "#3a2a2f",
+      "text_color": "#3a2a2f",
+      "accent_color": "#ff6128",
+      "link_color": "#ff6128",
+      "border_color": "#e7e2de",
+      "background": "#f7f4f2",
+      "secondary_background": "#ffffff",
+      "error_color": "#f71b1b",
+      "success_color": "#48b448",
+      "primary_button_background": "#ff6128",
+      "primary_button_text_color": "#ffffff",
+      "secondary_button_background": "#3a2a2f",
+      "secondary_button_text_color": "#ffffff",
+      "header_background": "#3a2a2f",
+      "header_text_color": "#ffffff",
+      "header_light_text_color": "#e9e2dd",
+      "header_accent_color": "#ff6128",
+      "product_on_sale_accent": "#ee0000",
+      "product_in_stock_color": "#008a00",
+      "product_low_stock_color": "#ee0000",
+      "product_sold_out_color": "#d1d1d4",
+      "product_label_1_background": "#ff6128",
+      "product_label_2_background": "#a95ebe",
+      "product_star_color": "#ffb647",
+      "base_text_font_size": 15,
+      "heading_font": "itc_avant_garde_gothic_n5",
+      "text_font": "basic_commercial_n4",
+      "underline_links": true,
+      "animation_image_zoom": true,
+      "currency_conversion_enabled": false,
+      "currency_conversion_round_amounts": false,
+      "currency_conversion_supported_currencies": "USD CAD EUR GBP",
+      "currency_conversion_money_format": "money_format",
+      "search_mode": "product,article,page",
+      "show_vendor": true,
+      "show_secondary_image": true,
+      "show_discount": true,
+      "discount_mode": "percentage",
+      "product_price_position": "after_title",
+      "product_image_size": "square",
+      "show_color_swatch": false,
+      "show_inventory_quantity": true,
+      "low_inventory_threshold": 1,
+      "show_reviews_badge": false,
+      "cart_type": "drawer",
+      "cart_empty_button_link": "shopify:\/\/collections\/all",
+      "cart_show_free_shipping_threshold": true,
+      "cart_free_shipping_threshold": "50",
+      "checkout_logo_position": "center",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#fff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#f7f4f2",
+      "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+      "checkout_accent_color": "#ff6128",
+      "checkout_button_color": "#ff6128",
+      "checkout_error_color": "#f71b1b",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "logo": "",
+            "logo_max_width": 140,
+            "mobile_logo_max_width": 100,
+            "navigation_menu": "main-menu",
+            "desktop_navigation_layout": "inline",
+            "desktop_navigation_open_trigger": "hover",
+            "navigation_phone_number": "Call us 000-000-0000",
+            "navigation_email": "info@yourwebsite.com",
+            "search_menu": ""
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "text",
+              "settings": {
+                "title": "About the shop",
+                "content": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme settings.<\/p>"
+              }
+            },
+            "footer-1": {
+              "type": "links",
+              "settings": {
+                "menu": "footer"
+              }
+            },
+            "footer-2": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Newsletter",
+                "subheading": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1",
+            "footer-2"
+          ],
+          "settings": {
+            "show_social_media": true,
+            "show_payment_icons": true
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slide-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "mobile_image": "",
+                "text_color": "#ffffff",
+                "title": "Tell your story",
+                "content": "Tell your story",
+                "content_position": "bottomLeft",
+                "button_background": "#ffffff",
+                "button_text_color": "#000000",
+                "button_text": "Button",
+                "link": ""
+              }
+            },
+            "slide-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "mobile_image": "",
+                "text_color": "#ffffff",
+                "title": "Tell your story",
+                "content": "Tell your story",
+                "content_position": "bottomLeft",
+                "button_background": "#ffffff",
+                "button_text_color": "#000000",
+                "button_text": "Button",
+                "link": ""
+              }
+            }
+          },
+          "block_order": [
+            "slide-0",
+            "slide-1"
+          ],
+          "settings": {
+            "edge_to_edge": true,
+            "section_size": "preserve_ratio",
+            "cycle_speed": 5
+          }
+        },
+        "collection-list": {
+          "type": "collection-list",
+          "blocks": {
+            "collection-0": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-1": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-2": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-3": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-4": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            },
+            "collection-5": {
+              "type": "collection",
+              "settings": {
+                "collection": "",
+                "image": ""
+              }
+            }
+          },
+          "block_order": [
+            "collection-0",
+            "collection-1",
+            "collection-2",
+            "collection-3",
+            "collection-4",
+            "collection-5"
+          ],
+          "settings": {
+            "title": "Our collections",
+            "link_title": "View all",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "collection_image_size": "small",
+            "default_view_layout": "grid",
+            "show_quick_view": "list",
+            "show_quick_buy": "list",
+            "quick_links": "",
+            "filter_type": "tag"
+          }
+        },
+        "recently-viewed-products": {
+          "type": "recently-viewed-products",
+          "settings": {
+            "title": "Recently viewed"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "selector_mode": "block",
+            "color_mode": "color",
+            "low_inventory_threshold": 0,
+            "zoom_effect": "outside",
+            "carousel_effect": "fade",
+            "tab_page_1_handle": "",
+            "tab_page_2_handle": "",
+            "tab_page_3_handle": "",
+            "custom_security_badge": ""
+          }
+        },
+        "product-recommendations": {
+          "type": "product-recommendations",
+          "settings": {}
+        },
+        "announcement-bar": {
+          "type": "announcement-bar",
+          "settings": {
+            "background": "#3a2a2f",
+            "text_color": "#ffffff",
+            "text": "Announce something here",
+            "link": "",
+            "newsletter_button": "Subscribe & Save",
+            "newsletter_title": "Newsletter",
+            "newsletter_content": "<p>A short sentence describing what someone will receive by subscribing<\/p>"
+          }
+        },
+        "1542984811767": {
+          "type": "featured-collection",
+          "settings": {
+            "collection": "",
+            "title": "Featured collection",
+            "products_count": 12,
+            "layout": "vertical",
+            "link_title": "View all"
+          }
+        },
+        "1550833441117": {
+          "type": "collection-with-image",
+          "settings": {
+            "collection": "",
+            "products_count": 12,
+            "image": "",
+            "background": "#3a2a2f",
+            "text_color": "#ffffff",
+            "title": "Our best sellers",
+            "content": "Shop our most popular products for this season.",
+            "button_background": "#e95d2b",
+            "button_text_color": "#ffffff",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "1555314133560": {
+          "type": "promotion-list",
+          "blocks": {
+            "1555314133560-0": {
+              "type": "item",
+              "settings": {
+                "image": "",
+                "show_overlay": false,
+                "stretch_image": false,
+                "background": "#6f42ef",
+                "text_color": "#ffffff",
+                "title": "Your heading",
+                "content": "Tell more about your product, collection...",
+                "button_background": "#ffffff",
+                "button_text_color": "#6f42ef",
+                "button_text": "Learn more",
+                "button_link": ""
+              }
+            },
+            "1555314133560-1": {
+              "type": "item",
+              "settings": {
+                "image": "",
+                "show_overlay": false,
+                "stretch_image": false,
+                "background": "#fc2a68",
+                "text_color": "#ffffff",
+                "title": "Your heading",
+                "content": "Tell more about your product, collection...",
+                "button_background": "#ffffff",
+                "button_text_color": "#fc2a68",
+                "button_text": "Learn more",
+                "button_link": ""
+              }
+            },
+            "1555314133560-2": {
+              "type": "item",
+              "settings": {
+                "image": "",
+                "show_overlay": false,
+                "stretch_image": false,
+                "background": "#26c1ce",
+                "text_color": "#ffffff",
+                "title": "Your heading",
+                "content": "Tell more about your product, collection...",
+                "button_background": "#ffffff",
+                "button_text_color": "#26c1ce",
+                "button_text": "Learn more",
+                "button_link": ""
+              }
+            }
+          },
+          "block_order": [
+            "1555314133560-0",
+            "1555314133560-1",
+            "1555314133560-2"
+          ],
+          "settings": {
+            "expand_items": false,
+            "section_size": "medium",
+            "stack_mobile": false
+          }
+        },
+        "1542984882560": {
+          "type": "blog-posts",
+          "settings": {
+            "blog": "news",
+            "title": "Blog posts"
+          }
+        }
+      },
+      "content_for_index": [
+        "slideshow",
+        "1542984811767",
+        "1555314133560",
+        "collection-list",
+        "1550833441117",
+        "1542984882560"
+      ]
+    }
+  }
+}

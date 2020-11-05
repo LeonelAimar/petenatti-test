@@ -1,0 +1,66 @@
+<div class="product-block--description">
+  <div class="container container--flush">
+    <div class="product-block-list">
+      <div class="product-block-list__wrapper product-block-list--description">
+        {%- if product.description != blank -%}
+          <div class="product-block-list__item product-block-list__item--description">
+            <div class="card">
+              <button class="card__collapsible-button" data-action="toggle-collapsible" aria-expanded="false" aria-controls="product-description">
+                <span class="card__title heading h3">{{ 'product.general.description' | t }}</span>
+                <span class="plus-button plus-button--large"></span>
+              </button>
+
+              <div id="product-description" class="card__collapsible">
+                <div class="card__collapsible-content">
+                  <div class="rte text--pull">
+                    {{ product.description | remove: 'data-section-type="product"' }}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="product-block-list__wrapper product-block-list--attributes">
+        {%- if product.description != blank -%}
+        <div class="product-block-list__item product-block-list__item--description">
+          <div class="card">
+            <button class="card__collapsible-button" data-action="toggle-collapsible" aria-expanded="false" aria-controls="product-description">
+              <span class="card__title heading h3">Atributos</span>
+              <span class="plus-button plus-button--large"></span>
+            </button>
+
+            <div id="product-description" class="card__collapsible">
+              <div class="card__collapsible-content">
+                <div class="rte text--pull">
+                  {% for variant in product.variants %}
+                     {% for field in variant.metafields.extra-attribute %}
+                        {% assign attribute = field | first %}
+                        {% unless attribute contains '#pago' %}
+                          {% unless attribute contains 'COLOR' %}
+                            <span class="col-xs-6 col-md-2 text-right attributes"><strong>{{ field | first }} :</strong></span>
+                            <span class="col-xs-6 col-md-10 text-left attributes">{{ field | last  }} </span>  	
+                            <span class="col-xs-12"><hr></span>
+                          {% endunless %}
+
+                          {% if attribute contains 'COLOR'%}
+                            <span class="col-xs-6 col-md-2 text-right attributes"><strong>{{ field | first }} :</strong></span>
+                            <span class="col-xs-6 col-md-10 text-left attributes">{% for variant in product.variants %} {{ variant.option1 }} {% endfor %} </span>
+                            <span class="col-xs-12"><hr></span>
+                          {% endif %}
+                        {% endunless %}
+                    {% endfor %}
+                  {% break %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>

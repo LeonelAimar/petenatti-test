@@ -1,0 +1,1907 @@
+
+<div class="main-mp_container">
+    <p style="display: none;">
+        Total a pagar <input type="number" id="transaction-amount" value="{{ checkout.total_price | divided_by: 100 }}" readonly>
+    </p>
+  
+    <!-- Buttons -->
+    <div class="btn-payment-container" id="payment_icons">
+        <button type="button" data-id="credit-card-payment" class="payment-type icon-svg-all">
+          <img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/icono_tarjeta-credito.svg?v=1584999878">
+          <span>Pago con Tarjeta</span>
+        </button>
+        <button type="button" data-id="two-credit-card-payment" class="payment-type icon-svg-all">
+          <img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/icono_multiples-tarjetas-credito.svg?v=1584999943">
+          <span>Pago con dos Tarjetas</span>
+        </button>
+        <button type="button" data-id="bank-deposit-payment" class="payment-type icon-svg-all">
+          <img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/icono_transferencia.svg?v=1584999878">
+          <span>Pago con transferencia</span>
+        </button>
+        <button type="button" data-id="offline-payment" class="payment-type icon-svg-all">
+          <img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/icono_efectivo.svg?v=1584999878">
+          	<span>Pago Offline</span>
+        </button>
+    </div>
+
+    <!-- Payments Containers -->
+    <div class="forms-payment-container">
+        <div id="credit-card-payment" class="payment-form">
+            <form id="form-credit-card-payment">
+                <fieldset>
+                    <input type="hidden" name="transaction_amount" id="transaction_amount-credit-card-payment" />
+                    <span class="payment-method__title">Pago con Tarjeta</span>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="cardNumber-credit-card-payment">Número de la tarjeta</label>
+                            <input type="number" id="cardNumber-credit-card-payment" data-checkout="cardNumber" class="reactive validate materialize--input">
+                            <span class="helper-text" data-error="Número de tarjeta inválido" data-success="Tarjeta válida">Ingrese número de tarjeta</span>
+                        </div>
+                        <div class="input-field col s6">
+                            <label for="cardholderName-credit-card-payment">Nombre y apellido</label>
+                            <input type="text" id="cardholderName-credit-card-payment" data-checkout="cardholderName" class="reactive validate materialize--input"/>
+                            <span class="helper-text" data-error="Ingrese nombre y apellidos válidos" data-success="Correcto">Ingrese nombre y apellido</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <label for="cardExpirationMonth">Mes venc.</label>
+                            <input type="number" min="1" max="12" class="validate materialize--input" id="cardExpirationMonth-credit-card-payment" data-checkout="cardExpirationMonth" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            <span class="helper-text" data-error="Mes de vencimiento erróneo" data-success="Mes válido">Ingrese M o MM</span>
+                        </div>
+                        <div class="input-field col s4">
+                            <label for="cardExpirationYear">Año venc.</label>
+                            <input type="number" min="2020" class="validate materialize--input" id="cardExpirationYear-credit-card-payment" data-checkout="cardExpirationYear" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            <span class="helper-text" data-error="Año de vencimiento erróneo" data-success="Año válido">Ingrese AAAA</span>
+                        </div>
+                        <div class="input-field col s4">
+                            <label for="securityCode">Código seguridad</label>
+                            <input type="number" class="validate materialize--input" id="securityCode-credit-card-payment" data-checkout="securityCode" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            <span class="helper-text" data-error="CVV inválido" data-success="CVV válido">Ingrese CVV</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <label for="installments">Cuotas</label>
+                            <select id="installments-credit-card-payment" name="installments" data-checkout="installments" class="materialize--select browser-default"></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="docType-credit-card-payment">Tipo de documento</label>
+                            <select id="docType-credit-card-payment" data-checkout="docType" class="reactive materialize--select browser-default"></select>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" id="docNumber-credit-card-payment" data-checkout="docNumber" class="reactive validate materialize--input"/>
+                            <label for="docNumber-credit-card-payment">Número de documento</label>
+                            <span class="helper-text" data-error="Num. documento inválido" data-success="Num. documento válido">Ingrese su num. de documento</span>
+                        </div>                            
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email-credit-card-payment" type="email" data-checkout="email" name="email" class="validate reactive materialize--input" />
+                            <label for="email">Email</label>
+                            <span class="helper-text" data-error="Mail incorrecto" data-success="Mail válido">Ingrese su correo electrónico</span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="payment_method_id" id="paymentMethodId-credit-card-payment"/>
+                    <input type="button" value="Pagar" id="payloadBtn-credit-card-payment" class="payload--btn btn" />
+                </fieldset>
+            </form>
+        </div>
+        <div id="two-credit-card-payment" class="payment-form">
+            <div class="row">
+                <div class="col s12">
+                  <ul class="tabs">
+                    <li class="tab col s6"><a class="active" href="#card1">Tarjeta 1</a></li>
+                    <li class="tab col s6"><a href="#card2">Tarjeta 2</a></li>
+                  </ul>
+                </div>
+            </div>
+                <div id="card1" class="col s12">
+                    <form id="form-two-credit-card-payment">
+                        <fieldset>
+                            <input type="hidden" name="transaction_amount" id="transaction_amount-two-credit-card-payment" />
+                            <span class="payment-method__title">Pago con 2 tarjetas - (1er tarjeta)</span>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="number" id="amount-client-two-credit-card-payment" step='0.01' class="materialize--input" />
+                                    <label for="transaction_amount-two-credit-card-payment">Monto a pagar</label>
+                                    <span class="helper-text" data-error="wrong" data-success="right">Monto parcial</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input type="number" id="cardNumber-two-credit-card-payment" data-checkout="cardNumber" class="reactive validate materialize--input">
+                                    <label for="cardNumber-two-credit-card-payment">Número de la tarjeta</label>
+                                    <span class="helper-text" data-error="Número de tarjeta inválido" data-success="Tarjeta válida">Ingrese número de tarjeta</span>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input type="text" id="cardholderName-two-credit-card-payment" data-checkout="cardholderName" class="reactive validate materialize--input"/>
+                                    <label for="cardholderName-two-credit-card-payment">Nombre y apellido</label>
+                                    <span class="helper-text" data-error="Ingrese nombre y apellidos válidos" data-success="Correcto">Ingrese nombre y apellido</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <input type="number" min="1" max="12" id="cardExpirationMonth-two-credit-card-payment" class="validate materialize--input" data-checkout="cardExpirationMonth" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                                    <label for="cardExpirationMonth-two-credit-card-payment">Mes venc.</label>
+                                    <span class="helper-text" data-error="Mes de vencimiento erróneo" data-success="Mes válido">Ingrese MM</span>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input type="number" id="cardExpirationYear-two-credit-card-payment" class="validate materialize--input" data-checkout="cardExpirationYear" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                                    <label for="cardExpirationYear-two-credit-card-payment">Año venc.</label>
+                                    <span class="helper-text" data-error="Año de vencimiento erróneo" data-success="Año válido">Ingrese AAAA</span>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input type="number" id="securityCode-two-credit-card-payment" class="validate materialize--input" data-checkout="securityCode" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                                    <label for="securityCode-two-credit-card-payment">Código seguridad</label>
+                                    <span class="helper-text" data-error="CVV inválido" data-success="CVV válido">Ingrese CVV</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <label for="installments-two-credit-card-payment">Cuotas</label>
+                                    <select id="installments-two-credit-card-payment" name="installments" data-checkout="installments" class="materialize--select browser-default"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="col s6">
+                                <label for="docType-two-credit-card-payment">Tipo de documento</label>
+                                <select id="docType-two-credit-card-payment" data-checkout="docType" class="reactive materialize--select browser-default"></select>
+                            </div>
+                            <div class="input-field col s6">                                  
+                                <input type="text" id="docNumber-two-credit-card-payment" data-checkout="docNumber" class="reactive validate materialize--input"/>
+                                <label for="docNumber-two-credit-card-payment">Número de documento</label>
+                                <span class="helper-text" data-error="Num. documento inválido" data-success="Num. documento válido">Ingrese su num. de documento</span>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="email" id="email-two-credit-card-payment" data-checkout="email" name="email" class="reactive validate materialize--input"/>
+                                    <label for="email-two-credit-card-payment">Email</label>
+                                    <span class="helper-text" data-error="Mail incorrecto" data-success="Mail válido">Ingrese su correo electrónico</span>
+                                </div>
+                            </div>
+                            <input type="hidden" name="payment_method_id" id="paymentMethodId-two-credit-card-payment"/>
+                            <input type="button" value="Siguiente tarjeta" id="payloadBtn-two-credit-card-payment" class="payload--btn btn" />
+                        </fieldset>
+                    </form>
+                </div>
+                <div id="card2" class="col s12">
+                    <form id="form-two-credit-card-payment-2">
+                        <fieldset>
+                            <input type="hidden" name="transaction_amount" id="transaction_amount-two-credit-card-payment-2" />
+                            <span class="payment-method__title">Pago con 2 tarjetas - (2da tarjeta)</span>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="number" id="amount-client-two-credit-card-payment-2" class="materialize--input" step='0.01' readonly="true" />
+                                    <label for="transaction_amount-two-credit-card-payment-2">Monto a pagar ( Auto ajustado )</label>
+                                    <span class="helper-text" data-error="wrong" data-success="right">Monto parcial *El monto es igual al resto del total*</span>            
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input type="number" id="cardNumber-two-credit-card-payment-2" data-checkout="cardNumber" class="validate materialize--input">
+                                    <label for="cardNumber-two-credit-card-payment-2">Número de la tarjeta</label>
+                                    <span class="helper-text" data-error="Número de tarjeta inválido" data-success="Tarjeta válida">Ingrese número de tarjeta</span>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input type="text" id="cardholderName-two-credit-card-payment-2" data-checkout="cardholderName" class="validate materialize--input" />
+                                    <label for="cardholderName-two-credit-card-payment-2">Nombre y apellido</label>
+                                    <span class="helper-text" data-error="Ingrese nombre y apellidos válidos" data-success="Correcto">Ingrese nombre y apellido</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <input type="number" min="1" max="12" id="cardExpirationMonth-two-credit-card-payment-2" class="validate materialize--input" data-checkout="cardExpirationMonth" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                                    <label for="cardExpirationMonth-two-credit-card-payment-2">Mes venc.</label>
+                                    <span class="helper-text" data-error="Mes de vencimiento erróneo" data-success="Mes válido">Ingrese MM</span>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input type="number" id="cardExpirationYear-two-credit-card-payment-2" class="validate materialize--input" data-checkout="cardExpirationYear" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                                    <label for="cardExpirationYear-two-credit-card-payment-2">Año venc.</label>
+                                    <span class="helper-text" data-error="Año de vencimiento erróneo" data-success="Año válido">Ingrese AAAA</span>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input type="number" id="securityCode-two-credit-card-payment-2" class="validate materialize--input" data-checkout="securityCode" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                                    <label for="securityCode-two-credit-card-payment-2">Código seguridad</label>
+                                    <span class="helper-text" data-error="CVV inválido" data-success="CVV válido">Ingrese CVV</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <label for="installments-two-credit-card-payment-2">Cuotas</label>
+                                    <select id="installments-two-credit-card-payment-2" class="form-control materialize--select browser-default" name="installments" data-checkout="installments"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s6">
+                                    <label for="docType-two-credit-card-payment-2">Tipo de documento</label>
+                                    <select id="docType-two-credit-card-payment-2" data-checkout="docType" class="materialize--select browser-default"></select>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input type="text" id="docNumber-two-credit-card-payment-2" class="validate materialize--input" data-checkout="docNumber" />
+                                    <label for="docNumber-two-credit-card-payment-2">Número de documento</label>
+                                    <span class="helper-text" data-error="Num. documento inválido" data-success="Num. documento válido">Ingrese su num. de documento</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="email" id="email-two-credit-card-payment-2" name="email" data-checkout="email" class="reactive validate materialize--input"/>
+                                    <label for="email-two-credit-card-payment-2">Email</label>
+                                    <span class="helper-text" data-error="Mail incorrecto" data-success="Mail válido">Ingrese su correo electrónico</span>
+                                </div>
+                            </div>
+                            <input type="hidden" name="payment_method_id" id="paymentMethodId-two-credit-card-payment-2"/>
+                            <input type="button" value="Pagar" id="payloadBtn-two-credit-card-payment-2" class="payload--btn btn" />
+                        </fieldset>
+                    </form>
+                </div>
+        </div>
+        <div id="bank-deposit-payment" class="payment-form">
+            <form id="form-bank-deposit-payment">
+                <fieldset>
+                    <input type="hidden" name="transaction_amount" id="transaction_amount-bank-deposit-payment" />
+                    <span class="payment-method__title">Transferencia Bancaria</span>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="email" id="email-bank-deposit" name="email" data-checkout="email" class="reactive validate materialize--input"/>
+                            <label for="email-bank-deposit">Email</label>
+                            <span class="helper-text" data-error="Mail incorrecto" data-success="Mail válido">Ingrese su correo electrónico</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <select id="selectMethod-bank-deposit-payment" class="materialize--select browser-default">
+                                <option selected disabled>Seleccione un banco</option>
+                                <option data-cbu="CBU 330-0034/1 1034003606504/4" data-suc="CTA.CTE $ Suc. 034 Nº 36065/04.">Nuevo Banco de Santa Fe</option>
+                                <option data-cbu="CBU 19103598 55035900573996" data-suc="CTA.CTE $ Suc. 359 Nº 5739/9.">Banco Credicoop Coop. Ltdo.</option>
+                                <option data-cbu="CBU 01103555-20035500138418" data-suc="CTA.CTE $ Suc. 2390 Nº 035-500138/41.">Banco de la Nación Argentina</option>
+                                <option data-cbu="CBU 0200333501000030001829" data-suc="CTA.CTE $ suc 333 nº 0300018/02.">Banco de de la prov. de Córdoba</option>
+                                <option data-cbu="CBU 2850744-8 3009408459157-1" data-suc="CTA CTE $ 3-744-0940845915-7.">Banco Macro</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="docType-bank-deposit-payment">Tipo de documento</label>
+                            <select id="docType-bank-deposit-payment" data-checkout="docType" class="reactive materialize--select browser-default"></select>
+                        </div>
+                        <div class="input-field col s6">
+                            <div class="input-field col s12">
+                            <input type="text" id="docNumber-bank-deposit-payment" data-checkout="docNumber" class="reactive validate materialize--input"/>
+                            <label for="docNumber-bank-deposit-payment">Número de documento</label>
+                            <span class="helper-text" data-error="Num. documento inválido" data-success="Num. documento válido">Ingrese su num. de documento</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="bank_after_all">
+                        <div class="s6">
+                            <div class="bank__information">
+                                <strong>CUIT: 30-70763989-6</strong>
+                                <br>
+                                <span id="data_issuer"></span>
+                                <br>
+                                <span id="data_cbu"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="button" value="Pagar" id="payloadBtn-bank-deposit-payment" class="payload--btn btn" />
+                </fieldset>
+            </form>
+        </div>
+        <div id="offline-payment" class="payment-form">
+            <form id="form-offline-payment">
+                <fieldset>
+                    <input type="hidden" name="transaction_amount" id="transaction_amount-offline-payment" />
+                    <span class="payment-method__title">Pago Offline</span>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="email" id="email-offline-payment" name="email" data-checkout="email" class="reactive validate materialize--input"/>
+                            <label for="email-offline-payment">Email</label>
+                            <span class="helper-text" data-error="Mail incorrecto" data-success="Mail válido">Ingrese su correo electrónico</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col s12">
+                        <label for="selectMethod-offline-payment">Seleccione método de pago</label>
+                        <select id="selectMethod-offline-payment" data-checkout="offlineMethod" class="browser-default materialize--select"></select>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="docType-offline-payment">Tipo de documento</label>
+                            <select id="docType-offline-payment" data-checkout="docType" class="reactive materialize--select browser-default"></select>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" id="docNumber-offline-payment" data-checkout="docNumber" class="reactive validate materialize--input"/>
+                            <label for="docNumber-offline-payment">Número de documento</label>
+                            <span class="helper-text" data-error="Num. documento inválido" data-success="Num. documento válido">Ingrese su num. de documento</span>
+                        </div>
+                    </div>
+                    <input type="button" value="Pagar" id="payloadBtn-offline-payment" class="payload--btn btn" />
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+    <script>
+
+        if ( Shopify.Checkout.step === 'payment_method' ) {
+
+            // Global Variables
+            const inputTransactionAmount      = document.querySelector('#transaction-amount');
+            const inputAmountClientFirstCard  = document.querySelector('#amount-client-two-credit-card-payment');
+            const inputAmountClientSecondCard = document.querySelector('#amount-client-two-credit-card-payment-2');
+            const [...paymentTypes]           = document.querySelectorAll('.payment-type');
+            const [...paymentForms]           = document.querySelectorAll('.payment-form');
+            const [...selectDocType]          = document.querySelectorAll('select[data-checkout="docType"]')
+            const [...reactiveInputs]         = document.querySelectorAll('.reactive');
+            const [...dataCheckout]           = document.querySelectorAll('[data-checkout]');
+            const [...cardNumberInputs]       = document.querySelectorAll('input[data-checkout="cardNumber"]');
+            const [...selectInstallments]     = document.querySelectorAll('select[data-checkout="installments"]');
+            const selectOfflineMethods        = document.getElementById('selectMethod-offline-payment');
+            const [...validateInputs]         = document.querySelectorAll('.validate');
+            const [...payloadButtons]         = document.querySelectorAll('.payload--btn');
+            const bankIssuerSelect            = document.getElementById('selectMethod-bank-deposit-payment');
+            const bankIssuerData              = document.getElementById('data_issuer');
+            const bankIssuerCBU               = document.getElementById('data_cbu');
+            const inputDiscount               = document.getElementById('checkout_reduction_code');
+            const formDiscount                = document.getElementById('checkout_reduction_code').closest('form');
+            const formDataDiscount            = document.getElementById('checkout_reduction_code').closest('form').previousElementSibling;
+            const containerCheckout           = document.getElementById('payment-gateway-subfields-46369439877');
+            const continueBtn                 = document.getElementById('continue_button');
+            const firstCardBtn                = document.querySelector('a[href="#card1"]');
+            const secondCardBtn               = document.querySelector('a[href="#card2"]');
+            const errorDiscount               = document.querySelector('.notice.notice--error.default-background');
+            const alertLoadingDiv             = document.getElementById('alertLoadingPayment');
+            const alertStatusSpan             = document.getElementById('alertStatus');
+            let payloadObj                    = {};
+        
+            
+            const Payment = {
+            offlinePdf: '',
+            loadingImgUrl: 'https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px_1.gif?v=1597703364',
+          	domain: '{{ shop.permanent_domain }}',
+            email: '',
+            debugging: true,
+            typeSelected : '',
+            discountApplied: false,
+            last_token: {},
+            last_condition: '',
+            payload: {},
+            token_additional_data: {},
+            conditionsMessage: {},
+            allConditions: {},
+            allMethods: {},
+            discountFormData: {},
+            defaultCondition: {
+                'payment_method': 'debvisa',
+                'installments': 1
+            },
+            clientAmount: {},
+            bankOption: '',
+          	items: [
+            {% for item in checkout.line_items %}
+
+            {
+              var_id: '{{ item.variant_id }}',
+              title: '{{ item.title }}',
+              image: '{{ item.image | img_url }}',
+              quantity: '{{ item.quantity }}',
+              unit_price: '{{ item.variant.price | money }}'
+              {% if forloop.last == true %}
+          	}
+          		{% else %}
+          	},
+            	{% endif %}
+            {% endfor %}
+            ],
+          	checkout_data: {
+              id: '{{ checkout.id }}',
+              token: Shopify.Checkout.token,
+              email: '{{ checkout.email }}',
+              total_amount: {{ checkout.total_price | divided_by: 100 }}
+            },
+            settings: {
+              headers: {
+              	Authorization: "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+              }
+            },
+            transactionAmount: 0,
+            currentInstallmentSelect: '',
+            offlineSelect: '',
+            alertEnabler: false,
+            //transactionAmountOneCreditCard: 0,
+            //transactionAmountTwoCreditCardOne: 0,
+            //transactionAmountTwoCreditCardTwo: 0,
+            collectAdditionalData: async function( select ) {
+                let selectedCuota  = select.selectedOptions[0];
+
+                let additional_token_info = {
+                    'issuer_id': selectedCuota.getAttribute('issuer-id'),
+                    'payment_method_id': selectedCuota.getAttribute('payment-method-id'),
+                    'payment_type_id': selectedCuota.getAttribute('payment-type-id'),
+                    'processing_mode': selectedCuota.getAttribute('processing-mode'),
+                    'payment_type_id': selectedCuota.getAttribute('payment-type-id'),
+                    'merchant_account_id': selectedCuota.getAttribute('merchant-account-id'),
+                    'installment_id': select.value,
+                    'installment_text': selectedCuota.textContent.trim()
+                };
+
+                this.token_additional_data = additional_token_info;
+            },
+            setTransactionAmount: function(value){
+                this.transactionAmount = value;
+            },
+            setEmail: function(email) {
+                this.email = email;
+                this.assignValueToInput('input[type="email"]' , email, false)
+            },
+            setCondition: function(paymentMethod, installments = 1){
+                let conditions = this.allConditions;
+                let match = conditions.filter( condition => condition.payment_method == paymentMethod && condition.installment == installments)
+                
+                return (match.length > 0) ? match[0] : [];
+                //return [];
+            },
+            getTrasactionAmountModifyByCondition: function(amount, condition){
+                // 0 Increment - 1 Discount
+                let type = (condition.type === 0) ? -1 : 1;
+                // Get % 
+                let difference = parseFloat(condition.percentage) * amount / 100;
+                 
+                let amountModifyByCondition = amount - (difference * type);
+
+                const response = {
+                    'amount': amountModifyByCondition.toFixed(2),
+                    'difference': difference.toFixed(2)
+                }
+                // Qué pasa si no existe condition? 
+                return response;
+            },
+            assignValueToInput: function(inputName, value, isSelect) {
+                if(isSelect === false){
+                    [...document.querySelectorAll(inputName)].forEach( element => {
+                        if(element.classList.contains('reactive')) element.value = value
+                    })
+                }else{
+                    [...document.querySelectorAll(inputName)].forEach( element => {
+                        if(element.classList.contains('reactive')) element.selectedIndex = value
+                    })
+                }
+            },
+            collectDiscountData: function(form) {
+                let checkDOM = setInterval(() => {
+                    let quantity = form.children.length
+                    if ( quantity == 9 ) {
+                        [...form.children].forEach( input => {
+                            this.discountFormData[`${input.name}`] = `${input.value}`
+                        })
+                        clearInterval(checkDOM)
+                    }
+                }, 100)
+            }
+        };
+
+        if ( Payment.debugging ) console.log('¡¡¡¡¡ Payment Method !!!!!')
+
+        // Move the loading alert as a body's first child.
+        // const moveAlertBodyChild = (() => {
+        //     document.body.insertAdjacentElement('afterbegin', alertLoadingDiv)
+        // })()
+
+        // Check if the discount previously was submitted, so if it was, this element will exist,
+        // so we can go to the TY page now.
+        const checkDiscountStatus = (() => {
+            if ( errorDiscount ) {
+                alertLoadingDiv.style.display = 'flex'
+                continueBtn.click()
+            }
+        })()
+
+        
+        const disableEnterKey = (() => {
+            document.addEventListener('keypress', function(evt) {
+                if ( evt.which === 13 ) {
+                    evt.preventDefault()
+                    evt.stopPropagation()
+                    console.log('Enter key not allowed on this step')
+                    return false;
+                }
+            })
+        })()
+
+
+
+      // API Data // {% comment %}{% shop.secure_name == 'petenatti' %} {% endcomment %}
+        const testEnvironment = Payment.domain.includes('test') ? true : false
+        
+        const endpoint = testEnvironment ? 'https://petenatti.com.ar/checkout-plus-test/web/v2' : "https://petenatti.com.ar/checkout-plus/web/v2";
+        const paymentEndpoint = testEnvironment ? 'http://petenatti.com.ar/checkout-plus-test/web/v2/payment/create-payment' : 'http://petenatti.com.ar/checkout-plus/web/v2/payment/create-payment'
+        const requestOptions = {
+                headers: {
+                    "Authorization" : Payment.settings.headers.Authorization,
+                    "Content-type"  : "application/json"
+                }
+        };
+        
+        // Init Mercado Pago 
+        const initMercadoPago = ( async () => {
+            try {
+                const request   = await fetch(`${endpoint}/payment/public-key`, requestOptions)
+                const publicKey = await request.json();
+                
+                Mercadopago.setPublishableKey( publicKey );
+                
+                Mercadopago.getIdentificationTypes( ( responseCode , response  ) => {
+                    
+                    const options = response.map( elem => {
+                        return `<option value="${elem.id}">${elem.id}</option>`
+                    })
+                    
+                    selectDocType.forEach( select => {
+                        select.innerHTML = options.join('');
+                    })
+                });
+                
+                Mercadopago.getAllPaymentMethods( ( responseCode , data  ) => {
+                    Payment.allMethods = data;
+                    // Map ticket/atm methods.
+                    mapOfflineMethods( data );
+                });
+
+            } catch(err) {
+                document.body.innerHTML = "Sorry, but we'd an error on the request (MP Init)."
+                if ( Payment.debugging ) console.log(err)
+            }
+
+        })()
+
+        // Init Conditions 
+        const initConditions = ( async () => {
+            try{
+                const request    = await fetch(`${endpoint}/payment-condition?per-page=100`, requestOptions)
+                const conditions = await request.json();
+                
+                Payment.allConditions = conditions.conditions;
+            } catch(err) {
+                document.body.innerHTML = "Error while loading the client's payment conditions."
+                if ( Payment.debugging ) console.log(err)
+            }
+
+        })()
+
+        // Init Payment
+        Payment.setTransactionAmount( inputTransactionAmount.value )  // Get from Shopify
+        Payment.setEmail('{{ checkout.email }}') // Get from Shopify
+
+        // Listeners
+        paymentTypes.forEach( ( paymentType )=> {
+            paymentType.addEventListener( 'click' , (evt) => {
+              let buttonType
+              if ( evt.target.tagName.toLowerCase() === 'img' || evt.target.tagName.toLowerCase() === 'span' ) {
+                buttonType = evt.target.parentElement
+              } else {
+              	buttonType = evt.target
+              }
+                // Get current value
+                const paymentTypeSelectedValue = buttonType.getAttribute('data-id')
+
+                // Hide all Forms before show selected
+                paymentForms.forEach( ( paymentForm )=> {
+                    paymentForm.style.display = 'none';
+                })
+                
+                // Remove css class to previus selected element 
+                if( Payment.typeSelected !== '' ){
+                    document.querySelector(`[data-id=${Payment.typeSelected}]`).classList.remove('payment-type_active')
+                }
+                
+                // Assign new value to Payment Selected
+                Payment.typeSelected = paymentTypeSelectedValue;
+
+                // Add Css Class to selected element
+                buttonType.classList.add('payment-type_active')
+
+                // Show Form Payment
+                if( Payment.typeSelected !== '' ){
+                    document.getElementById( Payment.typeSelected ).style.display = 'block';
+                }
+                // On two credit cards form, auto-fill both amount fields with the half-amount.
+                if( Payment.typeSelected === 'two-credit-card-payment' ){
+                    let halfAmount = (Payment.transactionAmount/2).toFixed(2)
+                    inputAmountClientFirstCard.value = halfAmount                    
+                    inputAmountClientSecondCard.value = halfAmount
+                    inputAmountClientFirstCard.dispatchEvent( new Event('focus') );
+                    inputAmountClientSecondCard.dispatchEvent( new Event('focus') );
+                    // Call GetPaymentMethod if > 6 bin.
+                    let cardNumberLength = document.getElementById(`cardNumber-${Payment.typeSelected}`).value.length
+                    if( cardNumberLength > 6 ){
+                        // getPaymentMethod();
+                    }
+                    firstCardBtn.click()
+                }
+
+                if ( Payment.typeSelected === 'bank-deposit-payment' || Payment.typeSelected === 'offline-payment' ) {
+                    if ( Payment.typeSelected === 'offline-payment' ){
+                        Payment.offlineSelect = document.getElementById(`selectMethod-${Payment.typeSelected}`);
+                    }
+                    drawOfflineConditions();
+                }
+
+                validateInputs.forEach( elem => {
+                    if ( elem.value != '' ){
+                        elem.dispatchEvent( new Event('blur') )
+                    }
+                })
+
+                let paymentBtnForm =  document.getElementById(`payloadBtn-${paymentTypeSelectedValue}`)
+                disableOrEnableElement( paymentBtnForm, false )
+                enablePaymentButton( paymentTypeSelectedValue )
+            })
+        });
+
+        secondCardBtn.addEventListener('click', (evt) => {
+            enablePaymentButton( `${Payment.typeSelected}-2` )
+        })
+        
+        selectOfflineMethods.addEventListener('change', (evt) => {
+            Payment.offlineSelect = evt.target;
+            let alertBox = document.getElementById(`msg-alert-${Payment.typeSelected}`);
+            offlineCondition('change', alertBox);
+        })
+
+        payloadButtons.forEach( btn => {
+            btn.addEventListener('click', (evt) => {
+                let formType = evt.target.id.split('-').slice(1).join('-')
+                let $form;
+                let selectInstallments;
+                payloadObj.method = formType
+                payloadObj.checkout_data = Payment.checkout_data
+                payloadObj.items = Payment.items
+
+                if ( Payment.debugging ) console.log( formType )
+
+                if ( formType === 'credit-card-payment' ) {
+                    $form = document.getElementById(`form-${formType}`)
+                    selectInstallments = document.getElementById(`installments-${formType}`)
+                    
+                    let startPayment = (async () => {
+
+                        
+                        await Mercadopago.createToken($form, tokenCallback)
+                        
+                        await Payment.collectAdditionalData( selectInstallments );
+                        payloadObj.additional_data = { 'token_1': Payment.token_additional_data }
+                        
+                        if ( Payment.alertEnabler === true ) {
+                            payloadObj.conditions = { 'token_1': Payment.last_condition }
+                            Payment.conditionsMessage.token_1 = formatAlertMessage( 
+                                document.querySelector(`#msg-alert-installments-${formType}`) 
+                                ).join(' - ')
+                            }
+                            
+                            Payment.payload = payloadObj
+                            
+                            let awaitToken = setInterval(() => {
+                            if ( payloadObj.payload_data ) {
+                                if ( payloadObj.conditions ) createInput( 'card_name_token_1', 
+                                `${payloadObj.conditions.token_1.payment_type} - ${payloadObj.conditions.token_1.payment_method}` )
+                                sendPayload()
+                                clearInterval( awaitToken )
+                            } else {
+                                if ( Payment.debugging ) console.log('waiting for token')
+                            }
+                        }, 100)
+                        
+                        containerCheckout.innerHTML = `<div style="text-align: center;">
+                                                            <img src="${Payment.loadingImgUrl}" /><br>
+                                                            <span>Ejecutando...</span>
+                                                        </div>`
+                    })()
+                }
+                
+                if ( formType === 'two-credit-card-payment' ) {
+                    $form = document.getElementById(`form-${formType}`)
+                    selectInstallments = document.getElementById(`installments-${formType}`)
+                    const secondCardInput = document.getElementById(`cardNumber-${formType}-2`)
+
+                    Payment.collectAdditionalData( selectInstallments );
+                    
+                    // Tokenize
+                    Mercadopago.createToken($form, tokenCallback)
+                    secondCardBtn.click()
+                    secondCardInput.focus()
+                    
+                    if ( Payment.alertEnabler ) {
+                        payloadObj.conditions =  { 'token_1': Payment.last_condition }
+                        Payment.conditionsMessage.token_1 = formatAlertMessage( document.querySelector(`#msg-alert-installments-${formType}`) ).join(' - ')
+                    }
+                    // payloadObj.conditions = Payment.alertEnabler == true ? 
+                    // { 'token_1': Payment.last_condition, 'token_2': {} } : { 'token_1': {}, 'token_2': {} };
+
+                    if ( Payment.debugging ) console.log( payloadObj )
+
+                    window.scrollTo(0, secondCardInput.scrollHeight)
+                }
+
+                if ( formType === 'two-credit-card-payment-2' ) {
+                    $form = document.getElementById(`form-${formType}`)
+                    Payment.clientAmount.token_1 = parseFloat(document.getElementById(`amount-client-${formType.split('-').slice(0,4).join('-')}`).value).toFixed(2)
+                    Payment.clientAmount.token_2 = parseFloat(document.getElementById(`amount-client-${formType}`).value).toFixed(2)
+                    selectInstallments = document.getElementById(`installments-${formType}`)
+                    payloadObj.payload_data = {
+                        'token_1': Payment.last_token,
+                        'token_2': {}
+                    }
+                    payloadObj.additional_data = {
+                        'token_1': Payment.token_additional_data,
+                        'token_2': {}
+                    }
+                    if ( Payment.alertEnabler ) {
+                        if ( payloadObj.conditions ) payloadObj.conditions.token_2 = Payment.last_condition
+                        else payloadObj.conditions = { 'token_2': Payment.last_condition }
+                        Payment.conditionsMessage.token_2 = formatAlertMessage( document.querySelector(`#msg-alert-installments-${formType}`) ).join(' - ')
+                    }
+                    // payloadObj.conditions.token_2 = Payment.alertEnabler === true ? Payment.last_condition : {};
+                    Payment.collectAdditionalData( selectInstallments );
+                    Mercadopago.createToken($form, tokenCallback)
+
+                    if ( Payment.debugging ) console.log( payloadObj )
+                    
+                    let waitToken = setInterval(() => {
+                        if ( Payment.last_token !== payloadObj.payload_data.token_1 ) {
+                            payloadObj.payload_data.token_2 = Payment.last_token
+                            payloadObj.additional_data.token_2 = Payment.token_additional_data
+                            clearInterval( waitToken )
+                        }
+                    }, 50)
+                    
+                    payloadObj.clientAmount = Payment.clientAmount
+                    
+                    if ( payloadObj.conditions ) {
+                        Object.entries(payloadObj.conditions).forEach( ([key, value]) => {
+                            createInput( `card_name_${key}`, `${value.payment_type} - ${value.payment_method}` )
+                        })
+                    }
+
+                    Payment.payload = payloadObj
+
+
+                    let awaitToken = setInterval(() => {
+                        if ( Object.keys(payloadObj.payload_data.token_1).length != 0 && 
+                        Object.keys(payloadObj.payload_data.token_2).length != 0 ) {
+                            if ( Payment.debugging ) console.log(' ¡¡¡¡ Payload !!!! \n' + Payment.payload )
+                            sendPayload()
+                            clearInterval( awaitToken )
+                        } else {
+                            if ( Payment.debugging ) console.log('waiting for tokens')
+                        }
+                    }, 100)
+                }
+
+                if ( formType === 'bank-deposit-payment' ) {
+                    let selectBank = document.getElementById(`selectMethod-${formType}`)
+                    if ( selectBank.selectedIndex != 0 ) {
+                        payloadObj.payload_data = {
+                            'bank_cbu': Payment.bankOption.getAttribute('data-cbu'),
+                            'bank_type': selectBank.value,
+                            'bank_name': Payment.bankOption.textContent
+                        }
+                        
+                        if ( Payment.alertEnabler === true ) payloadObj.conditions = Payment.last_condition
+
+                        Object.entries(payloadObj.payload_data).forEach(([key, value]) => {
+                            if ( key != 'bank_type' ) createInput( key, value )
+                        })
+                        createInput( 'data_suc', Payment.bankOption.getAttribute('data-suc') )
+                        
+                        Payment.payload = payloadObj
+                        
+                        sendPayload()
+                    } else {
+                        alert('Elija un banco')
+                    }
+                }
+
+                if ( formType === 'offline-payment' ) {
+                    $form = document.getElementById(`form-${formType}`)
+                    let selectOffline = document.getElementById(`selectMethod-${formType}`)
+                    payloadObj.payload_data = {
+                        'payment_type': selectOffline.selectedOptions[0].getAttribute('type-id'),
+                        'payment_id': selectOffline.value
+                    }
+                    if ( Payment.alertEnabler === true ) {
+                        payloadObj.conditions = Payment.last_condition
+                        createInput( 'offline_method', 
+                                `${(Payment.last_condition.payment_type.charAt(0).toUpperCase() + Payment.last_condition.payment_type.slice(1) + ' - ' + 
+                                 Payment.last_condition.payment_method.charAt(0).toUpperCase() + Payment.last_condition.payment_method.slice(1)).trim()}` )
+                    }
+
+                    
+
+                    Payment.payload = payloadObj
+
+                    sendPayload()
+                }
+            })
+        })
+        
+        // Bank Select Listener
+        bankIssuerSelect.addEventListener('change', (evt) => {
+            let option = evt.target.selectedOptions[0]
+            Payment.bankOption = option
+
+            clearBankData()
+            bankIssuerCBU.textContent = option.getAttribute('data-cbu')
+            bankIssuerData.textContent = option.getAttribute('data-suc')
+        })
+
+        // Reactive Inputs - Simulate Data Binding
+        reactiveInputs.forEach( element => {
+            // Check Input type
+            if(element.type === 'text' || element.type === 'email')
+            {
+                element.addEventListener('keyup' , (evt)=> {
+                    
+                    const type  = `input[data-checkout="${evt.target.getAttribute('data-checkout')}"]`;
+                    const value = evt.target.value;
+                    Payment.assignValueToInput(type, value, false)
+                    
+                })
+            }
+            // Check Input type
+            if(element.type === 'select-one')
+            {
+                element.addEventListener( 'change' , ( evt )=> {
+                    
+                    const type  = `select[data-checkout="${evt.target.getAttribute('data-checkout')}"]`;
+                    const value = evt.target.selectedIndex;
+                    Payment.assignValueToInput(type, value, true)
+                    
+                })
+            }
+        })
+
+        // Validations
+
+        // Validate Amount in Two Credit cards - KeyUp Event
+        inputAmountClientFirstCard.addEventListener( 'keyup' , (evt)=> { 
+            const MIN_VALUE = 10; 
+            const MAX_VALUE = Payment.transactionAmount - MIN_VALUE; 
+            
+            if(evt.target.value >= MAX_VALUE){ evt.target.value = MAX_VALUE }
+
+            let dec = evt.target.value.indexOf(".")
+            let tooLong = evt.target.value.length > dec + 3
+            let invalidNum = isNaN(parseFloat(evt.target.value))
+
+            if ((dec >= 0 && tooLong) || invalidNum) {
+                evt.target.value = evt.target.value.slice(0, -1)
+            }
+
+            let valueToSecondCard = parseFloat(Payment.transactionAmount - evt.target.value)
+
+            inputAmountClientSecondCard.value = valueToSecondCard.toFixed(2);
+
+        })
+        
+        // Validate Amount in Two Credit cards - Focus Event
+        inputAmountClientFirstCard.addEventListener( 'focusout' , (evt)=> { 
+            
+            const MIN_VALUE = 10;
+
+            if(evt.target.value <= MIN_VALUE){ evt.target.value = MIN_VALUE }
+
+            const event = new Event('keyup')
+            evt.target.dispatchEvent(event)
+            
+            // If installments are loaded, we need update
+            if(cardNumberInputs[1].value.length >= 6){
+                cardNumberInputs[1].dispatchEvent(event)
+            }
+            if(cardNumberInputs[2].value.length >= 6){
+                cardNumberInputs[2].dispatchEvent(event)
+            }
+
+        })
+
+       
+        dataCheckout.forEach( element => {
+            if ( element.getAttribute('data-checkout') === 'cardExpirationMonth' ) {
+                element.addEventListener('keyup', (evt) => {
+                    let min = parseInt(evt.target.getAttribute('min'));
+                    let max = parseInt(evt.target.getAttribute('max'));
+
+                    // if ( evt.target.value < min ) {
+                    //     evt.target.value = 1;
+                    // }
+
+                    if ( evt.target.value > max ) {
+                        evt.target.value = 12;
+                    }
+                })
+            }
+            element.addEventListener('focusout' , (evt) => {
+                let dataCheckout = evt.target.getAttribute('data-checkout');
+                let currentForm = evt.target.id.split('-').slice(1).join('-');
+
+                if ( Payment.debugging ) console.log(currentForm);
+
+                if(dataCheckout === 'cardNumber'){
+                    let equivalentSecurityCodeInput = document.getElementById(`securityCode-${currentForm}`)
+                    let value = evt.target.value.split(' ').join('');
+                    Mercadopago.validateCardNumber( value, (code, response)=> {
+                        if(code == 200 && response === false){
+                            evt.target.setCustomValidity('Ingrese una tarjeta valida')
+                            evt.target.reportValidity()
+                        }
+                        if(code == 200 && response === true){
+                            evt.target.setCustomValidity('')
+                        }
+                    })
+                    
+                    blurDispatch(evt.target);
+
+                    if ( equivalentSecurityCodeInput.value != '' ) {
+                        fOutDispatch( equivalentSecurityCodeInput )
+                    }
+                }
+
+                // Keep validating inputs. ( MP Functions )
+                
+                if ( dataCheckout === 'cardExpirationMonth' ) {
+                    let relativeYearInput = document.getElementById(`cardExpirationYear-${currentForm}`)
+                    if ( relativeYearInput.value != '' ) {
+                        blurDispatch( relativeYearInput );
+                    }
+
+                    if ( parseInt(evt.target.value) < 1 ) {
+                        evt.target.setCustomValidity('Ingrese un mes válido')
+                        evt.target.reportValidity()
+                    } else {
+                        evt.target.setCustomValidity('')
+                        if (relativeYearInput.value != '' ) fOutDispatch( relativeYearInput )
+                    }
+                }
+
+                if ( dataCheckout === 'cardExpirationYear' ) {
+                    let actualYear = new Date().getFullYear();
+
+                    if ( evt.target.value < actualYear ) {
+                        evt.target.setCustomValidity('Ingrese un año mayor al actual')
+                        evt.target.reportValidity()
+                    } else {
+                        evt.target.setCustomValidity('')
+                    }
+
+                    let inputMonthRelated = document.getElementById(`cardExpirationMonth-${currentForm}`);
+
+                    if ( inputMonthRelated.value != '' ) {
+                        let monthValue = inputMonthRelated.value;
+                        let expirationDate = `${monthValue}/${evt.target.value}`
+
+                        let expires = Mercadopago.validateExpiryDate( expirationDate );
+                        if ( !expires ) {
+                            evt.target.setCustomValidity('Año o mes de expiración incorrecto')
+                            evt.target.reportValidity()
+                            inputMonthRelated.setCustomValidity('Año o mes de expiración incorrecto')
+                        } else {
+                            inputMonthRelated.setCustomValidity('')
+                            evt.target.setCustomValidity('')
+                            blurDispatch( inputMonthRelated );
+                            blurDispatch( evt.target );
+                        }
+                    }
+                }
+
+                if ( dataCheckout === 'securityCode' ) {
+                    if ( document.getElementById(`cardNumber-${currentForm}`).value != '' ) {
+                        let securityCode = evt.target.value;
+                        let binCard = document.getElementById(`cardNumber-${currentForm}`).value.split(' ').join('').slice(0,6);
+                        
+                        Mercadopago.validateSecurityCode( securityCode, binCard, (code, response) => {
+                            if ( code === 200 && response === true ) {
+                                evt.target.setCustomValidity('')
+                                blurDispatch( evt.target );
+                            } else {
+                                evt.target.setCustomValidity('Código de seguridad erróneo')
+                                evt.target.reportValidity()
+                                blurDispatch( evt.target );
+                            }
+                        })
+                    }
+                }
+
+                if ( dataCheckout === 'docNumber' ) {
+                    if ( evt.target.value == '' ) {
+                        evt.target.setCustomValidity('Ingrese un número de documento válido')
+                        evt.target.reportValidity()
+                    } else {
+                        evt.target.setCustomValidity('')
+                        blurDispatch( evt.target );
+                    }
+                  
+                  	if ( evt.target.value.length < 8 && evt.target.value != '' ) {
+                        evt.target.setCustomValidity('El número debe contener 8 dígitos')
+                        evt.target.reportValidity()
+                    } else {
+                        evt.target.setCustomValidity('')
+                        blurDispatch( evt.target );
+                    }
+                }
+                
+            })
+            
+        })
+
+        // Mercado Pago Listeners
+
+        // Get Payment Method By Credit Card 
+        cardNumberInputs.forEach( element => {
+            element.addEventListener('keyup',  getPaymentMethod)
+            element.addEventListener('change', getPaymentMethod)
+        })
+        
+        // Reload Installment by conditions, if exist.
+        selectInstallments.forEach( element => {
+            element.addEventListener('change',  (evt) => {
+                // Select input hidden Payment Method 
+                const paymentMethodID = evt.target.getAttribute('id').split('-').slice(1).join('-')
+                // Get Value from Input Payment Method
+                const inputPaymentMethod = document.getElementById(`paymentMethodId-${paymentMethodID}`);
+                // Search Conditions and then SET Installments
+                searchConditionBeforeLoadInstallments(paymentMethodID, inputPaymentMethod, evt.target.value, evt.target.selectedIndex)
+            })
+        })
+        
+        // Functions
+        function getPaymentMethod(evt) {
+            // Get Card Value
+            let cardnumber = evt.target.value;
+            // Select input hidden Payment Method 
+            let paymentMethodID = evt.target.getAttribute('id').split('-').slice(1).join('-')
+            const inputPaymentMethod = document.getElementById(`paymentMethodId-${paymentMethodID}`);
+            // Get Info from Mercado Pago 
+            if ( cardnumber.length >= 6 ) {
+                
+                let bin = cardnumber.substring(0,6);
+
+                Mercadopago.getPaymentMethod({"bin" : bin}, (status, response) => {
+                    if(status === 200){
+                        
+                        // Set Payment Method
+                        inputPaymentMethod.value = response[0].id;
+                        // Search Conditions anf then SET Installments
+                        searchConditionBeforeLoadInstallments(paymentMethodID, inputPaymentMethod)
+                    } else {
+                        alert(`Error al capturar el método de pago: ${response}`);
+                    }
+                });
+            }
+        };
+
+        function searchConditionBeforeLoadInstallments(paymentMethodID, inputPaymentMethod , installments = 1 , selectedIndex = 0){
+            // Search Condition - If exist assign new value to Transaction Amount 
+            let condition  = Payment.setCondition(inputPaymentMethod.value, installments);
+            let amount     = Payment.transactionAmount;
+            let difference;
+            Payment.alertEnabler = true;
+            let alertBox;
+            if( paymentMethodID !== 'offline-payment' ){
+                Payment.currentInstallmentSelect = document.getElementById(`installments-${paymentMethodID}`);
+                alertBox = document.getElementById(`msg-alert-${Payment.currentInstallmentSelect.id}`);
+                // Pay with two card
+                if( Payment.typeSelected === 'two-credit-card-payment' ){
+                    let amountByClient = document.getElementById(`amount-client-${paymentMethodID}`).value;
+                    amount = amountByClient
+                }
+                
+                if(condition.id !== undefined){
+                    let amountByCondition = Payment.getTrasactionAmountModifyByCondition(amount, condition)
+                    Payment.last_condition = condition
+                    amount = amountByCondition.amount
+                    difference = amountByCondition.difference
+                    // Show Alert
+                    drawConditionAlert( condition, alertBox, difference )
+                } else {
+                    // Hide Alert and set the boolean enabler to false, to tell the update func to not show the alert.
+                    Payment.alertEnabler = false
+                    hideConditionAlert( alertBox )
+                }
+                // Set new Transaction Amount
+                document.getElementById(`transaction_amount-${paymentMethodID}`).value = amount;
+                // Get Installments in Mercado Pago
+                getInstallments(paymentMethodID , inputPaymentMethod.value, amount, selectedIndex, condition, alertBox, difference)
+            } else {
+                alertBox = document.getElementById(`msg-alert-selectMethod-${paymentMethodID}`);
+            }
+        }
+            
+        function getInstallments(paymentMethodID , paymentMethodValue , amount, selectedIndex = 0, condition, alertBox, difference){
+            
+            const installmentSelect = document.getElementById(`installments-${paymentMethodID}`)
+
+            Mercadopago.getInstallments({
+                "payment_method_id": paymentMethodValue,
+                "amount": amount 
+            }, function (status, response) {
+
+                if (status == 200) {
+                    //Reset Select
+                    installmentSelect.options.length = 0;
+                    // Create New Options
+                    let gatewayResponse = response.filter( elem => elem.processing_mode === 'gateway' )
+
+                    let options = gatewayResponse[0].payer_costs.map( elem => {
+                        return `<option issuer-id="${gatewayResponse[0].issuer.id}" 
+                                payment-method-id="${gatewayResponse[0].payment_method_id}" 
+                                payment-type-id="${gatewayResponse[0].payment_type_id}" 
+                                processing-mode="${gatewayResponse[0].processing_mode}" 
+                                merchant-account-id="${gatewayResponse[0].merchant_account_id}"
+                                value="${elem.installments}">
+                                    ${elem.recommended_message}
+                                </option>`
+                    })
+                    // Add new Options
+                    installmentSelect.innerHTML = options;
+                    // var instances = M.FormSelect.init(installmentSelect);
+                    installmentSelect.selectedIndex = selectedIndex;
+                    Payment.currentInstallmentSelect = installmentSelect;
+                    // Update Alert
+                    updateConditionAlert( condition, alertBox, difference )
+                    //let eventChange = new Event('change')
+                    //document.getElementById(`installments-${Payment.typeSelected}`).dispatchEvent( eventChange )
+                } else {
+                    
+                    alert(`Error al cargar las cuotas: ${response}`);
+                    
+                }
+            });
+        }
+        
+        // Draw the alert with the needed params, which will be updated later.
+        function drawConditionAlert( condition, alertBox, difference ){
+            if ( Payment.debugging ) console.log( condition );
+            let colorAlert = '';
+            let msgAlert = '';
+            if( condition.type == 1 ){
+                colorAlert = '#008A00';
+                msgAlert = 'Ahorrás $';
+            } else {
+                colorAlert = 'red';
+                msgAlert = 'Recargo de $';
+            }
+
+            if( alertBox ){
+                alertBox.style.display = 'none'
+                alertBox.style.background = colorAlert
+            } else {
+                Payment.currentInstallmentSelect.parentElement.parentElement.insertAdjacentHTML('afterend', `<div style="color: white; background: ${colorAlert}; text-align: center; ` + 
+                `border-radius: 8px; padding: 10px; display: none;" id="msg-alert-${Payment.currentInstallmentSelect.id}"><small>TO-BE-REPLACED</small><br>` + 
+                `<span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${difference}!</span></div><br>`)
+            }
+
+        }
+        
+        // Hide alert in case of no condition.
+        function hideConditionAlert( alertBox ){
+            if( alertBox ){
+                alertBox.style.display = 'none'
+            }
+        }
+        
+        // Update the alertBox's data, like messages and css styles.
+        function updateConditionAlert( condition, alertBox, difference ){
+            if ( Payment.debugging ) console.log('Updating condition card');
+            if( condition.type === 1 ){
+                colorAlert = '#008A00';
+                msgAlert = 'Ahorrás $';
+                
+            } else {
+                colorAlert = 'red';
+                msgAlert = 'Recargo de $';
+            }
+            if( alertBox ){
+                if( Payment.alertEnabler ){
+                    alertBox.style.display = 'block'
+                }
+                alertBox.innerHTML = `<small>${Payment.currentInstallmentSelect.selectedOptions[0].textContent}</small><br>`+
+                `<span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${difference}!</span>`
+            }
+        }
+        
+        function mapOfflineMethods( allMethods ){
+            const offlineMethods = allMethods.filter(method => method.payment_type_id === 'ticket' || method.payment_type_id === 'atm');
+
+            let options = offlineMethods.map( elem => {
+                return `<option type-id="${elem.payment_type_id}" value="${elem.id}">${elem.name}</option>`
+            })
+            selectOfflineMethods.innerHTML = options;
+        }
+
+        function drawOfflineConditions(){
+            let alertBox = document.getElementById(`msg-alert-${Payment.typeSelected}`);
+            switch ( Payment.typeSelected ){
+                case ('bank-deposit-payment'):
+                    let condition = Payment.setCondition('debvisa');
+                    let amountByCondition = Payment.getTrasactionAmountModifyByCondition(Payment.transactionAmount, condition)
+                    let amount = amountByCondition.amount
+					if ( Payment.debugging) console.log('bank');
+                	Payment.alertEnabler = true;
+                  	Payment.last_condition = condition;
+                    
+                    document.getElementById(`transaction_amount-${Payment.typeSelected}`).value = amount;
+                    let difference = amountByCondition.difference;
+                    let colorAlert = '';
+                    let msgAlert = '';
+
+                    if( condition.type == 1 ){
+                        colorAlert = '#008A00';
+                        msgAlert = 'Ahorrás $';
+                    } else {
+                        colorAlert = 'red';
+                        msgAlert = 'Recargo de $';
+                    }
+
+                    if( alertBox ){
+                        alertBox.style.display = 'block'
+                        alertBox.style.background = colorAlert
+                    } else {
+                        document.getElementById(`bank_after_all`).insertAdjacentHTML('afterend', `<br><div style="color: white; background: ${colorAlert}; text-align: center; ` + 
+                        `border-radius: 8px; padding: 10px; margin-top: 25px;" id="msg-alert-${Payment.typeSelected}"><small>Transferencia Bancaria</small><br>` + 
+                        `<span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${difference}!</span></div><br>`)
+                    }
+                break;
+                case ('offline-payment'):
+                if ( Payment.debugging ) console.log( 'offline' );
+                    offlineCondition( 'draw', alertBox );
+                break;
+            }
+        }
+
+
+        function offlineCondition( action, alertBox ){
+
+            let waitInterval = setInterval(() => {
+                let existOptions = Payment.offlineSelect.options;
+                if ( existOptions.length > 0 ) {
+                    clearInterval( waitInterval )
+                }
+            }, 75)
+			
+            let condition = Payment.setCondition(Payment.offlineSelect.selectedOptions[0].value);
+            if ( Payment.debugging ) console.log(condition);
+            let difference = (Payment.transactionAmount*(condition.percentage/100));
+
+            if ( action == 'draw' ) {
+
+                let colorAlert = '';
+                let msgAlert = '';
+                if( condition.type == 1 ){
+                    colorAlert = '#008A00';
+                    msgAlert = 'Ahorrás $';
+                } else {
+                    colorAlert = 'red';
+                    msgAlert = 'Recargo de $';
+                }
+
+                if( alertBox ){
+                    alertBox.style.display = 'none'
+                    alertBox.style.background = colorAlert
+                } else {
+                    Payment.offlineSelect.parentElement.parentElement.insertAdjacentHTML('afterend', `<br><div style="margin-top: 20px;color: white; background: ${colorAlert}; text-align: center; ` + 
+                    `border-radius: 8px; padding: 10px; display: none;" id="msg-alert-${Payment.typeSelected}"><small>TO-BE-REPLACED</small><br>` + 
+                    `<span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${difference}!</span></div><br>`)
+                }
+
+                Payment.offlineSelect.dispatchEvent( new Event('change') );
+
+            } else {
+                
+                let transactionHidden = document.getElementById(`transaction_amount-${Payment.typeSelected}`)
+
+                if ( condition != '' ) {
+                  	Payment.alertEnabler = true;
+                  	Payment.last_condition = condition;
+
+                    let amountByCondition = Payment.getTrasactionAmountModifyByCondition(Payment.transactionAmount, condition)
+                    let amount = amountByCondition.amount
+                    transactionHidden.value = amount;
+                    
+
+                    if( condition.type === 1 ){
+                        colorAlert = '#008A00';
+                        msgAlert = 'Ahorrás $';
+                        
+                    } else {
+                        colorAlert = 'red';
+                        msgAlert = 'Recargo de $';
+                    }
+                    if( alertBox ){
+                        if( Payment.alertEnabler ){
+                            alertBox.style.display = 'block'
+                        }
+                        alertBox.innerHTML = `<small>${Payment.offlineSelect.selectedOptions[0].textContent}</small><br>`+
+                        `<span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${difference}!</span>`
+                    }
+
+                } else {
+                    transactionHidden.value = Payment.transactionAmount;
+                    Payment.alertEnabler = false;
+                    hideConditionAlert( alertBox );
+                }
+
+            }
+        }
+
+        function blurDispatch( elem ) {
+            elem.dispatchEvent( new Event('blur') );
+        }
+
+        function fOutDispatch( elem ) {
+            elem.dispatchEvent( new Event('focusout') );
+        }
+
+        async function assignTokenToPayload( token ) {
+            Mercadopago.clearSession()
+            if ( Payment.typeSelected === 'credit-card-payment' ) payloadObj.payload_data = { 'token_1': token }
+        }
+
+        function tokenCallback(status, response) {
+            if ( Payment.debugging ) console.log('Inicio token');
+            if ( Payment.debugging ) console.log('Token:', response);
+            if (status != 200 && status != 201 && status != 423) {
+                // alert("verify filled data");
+                if ( Payment.debugging ) console.log('Dentro del true de tokenCallback');
+
+                [...response.cause].forEach(function( elem ){
+                    if ( Payment.debugging ) console.log(elem)
+                })
+
+                Mercadopago.clearSession()
+                return false;
+            }else{
+                if ( Payment.debugging ) console.log('Dentro del false de tokenCallback')
+
+                Payment.last_token = response
+
+                return assignTokenToPayload( response );
+            }
+        }
+      
+      	function clearBankData() {
+            bankIssuerData.innerHTML = ''
+            bankIssuerCBU.innerHTML = ''
+        }
+
+        function createBillingAttributesData() {
+            let billingData = JSON.parse( localStorage.getItem('facturacion') )
+            Object.entries(billingData).forEach( ([key, value]) => {
+                createInput(`facturacion_${key}`, value)
+            })
+        }
+      	
+//       	[...document.querySelectorAll('input[name="checkout[reduction_code]"]')][1].closest('form').addEventListener('submit', (evt) => {
+//             let check = setInterval(() => {
+//                 let input = [...document.querySelectorAll('input[name="checkout[reduction_code]"]')][1]
+//                 if ( input ) {
+//                     if ( input.value == '' ) {
+//                         console.log('cleared')
+//                         clearInterval( check )
+//                     } else {
+//                         console.log('not-yet')
+//                     }
+//                 }
+//             }, 100)
+//         })
+
+    Payment.collectDiscountData(formDataDiscount)
+
+    async function sendPayload() {
+        try {
+            if ( Payment.debugging ) console.log('sending payload...\n' + JSON.stringify( Payment.payload ))
+            
+            alertLoadingDiv.style.display = 'flex'
+            let createPayment = await fetch(paymentEndpoint, {
+                method: 'POST',
+                headers: {
+                    "Authorization" : Payment.settings.headers.Authorization,
+                    "Content-type"  : "application/json"
+                },
+                body: JSON.stringify(Payment.payload)
+            })            
+            let paymentResponse = await createPayment.json()
+
+            if ( Payment.debugging ) console.log(paymentResponse)
+
+            if ( paymentResponse.canCreate === true ) {
+                if ( Payment.debugging ) console.log('payment applied')
+
+                createBillingAttributesData()
+
+                createInput( 'checkout_id_card', paymentResponse.checkout_id )
+                if ( paymentResponse.paymentsApp.length > 0 ) {
+                    paymentResponse.paymentsApp.forEach( (elem, index) => {
+                        if ( elem.mercado_pago_payment_id != 0 ) createInput( `mercado_pago_payment_id-${index+1}`, elem.mercado_pago_payment_id );
+                        createInput( `transaction_amount_innovate-${index+1}`, elem.transaction_amount );
+                    })
+                }
+
+                if ( Object.keys(Payment.conditionsMessage).length > 0 ) {
+                    Object.entries(Payment.conditionsMessage).forEach( ([key, value]) => {
+                        createInput( `installment_${key}`, value )
+                    })
+                }
+
+                writeMsgAndCountdown(paymentResponse.status_detail)
+
+                // Create Inputs for collect order attributes
+
+                if ( paymentResponse.discountCode != '' ) {
+                    postDiscount( paymentResponse.discountCode )
+                } else {
+                    Payment.discountApplied = true
+                    setTimeout(() => {
+                        goToThankYou()
+                    }, 2000)
+                }
+
+                if ( paymentResponse.offline != '' ) Payment.offlinePdf = paymentResponse.offline
+
+
+            } else {
+                // Caught error on payment due to insufficient amount probably.
+                let errorMessage = '<div style="width: 100%;text-align: center;">'
+                errorMessage +=      '<p>Error procesando su pago, detalles: ⤵ </p><br>'                
+                paymentResponse.status_detail.forEach( (error, index) => {
+                    errorMessage += `<strong>Tarjeta ${index+1}: ${error}</strong><br>`
+                })
+                errorMessage +=      '<button type="button" class="btn" onclick="window.location.reload()" style="margin-top: 10px;">Recargar</button>'
+                errorMessage +=    '</div>'
+                containerCheckout.innerHTML = errorMessage
+                // containerCheckout.innerHTML = `<div>Error procesando su pago</div>`
+                
+                alertLoadingDiv.style.display = 'none'
+            }
+
+        } catch(err) {
+            containerCheckout.innerHTML = `<div>Error ejecutando el pago, recargando website en 5 segundos, si no es recargado 
+                automáticamente, presione F5 o recargue manualmente.<br>
+                ${err}
+            </div>`
+
+            console.log( err )
+
+            alertLoadingDiv.style.display = 'none'
+
+            setTimeout(() => {
+                window.location.reload()
+            }, 5000)
+        }
+    }
+
+    function writeMsgAndCountdown( status_detail ) {
+        if ( Payment.debugging ) console.log('writting payment detail')
+        let newMessages = status_detail.map(elem => {
+            return `<span>${elem}</span><br>`
+        })
+        alertStatusSpan.innerHTML = `${newMessages}
+                    <span class="paymentMsg--span">Siendo redirigido a Thank You page...</span>`
+    }
+
+    async function postDiscount( reductionCode ) {
+        if ( Payment.debugging ) console.log('applying discount')
+        Payment.discountFormData['checkout[reduction_code]'] = reductionCode;
+        let discountFetch = await fetch(formDiscount.action, {
+            method: 'POST',
+            headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            body: window.param(Payment.discountFormData)
+        })
+
+        Payment.discountApplied = true
+
+        if ( Payment.discountApplied ) {
+            goToThankYou()
+        }
+    }
+
+    function goToThankYou() {
+        if ( Payment.typeSelected != 'offline-payment' ) continueBtn.click()
+        else thankYouOffline()
+    }
+
+    function thankYouOffline() {
+        createInput( 'offline_pdf', Payment.offlinePdf )
+        window.open(Payment.offlinePdf)
+
+        setTimeout(() => {
+            continueBtn.click()
+        }, 1000)
+
+    }
+
+    M.AutoInit()
+
+    function createInput( nameInput , valueInput ){
+        let element = document.querySelector(`input[name="checkout[attributes][${nameInput}]"]`);
+        if (element) {
+            element.value = valueInput;
+        } else {
+            let inputEl = document.createElement('input');
+            inputEl.setAttribute('name', `checkout[attributes][${nameInput}]`);
+            inputEl.setAttribute('type', 'hidden');
+            inputEl.setAttribute('value', valueInput );
+
+            document.querySelectorAll('.edit_checkout')[2].insertAdjacentElement('afterbegin', inputEl)
+        }
+        console.log(`Input creado: ${nameInput} - ${valueInput}`)
+    }
+
+    function disableOrEnableElement( element, action ) {
+        if ( action === true ) {
+            element.disabled = false;
+            element.style.opacity = '1'
+        } else {
+            element.disabled = true;
+            element.style.opacity = '0.3'
+        }
+    }
+
+    function enablePaymentButton( typeForm ) {
+        let formElement = document.getElementById(`form-${typeForm}`);
+        let payloadBtn = document.getElementById(`payloadBtn-${typeForm}`);
+        let qtyInputs = 0;
+        let qtyFilled = 0;
+        if ( typeForm === 'credit-card-payment' || typeForm === 'two-credit-card-payment' || typeForm === 'two-credit-card-payment-2' ) {
+            // console.log( Payment.typeSelected, 'hearing')
+            [...formElement.elements].forEach( elem => {
+                    if ( elem.tagName.toLowerCase() === 'input' && elem.type != 'hidden' ) {
+                        qtyInputs++
+                    }
+            });
+            let checkBtn = setInterval(() => {
+                qtyFilled = 0;
+                [...formElement.elements].forEach( elem => {
+                    if ( elem.tagName.toLowerCase() === 'input' && elem.value != '' && elem.type != 'hidden' ) {
+                        qtyFilled++
+                    }
+                });
+
+                // console.log( qtyInputs, qtyFilled )
+
+                if ( qtyInputs === qtyFilled ) {
+                    console.log('allFilled')
+                    disableOrEnableElement( payloadBtn, true )
+                    // clearInterval( checkBtn )
+                } else {
+                    disableOrEnableElement( payloadBtn, false )
+                }
+            }, 500)
+        }
+
+        if ( typeForm === 'bank-deposit-payment' || typeForm === 'offline-payment' ) {
+            [...formElement.elements].forEach( elem => {
+                    if ( elem.tagName.toLowerCase() === 'input' && elem.type != 'hidden' ) {
+                        qtyInputs++
+                    }
+            });
+            let checkBtn = setInterval(() => {
+                qtyFilled = 0;
+                [...formElement.elements].forEach( elem => {
+                    if ( elem.tagName.toLowerCase() === 'input' && elem.value != '' && elem.type != 'hidden' ) {
+                        qtyFilled++
+                    }
+                });
+
+                // console.log( qtyInputs, qtyFilled )
+
+                if ( qtyInputs === qtyFilled && !document.getElementById(`selectMethod-${typeForm}`).selectedOptions[0].textContent.toLowerCase().includes('seleccione') ) {
+                    console.log('allFilled')
+                    disableOrEnableElement( payloadBtn, true )
+                    // clearInterval( checkBtn )
+                } else {
+                    disableOrEnableElement( payloadBtn, false )
+                }
+            }, 500)
+        }
+    }
+
+    function formatAlertMessage( alertBox ) {
+        let message = [];
+        [...alertBox.children].forEach( elem => {
+            if ( elem.tagName.toLowerCase() != 'br' ) {
+                message.push( elem.textContent.trim() )
+            }
+        })
+
+        return message;
+    }
+}
+
+const tyData = (() => {
+            if( Shopify.Checkout.step === 'thank_you' ){
+                console.log('¡¡¡¡¡ TY Page !!!!!')
+                //document.querySelectorAll('.wrap')[2].style.display = "none";
+                writeOrderAttributes()
+
+            }
+
+
+            if( Shopify.Checkout.OrderStatus != undefined ){
+                if(Shopify.Checkout.OrderStatus.addContentBox().length > 0 && Shopify.Checkout.step == undefined ){
+                    writeOrderAttributes()
+                }
+            }
+
+
+            // Functions
+
+            function writeOrderAttributes() {
+                console.log('working...')
+
+                {% assign url_attr = '' %}
+                {% assign offline_name = '' %}
+                {% assign bank_cbu = '' %}
+                {% assign bank_suc = '' %}
+                {% assign bank_name = '' %}
+                {% assign installment_1 = '' %}
+                {% assign installment_2 = '' %}
+                {% assign card_1 = '' %}
+                {% assign card_2 = '' %}
+                {% assign pdf_offline = false %}
+                {% assign bank_cash = false %}
+                {% assign card = false %}
+
+
+                {% for attribute in checkout.order.attributes %}
+                    {% assign attribute_first = attribute | first %}
+                    {% assign attribute_last = attribute | last %}
+
+                    {% if attribute_first == 'offline_pdf' %}
+                        {% assign url_attr = attribute_last %}
+                        {% assign pdf_offline = true %}
+                    {% endif %}
+
+                    {% if attribute_first == 'offline_method' %}
+                        {% assign offline_name = attribute_last %}
+                        {% assign pdf_offline = true %}
+                    {% endif %}
+
+                    {% if attribute_first == 'installment_token_1' %}
+                        {% assign installment_1 = attribute_last %}
+                        {% assign card = true %}
+                    {% endif %}
+
+                    {% if attribute_first == 'installment_token_2' %}
+                        {% assign installment_2 = attribute_last  %}
+                        {% assign card = true %}
+                    {% endif %}
+
+                    {% if attribute_first == 'card_name_token_1' %}
+                        {% assign card_1 = attribute_last | capitalize %}
+                        {% assign card_1_first = card_1 | split: ' - ' | first %}
+                        {% assign card_1_last = card_1 | split: ' - ' | last %}
+                        {% assign card_1_last = card_1_last | capitalize %}
+                        {% assign card_1 = card_1_first | append: ' - ' | append: card_1_last %}
+                        {% assign card = true %}
+                    {% endif %}
+
+                    {% if attribute_first == 'card_name_token_2' %}
+                        {% assign card_2 = attribute_last | capitalize %}
+                        {% assign card_2_first = card_2 | split: ' - ' | first %}
+                        {% assign card_2_last = card_2 | split: ' - ' | last %}
+                        {% assign card_2_last = card_2_last | capitalize %}
+                        {% assign card_2 = card_2_first | append: ' - ' | append: card_2_last %}
+                        {% assign card = true %}
+                    {% endif %}
+                
+                    {% if attribute_first == 'bank_cbu' %}
+                        {% assign bank_cbu = attribute_last %}
+                        {% assign bank_cash = true %}
+                    {% endif %}
+                
+                    {% if attribute_first == 'bank_type' %}
+                        {% assign bank_suc = attribute_last %}
+                        {% assign bank_cash = true %}
+                    {% endif %}
+                
+                    {% if attribute_first == 'bank_name' %}
+                        {% assign bank_name = attribute_last %}
+                        {% assign bank_cash = true %}
+                    {% endif %}
+
+                    console.log( {{ attribute | json }} );
+
+                {% endfor %}
+
+                {% if pdf_offline %}
+                    document.querySelectorAll('.wrap')[2].style.display = "block";
+
+
+                    let html = `<div class="section">
+                            <label>Usted seleccionó método <strong>{{ offline_name }}</strong> | Descargue su cupón de pago:</label><br>
+                            <div id="btnsContainer" style="display: flex; text-align: center; justify-content: space-between;">
+                            <a id="pdf_btn_url" class="step__footer__continue-btn btn" href="{{ url_attr }}" target="_blank" style="margin-top: 10px; width: 200px;">Ver o descargar cupón/ticket PDF</a>
+                            </div>
+                            </div>`
+
+                    //$(document.querySelectorAll('.section__content')[1]).append(html)
+
+                    document.querySelectorAll('.section')[0].insertAdjacentHTML('afterend', html)
+
+                    if(window.innerWidth < 460){
+                        document.getElementById('btnsContainer').style.flexDirection = 'column'
+                        document.getElementById('btnsContainer').style.alignItems = 'center'
+                    }
+                    var contador = 0;
+                    document.getElementById('pdf_btn_url').addEventListener('click', function(){
+                        contador++;
+                    })
+
+                    setTimeout(function(){
+                        if(contador == 0){
+                            var simulateClick = function (elem) {
+                                // Create our event (with options)
+                                var evt = new MouseEvent('click', {
+                                    bubbles: true,
+                                    cancelable: true,
+                                    view: window
+                                });
+                                // If cancelled, don't dispatch our event
+                                var canceled = !elem.dispatchEvent(evt);
+                            };
+
+                            var boton = document.getElementById('pdf_btn_url')
+
+                            simulateClick(boton)
+                        }
+                    }, 1000)
+
+
+                {% endif %}
+                
+                
+                {% if bank_cash %}
+
+                document.querySelectorAll('.wrap')[2].style.display = "block";
+
+
+                let html = `<div class="section">
+                    <label>Usted seleccionó el banco: <strong>{{ bank_name }}</strong> | Aquí los datos para realizar la transferencia:</label><br>
+                    <div id="btnsContainer" style="text-align: center;">
+                    <span style="border-radius: 20px;border: 2px solid  black;padding: 7px;background: #c22f78;color: #fff;">{{ bank_cbu }}</span><br><br><br>
+                    <span style="border-radius: 20px;border: 2px solid  black;padding: 7px;background: #c22f78;color: #fff;">{{ bank_suc }}</span>
+                    </div>
+                    </div>`
+
+                //$(document.querySelectorAll('.section__content')[1]).append(html)
+
+                document.querySelectorAll('.section')[0].insertAdjacentHTML('afterend', html)
+                if(window.innerWidth < 535){
+                    document.getElementById('btnsContainer').style.marginTop = '20px'
+                }
+
+                {% endif %}
+
+
+                {% if card %}
+
+                    {% if installment_1 != '' and installment_2 != '' %}
+
+                        let html = `<br><div class="section">
+                            <label>Usted realizó la transacción con las tarjetas <strong>{{ card_1 }}</strong> y <strong>{{ card_2 }}</strong> | Con la siguiente cantidad de cuotas:</label><br><br><br>
+                                <div id="btnsContainer" style="text-align: center;">
+                                    <span style="border-radius: 20px;border: 2px solid  black;padding: 7px;background: #c22f78;color: #fff;">{{ installment_1 }}</span><br><br><br>
+                                    <span style="border-radius: 20px;border: 2px solid  black;padding: 7px;background: #c22f78;color: #fff;">{{ installment_2 }}</span><br>
+                                </div>
+                            </div>`
+                            
+                    {% else %}
+                            
+                        let html = `<br><div class="section">
+                            <label>Usted realizó la transacción con la tarjeta <strong>tarjeta</strong> | Con la siguiente cantidad de cuotas:</label><br><br><br>
+                                <div id="btnsContainer" style="text-align: center;">
+                                    <span style="border-radius: 20px;border: 2px solid  black;padding: 7px;background: #c22f78;color: #fff;">{{ installment_1 }}</span><br>
+                                </div>
+                            </div>`
+                            
+                    {% endif %}
+
+                    document.querySelectorAll('.section')[0].insertAdjacentHTML('afterend', html)
+
+                {% endif %}
+
+            }
+        })()
+        
+</script>
+
+
+<style>
+    #payment_icons{
+      margin-top:15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position:relative;
+    }
+    #payment_icons .icon-svg-all{
+      width: calc(100% / 4 - 15px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      padding: 8px 5px;
+      line-height: 1em;
+      border-radius: 5px;
+      border: 1px solid #d9d9d9;
+      flex-direction: column;
+      text-align: center;
+      height: 80px;
+    }
+    #payment_icons  .icon-svg-all.payment-type_active{
+      background: #a71a61;
+      border-color:#a71a61;
+      box-shadow:none!important;
+    }
+    #payment_icons  .icon-svg-all.payment-type_active span{
+      color:#fff;
+    }
+    #payment_icons .icon-svg-all img{
+      margin-bottom: 5px;
+      width: 35px;
+    }
+   	#payment_icons .icon-svg-all span{
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1em;
+      color: #000;
+    }
+    #payment_icons:after{
+      content: '';
+      width: 99%;
+      position: absolute;
+      bottom: -30px;
+      height: 1px;
+/*       background:#A71A61; */
+      right: 0;
+    }
+  @media (max-width:425px){
+    #payment_icons .icon-svg-all span{
+      font-size: 8px;
+    }
+    #payment_icons .icon-svg-all{
+      height:50px;
+    }
+  }
+
+  .payment-method__title{
+    color:#a71a61;
+    font-weight:bold;
+    margin-left:10px;
+    padding-bottom:10px;
+    font-size:15px;
+  }
+
+  .paymentMsg--container {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 20px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    line-height: 25px;
+  }
+
+  .paymentMsg--span {
+    font-size: 15px;
+  }
+
+</style>

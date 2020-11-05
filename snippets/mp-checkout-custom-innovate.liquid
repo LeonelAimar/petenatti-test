@@ -1,0 +1,3110 @@
+<div id="general_container" class="general-container">
+  <div class="lock-alert-background" id="confirm_lock_alert">
+    <div class="lock-alert-container">
+      <span id="alert-text" style="font-size: 18px;">¿Desea confirmar éste medio de pago por el monto establecido? Este paso es irreversible.</span><br>
+      <button class="btn" id="lock_confirm" type="button">ACEPTAR</button>
+      <button class="btn" id="lock_goback" type="button">VOLVER</button>
+    </div>
+  </div>
+        
+        <div id="container_payment_multiple_cards" class="container-payment-1">
+            <div id="methods">
+                <h4>¿Cómo querés pagar?</h4>
+                <p>Elegí tu metodo de pago.</p>
+                <p><small>Hacé click en seleccionar para confirmar el método de pago elegido.</small></p>
+                <div id="payment_icons" class="payment-icons">
+                  <div class="icon-svg-card method icon-svg-all" selected="false" value="credit_card"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/icono_tarjeta-credito.svg?v=1584999878"><span>Tarjeta de crédito</span></div>
+                    <div class="icon-svg-card method icon-svg-all" selected="false" value="multiple_credit_cards"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/icono_multiples-tarjetas-credito.svg?v=1584999943"><span>Múltiples tarjetas de crédito</span></div>
+                    <div class="icon-svg-cash method icon-svg-all" selected="false" value="bank_payment"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/icono_transferencia.svg?v=1584999878"><span>Transferencia</span></div>
+                    <div class="icon-svg-cash method icon-svg-all" selected="false" value="cash_payment"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/icono_efectivo.svg?v=1584999878"><span>Puntos de pago</span></div>
+                </div>
+                <button type="button" class="step__footer__continue-btn btn" disabled="disabled" id="btn_select_methods">SELECCIONAR</button><br>
+            </div>
+          <br>
+          <div style="display: none;"><span id="total_price" style="font-size: 16px;" value="{{ checkout.total_price }}">Total a pagar: <strong>{{ checkout.total_price | money }}</strong></span></div>
+
+			<br>
+            <div id="form_credit_card_container" class="card-form" style="display: none;">
+                <form class="card-form" method="post" id="pay-1" name="pay-1" >
+                    <fieldset>
+                        <span class="payment-method__title">Tarjeta de crédito</span>
+                        <ul>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="parcial-amount-1">Cantidad parcial o total en $</label>
+                                <div style="display: flex;">
+                                <input step="0.01" type="number" id="parcial-amount-1" name="parcialamount-1" class="field__input parcial-amount money" style="/*width: 70%;*/" placeholder="Cantidad parcial o total en $" />
+                                  <!--input type="button" value="Ajustar" class="btn adjust-money" data-qty="parcial-amount-1" data-card="cardNumber-1" data-hidden="amount-1" id="adjust-1"-->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="cardNumber-1">Número de Tarjeta de Crédito:</label>
+                                <input type="text" id="cardNumber-1" class="field__input" data-checkout="cardNumber" placeholder="Número de Tarjeta de Crédito (ej. 4509 9535 6623 3704)" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                          	<span class="error-span" style="display: none;" id="cardNumber-error-1"></span>
+                           </div>
+                            </div>
+                            <div id="payment_img-1"></div><br>
+                          <div class="field field--required field--third field--show-floating-label">
+                            <div class="field__input-wrapper">
+                            
+                                <label class="field__label field__label--visible" for="securityCode-1">Código de seguridad:</label>
+                                <input type="text" id="securityCode-1" class="field__input" data-checkout="securityCode" placeholder="Código de seguridad" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                            	<span class="error-span" style="display: none;" id="securityCode-error-1"></span>
+                            </div>
+                          </div>
+                            <div class="field field--required field--third field--show-floating-label">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="cardExpirationMonth-1">Mes de expiración:</label>
+                                <input type="text" id="cardExpirationMonth-1" class="field__input" data-checkout="cardExpirationMonth" placeholder="Mes de expiración" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                              <span class="error-span" style="display: none;" id="cardExpirationMonth-error-1"></span>
+                              </div>
+                          </div>
+                            <div class="field field--required field--third field--show-floating-label">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="cardExpirationYear-1">Año de expiración:</label>
+                                <input type="text" id="cardExpirationYear-1" class="field__input" data-checkout="cardExpirationYear" placeholder="Año de expiración" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                              <span class="error-span" style="display: none;" id="cardExpirationYear-error-1"></span>
+                              </div>
+                          </div>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="cardholderName-1">Nombre Titular de Tarjeta:</label>
+                                <input type="text" id="cardholderName-1" class="field__input" data-checkout="cardholderName" placeholder="Nombre Titular de Tarjeta" />
+                           	<span class="error-span" style="display: none;" id="cardholderName-error-1"></span>
+                          </div>
+                          </div>
+                          <div class="field field--half field--required field--show-floating-label">
+                            <div class="field__input-wrapper">
+
+                                <label class="field__label field__label--visible" for="docType-1">Tipo de documento:</label>
+                                <select id="docType-1"class="field__input field__input--select" placeholder="Tipo de documento" data-checkout="docType">
+                                    <option disabled selected>Seleccione un tipo</option>
+                                </select>
+                              	<span class="error-span" style="display: none;" id="docType-error-1"></span>
+                            </div>
+                          </div>
+                            <div class="field field--half field--required field--show-floating-label">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="docNumber-1">Número de documento:</label>
+                                <input type="text" id="docNumber-1" class="field__input" maxlength="8" minlength="7" data-checkout="docNumber" placeholder="Número de documento" />
+                              <span class="error-span" style="display: none;" id="docNumber-error-1"></span>
+                              </div>
+                          </div>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="installments-1">Cuotas:</label>
+                                <select id="installments-1" class="field__input field__input--select cuotas-select" name="installments-1"></select>
+                            </div>
+                          </div>
+                        </ul>
+                      	<input type="hidden" id="email-1" class="field__input" name="email-1" value="{{ checkout.email }}"  placeholder="your email"/>
+                        <input type="hidden" name="amount-1" id="amount-1"/>
+                        <input type="hidden" name="description-1"/>
+                        <input type="hidden" name="paymentMethodId-1" />
+                        <input class="step__footer__continue-btn btn lock-btn" data-button="pay-1" type="submit" value="Pagar!" />
+                    </fieldset>
+                </form>
+              <br><hr><br>
+            </div>
+            <div id="form_bank_payment_container" class="bank-form" style="display: none;">
+                <form method="post" id="bank_payment" >
+                    <fieldset>
+                        <span class="payment-method__title">Pago bancario</span>
+                        <ul>
+                          <div class="field field--required field--show-floating-label">
+                            <div class="field__input-wrapper">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="accounts-bank">Cuentas disponibles:</label>
+                                <select class="field__input field__input--select" id="accounts-bank">
+                                  <option selected disabled>Seleccione un banco</option>
+                                  <option data-cbu="CBU 330-0034/1 1034003606504/4" data-suc="CTA.CTE $ Suc. 034 Nº 36065/04.">Nuevo Banco de Santa Fe</option>
+                                  <option data-cbu="CBU 19103598 55035900573996" data-suc="CTA.CTE $ Suc. 359 Nº 5739/9.">Banco Credicoop Coop. Ltdo.</option>
+                                  <option data-cbu="CBU 01103555-20035500138418" data-suc="CTA.CTE $ Suc. 2390 Nº 035-500138/41.">Banco de la Nación Argentina</option>
+                                  <option data-cbu="CBU 0200333501000030001829" data-suc="CTA.CTE $ suc 333 nº 0300018/02.">Banco de de la prov. de Córdoba</option>
+                                  <option data-cbu="CBU 2850744-8 3009408459157-1" data-suc="CTA CTE $ 3-744-0940845915-7.">Banco Macro</option>
+                                </select>
+                              </div>
+                              <div class="bank__information">
+                                <strong>CUIT: 30-70763989-6</strong>
+                                <br>
+                                <span id="data_suc"></span>
+                                <br>
+                                <span id="data_cbu"></span>
+                              </div>
+                            </div>
+                          </div>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="bank-amount-1">Cantidad parcial o total en $:</label>
+                                <div style="display: flex;">
+                                <input step="0.01" type="number" id="bank-amount-1" name="bank-amount-1"class="field__input parcial-amount-offline money" style="width: 70%" placeholder="Cantidad parcial o total en $" />
+                                <input type="button" value="Ajustar" class="btn adjust-money" data-qty="bank-amount-1" data-hidden="bank_amount-1" id="adjust-bank">
+                              </div>
+                              </div>
+                          </div>
+                            <div class="field field--half field--required field--show-floating-label">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="docType-bank">Tipo de documento:</label>
+                                <select class="field__input field__input--select" placeholder="Tipo de documento" id="docType-bank"></select>
+                              </div>
+                          </div>
+                            <div class="field field--half field--required field--show-floating-label">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="docNumber-bank">Número de Documento:</label>
+                                <input type="text" id="docNumber-bank" class="field__input" placeholder="Número de Documento" />
+                            </div>
+                          </div>
+                        </ul>
+                      	<input type="hidden" id="email-bank" class="field__input" name="email-bank" value="{{ checkout.email }}"  placeholder="your email"/>
+                      	<input type="hidden" name="bank_amount-1" id="bank_amount-1"/>
+                        <input type="button" data-button="bank_payment" class="step__footer__continue-btn btn lock-btn" value="Pago bancario!" />
+                    </fieldset>
+                </form>
+            </div>
+            <div id="form_cash_payment_container" class="bank-form" style="display: none;">
+                <form method="post" id="cash_payment" >
+                    <fieldset>
+                        <span class="payment-method__title">Pago OFFLINE</span>
+                        <ul>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="cash-amount">Cantidad $:</label>
+                                <div style="display: flex;">
+                                <input step="0.01" type="number" id="cash-amount" name="cash-amount"class="field__input parcial-amount-offline money" style="width: 70%;" placeholder="Cantidad parcial o total en $" />
+                                <input type="button" value="Ajustar" class="btn adjust-money" data-qty="cash-amount" data-hidden="cash_amount" id="adjust-cash">
+                              </div>
+                             </div>
+                          </div>
+                            <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="method-cash">Empresa de Pago:</label>
+                                <select class="field__input field__input--select" id="method-cash"></select>
+                             </div>
+                          </div>
+                          	<div id="payment_offline_img"></div><br>
+                            <div class="field field--half">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="docType-cash">Tipo de Documento:</label>
+                                <select class="field__input field__input--select" placeholder="Tipo de Documento" id="docType-cash"></select>
+                             </div>
+                          </div>
+                            <div class="field field--half">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="docNumber-cash">Número de documento:</label>
+                                <input type="text" id="docNumber-cash" class="field__input" placeholder="Número de documento" />
+                            </div>
+                          </div>
+                        </ul>
+                      	<input type="hidden" id="email-cash" class="field__input" name="email-cash" value="{{ checkout.email }}"  placeholder="your email"/>
+                      	<input type="hidden" name="cash_amount" id="cash_amount"/>
+                        <input type="button" data-button="cash_payment" class="step__footer__continue-btn btn lock-btn" value="Pagar OFFLINE!" />
+                    </fieldset>
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+<script>
+
+
+$(document).ready(function() {
+  console.log("Custom JS Loaded");
+  
+  
+  $('div[value="multiple_credit_cards"]').hide();
+  
+  var priceGlobalParc = parseInt(document.getElementById('total_price').getAttribute('value'));
+  var priceGlobal = parseFloat(priceGlobalParc / 100);
+  console.log(priceGlobal);
+  
+  var cashDiscount = {
+    total: priceGlobal,
+    discount: ''
+  };
+  
+  var priceGlobalText = document.querySelector('.payment-due__price').textContent;
+  
+  function shopifyPriceModifier( accionador, newPriceMod ){
+    
+    var spanPrice = document.querySelector('.total-line__price').children[0];
+    var totalSpanPrice = document.querySelector('.payment-due__price');
+    
+    if(accionador == 1){
+      var priceMold = new Intl.NumberFormat("de-DE", {style: "currency", currency: "USD"}).format(newPriceMod);
+      var priceMoldFixed = priceMold.split('$')[0]
+      spanPrice.textContent = `$${priceMoldFixed}`
+      totalSpanPrice.textContent = `$${priceMoldFixed}`
+    }else{
+      spanPrice.textContent = priceGlobalText;
+      totalSpanPrice.textContent = priceGlobalText;
+    }
+  };
+  
+  $(document).on('change', '#accounts-bank', function(e){
+    var cbu = $('#accounts-bank option:selected').attr('data-cbu');
+    var suc = $('#accounts-bank option:selected').attr('data-suc');
+    
+    $('#data_suc').html(suc);
+    $('#data_cbu').html(cbu);
+    
+  });
+  
+  function createInput( nameInput , valueInput ){
+    let element = document.querySelector(`input[name="checkout[attributes][${nameInput}]"]`);
+    if (element) {
+      element.value = valueInput;
+    } else {
+      let inputEl = document.createElement('input');
+      inputEl.setAttribute('name', `checkout[attributes][${nameInput}]`);
+      inputEl.setAttribute('type', 'hidden');
+      inputEl.setAttribute('value', valueInput );
+      if(document.getElementById('container_payment_multiple_cards')){
+      	document.getElementById('container_payment_multiple_cards').appendChild(inputEl);
+      }else{
+        [...document.querySelectorAll('.edit_checkout')].forEach((form, index) => {
+          if(index == 3){
+            form.appendChild(inputEl);
+          }
+        })
+      }
+    }
+    console.log("Input creado: "+nameInput+" - "+valueInput);
+  };
+  
+  function createInput2( nameInput , valueInput ){
+    let element = document.querySelector(`input[name="checkout[attributes][${nameInput}]"]`);
+    if (element) {
+      element.value = valueInput;
+    } else {
+      let inputEl = document.createElement('input');
+      inputEl.setAttribute('name', `checkout[attributes][${nameInput}]`);
+      inputEl.setAttribute('type', 'hidden');
+      inputEl.setAttribute('value', valueInput );
+      document.querySelector('div[data-step="contact_information"] > form').appendChild(inputEl);
+    }
+    console.log("Input creado: "+nameInput+" - "+valueInput);
+  };
+  
+  var offlineData = {
+    url: ''
+  };
+  
+  $('.shown-if-js').hide();
+  
+  var globalJSON = {
+    "items": {},
+    "cards": {},
+    "condition": {},
+    "offline": {},
+    "checkout": {}
+  };
+  
+  [...document.querySelectorAll('.data-items')].forEach((elem, index) => {
+    index++;
+    var varId = document.querySelector(`#var_id-${index}`).textContent;
+    var titleItem = document.querySelector(`#title-${index}`).textContent;
+    var imageItem = document.querySelector(`#image-${index}`).textContent;
+    var qtyItem = document.querySelector(`#qty-${index}`).textContent;
+    var unitPriceItem = document.querySelector(`#unit_price-${index}`).textContent;
+    
+    var jsonItem = {
+      var_id: varId,
+      title: titleItem,
+      image: imageItem,
+      qty: qtyItem,
+      unit_price: unitPriceItem
+    };
+    
+    globalJSON["items"][`item-${index}`] = jsonItem;
+  });
+  
+  var checkoutId = document.getElementById('checkout_id').textContent;
+  var checkoutToken = Shopify.Checkout.token;
+  
+  var checkoutJson = {
+    id: checkoutId,
+    token: checkoutToken,
+    total_amount: priceGlobal
+  };
+  
+  globalJSON["checkout"] = checkoutJson;
+  
+  console.log(globalJSON);
+  
+    var settingsPublicKey = {
+    "url": "https://petenatti.com.ar/checkout-plus-test/web/v1/payment/public-key",
+    "method": "GET",
+    "timeout": 0,
+    "headers": {
+      "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+  },
+  };
+  
+  var public_key = '';
+  
+  $.ajax(settingsPublicKey).done(function ( key ) {
+    public_key = key;
+    
+    console.log( public_key );
+  
+  
+  
+
+  
+  
+  
+  var tokenCards = {"token_cards": {} };
+    
+  var offline_payment = {"payer_data": {} };
+  
+  Mercadopago.setPublishableKey(public_key);
+
+
+  function addEvent(to, type, fn){ 
+    if(document.addEventListener){
+        to.addEventListener(type, fn, false);
+    } else if(document.attachEvent){
+        to.attachEvent('on'+type, fn);
+    } else {
+        to['on'+type] = fn;
+    }  
+}; 
+
+function mercadoPagoFunction( index ){
+  
+  
+    const errorsList          = {
+      205 : {
+        'element_id' : `cardNumber-error-${index}`,
+        'text' : 'El número de la tarjeta no puede estar vacío'
+      },
+      208 : {
+        'element_id' : `cardExpirationMonth-error-${index}`,
+        'text' : 'El mes de vencimiento no puede estar vacío'
+      },
+      209 : {
+        'element_id' : `cardExpirationYear-error-${index}`,
+        'text': 'El año de vencimiento no puede estar vacío'
+      },
+      221 : {
+        'element_id' : `cardholderName-error-${index}`,
+        'text': 'Ingresa el nombre y apellido'
+      },
+      224 : {
+        'element_id' : `securityCode-error-${index}`,
+        'text' : 'Ingresa el código de seguridad'
+      },
+      325 : {
+        'element_id' : `cardExpirationMonth-error-${index}`,
+        'text' : 'El mes de vencimiento es incorrecto'
+      },
+      326 : {
+        'element_id' : `cardExpirationYear-error-${index}`,
+        'text': 'El año de vencimiento es incorrecto'
+      },
+      E301 : {
+        'element_id' : `cardNumber-error-${index}`,
+        'text' : 'El número de tarjeta es incorrecto'
+      },
+      E302 : {
+        'element_id' : `securityCode-error-${index}`,
+        'text' : 'Revisa el código de seguridad.'
+      },
+      316 : {
+        'element_id' : `cardholderName-error-${index}`,
+        'text': 'Ingresa un nombre válido'
+      },
+      212: {
+        'element_id': `docType-error-${index}`,
+        'text':	'El tipo de documento no puede estar vacío'
+      },
+      214: {
+      	'element_id': `docNumber-error-${index}`,
+        'text':	'El número de documento no puede estar vacío'
+      },
+      702: {
+      	'element_id': `cardExpirationYear-error-${index}`,
+        'text':	'El añi de VTO es incorrecto'
+      }
+    };
+  
+
+  addEvent(document.querySelector(`#cardNumber-${index}`), 'keyup', guessingPaymentMethod);
+  addEvent(document.querySelector(`#cardNumber-${index}`), 'change', guessingPaymentMethod);
+  
+  function getBin() {
+  const cardnumber = document.getElementById(`cardNumber-${index}`);
+  return cardnumber.value.substring(0,6);
+  };
+  
+  function guessingPaymentMethod(event) {
+  var bin = getBin();
+  
+  if (event.type == "keyup") {
+      if (bin.length >= 6) {
+          window.Mercadopago.getPaymentMethod({
+              "bin": bin
+          }, setPaymentMethodInfo);
+      }
+  } else {
+      setTimeout(function() {
+          if (bin.length >= 6) {
+              window.Mercadopago.getPaymentMethod({
+                  "bin": bin
+              }, setPaymentMethodInfo);
+          }
+      }, 100);
+  }
+  };
+  
+  function setPaymentMethodInfo(status, response) {
+    console.log(response);
+    $(`#payment_img-${index}`).html(`<img src="${response[0].secure_thumbnail}" />`)
+  if (status == 200) {
+      const paymentMethodElement = document.querySelector(`input[name=paymentMethodId-${index}]`);
+  
+      if (paymentMethodElement) {
+          paymentMethodElement.value = response[0].id;
+      } else {
+          const input = document.createElement('input');
+          input.setAttribute('name', `paymentMethodId-${index}`);
+          input.setAttribute('type', 'hidden');
+          input.setAttribute('value', response[0].id);     
+  
+          form.appendChild(input);
+      }
+  
+      Mercadopago.getInstallments({"bin": getBin(),"amount": parseFloat(document.querySelector(`#amount-${index}`).value)}, setInstallmentInfo);
+  
+  } else {
+      alert(`payment method info error: ${response}`);  
+  }
+  };
+  
+  doSubmit = false;
+  addEvent(document.querySelector(`#pay-${index}`), 'submit', doPay);
+  function doPay(event){
+      event.preventDefault();
+    
+      if(!doSubmit){
+		   console.log('Submit card form')
+          //condicion chequeada al final del codigo. Crear funcion para modificar el total o no, y luego seguir con el submit.
+          
+          //-----------------------------------------------------
+        var $form = document.querySelector(`#pay-${index}`);
+        
+        if( document.querySelector('input[name="token"]') ) Mercadopago.clearSession();
+        	
+        if($('#lock_confirm').attr('data').includes('pay-')){
+		  console.log('Estas dentro del card form')
+          $(document).on('click', '#lock_confirm', function(e){
+            console.log('Creando token')
+            console.log('Llamo a la funcion setInstallmentInfo');
+			window.Mercadopago.createToken($form, sdkResponseHandler); // The function "sdkResponseHandler" is defined below
+            console.log('Fin de la funcion setInstallmentInfo');
+          });
+        }
+          
+  
+          return false;
+      }
+  };
+  
+  
+  function sdkResponseHandler(status, response) {
+      console.log('Inicio sdkResponseHandler');
+      console.log('Token:', response);
+      if (status != 200 && status != 201 && status != 423) {
+         // alert("verify filled data");
+        console.log('Dentro del true de sdkResponseHandler');
+        localStorage.setItem('mp_form_error' , true )
+        
+        if( document.getElementById('final_btn') != null ){
+        	$('#final_btn').hide();
+        };
+        
+        
+        var selectorForm = document.getElementById('lock_confirm').getAttribute('data');
+        
+        var indexForm = document.getElementById('lock_confirm').getAttribute('data').split('-')[1];
+        $(`#${selectorForm}`).prop('disabled', false);
+        $(`#${selectorForm}`).css('opacity', '100%');
+        [...document.querySelectorAll(`#${selectorForm} input`)].forEach(function(elem){
+          $(elem).prop('disabled', false);
+        });
+
+        [...document.querySelectorAll(`#${selectorForm} select`)].forEach(function(elem){
+          $(elem).prop('disabled', false);
+        });
+
+        $('#confirm_lock_alert').fadeOut();
+        $('#container_payment_multiple_cards').css('opacity', '100%');
+        
+        [...response.cause].forEach(function( elem ){
+          $(`#${errorsList[elem.code]['element_id']}`).html(`${errorsList[elem.code]['text']}`);
+          console.log(  $(`#${errorsList[elem.code]['element_id']}`).html(`${errorsList[elem.code]['text']}`) );
+          
+          $(`#${errorsList[elem.code]['element_id']}`).show();
+        
+        });
+        
+        return false;
+      }else{
+        
+        console.log('Dentro del false de sdkResponseHandler');
+        
+        localStorage.setItem('mp_form_error' , false );
+        
+        [...document.querySelectorAll('.error-span')].forEach(function( error ){
+        	error.style.display = "none";
+        });
+        
+        if( document.getElementById('final_btn') != null ){
+        	$('#final_btn').show();
+        };
+
+            var form = document.querySelector(`#pay-${index}`);
+            var card = document.createElement('input');
+            var inputMoney = document.querySelector(`#parcial-amount-${index}`).value;
+
+
+            var finalMoney = document.querySelector(`#amount-${index}`).value;
+            card.setAttribute('name', 'token');
+        	card.setAttribute('id', `token-${index}`);
+            card.setAttribute('type', 'hidden');
+            card.setAttribute('value', response.id);
+            form.appendChild(card);
+            //doSubmit=true;
+            //form.submit();
+            var email = document.querySelector(`#email-${index}`).value;
+            var namePayer = document.querySelector(`#cardholderName-${index}`).value;
+            var idCuota = $(`#installments-${index} option:selected`).val();
+            var typeId = $(`#installments-${index} option:selected`).attr('payment_type_id');
+            var methodId = $(`#installments-${index} option:selected`).attr('payment_method_id');
+            var processing_mode = $(`#installments-${index} option:selected`).attr('processing_mode');
+            var descCuota = $(`#installments-${index} option:selected`).text();
+            var issuerId = $(`#installments-${index} option:selected`).attr('issuer_id');
+            var merchantAccountId = $(`#installments-${index} option:selected`).attr('merchant_account_id');
+        
+
+            tokenCards["token_cards"][`card-${index}`] = response;
+        	
+        	tokenCards["token_cards"][`card-${index}`].cuota_id = idCuota;
+            tokenCards["token_cards"][`card-${index}`].type_id = typeId;
+            tokenCards["token_cards"][`card-${index}`].method_id = methodId;
+            tokenCards["token_cards"][`card-${index}`].processing_mode = processing_mode;
+            tokenCards["token_cards"][`card-${index}`].description = descCuota;
+            tokenCards["token_cards"][`card-${index}`].issuer_id = issuerId;
+            tokenCards["token_cards"][`card-${index}`].merchant_account_id = merchantAccountId;
+        
+        	tokenCards["token_cards"][`card-${index}`].payer_email = email;
+            tokenCards["token_cards"][`card-${index}`].payer_name = namePayer;
+            
+        /*
+        
+            tokenCards["token_cards"][`card-${index}`]["payment_data"]["cuotas"].id = idCuota;
+            tokenCards["token_cards"][`card-${index}`]["payment_data"]["cuotas"].type_id = typeId;
+            tokenCards["token_cards"][`card-${index}`]["payment_data"]["cuotas"].method_id = methodId;
+            tokenCards["token_cards"][`card-${index}`]["payment_data"]["cuotas"].processing_mode = processing_mode;
+            tokenCards["token_cards"][`card-${index}`]["payment_data"]["cuotas"].description = descCuota;
+            tokenCards["token_cards"][`card-${index}`]["payment_data"]["cuotas"].issuer_id = issuerId;
+            tokenCards["token_cards"][`card-${index}`]["payment_data"]["cuotas"].merchant_account_id = merchantAccountId;
+
+            tokenCards["token_cards"][`card-${index}`]["payer_data"].email = email;
+            tokenCards["token_cards"][`card-${index}`]["payer_data"].name = namePayer;*/
+        
+            if(document.querySelector(`#parcial-amount-${index}`).value != ''){
+              inputMoney = document.querySelector(`#parcial-amount-${index}`).value;
+              
+              tokenCards["token_cards"][`card-${index}`].amount_user = parseFloat(inputMoney);
+              
+              if( parseFloat(finalMoney) == NaN ){
+                tokenCards["token_cards"][`card-${index}`].amount_real = parseFloat(inputMoney);
+              }else{
+              	tokenCards["token_cards"][`card-${index}`].amount_real = parseFloat(finalMoney);
+              }
+              
+              
+            }else{
+              tokenCards["token_cards"][`card-${index}`].amount_real = parseFloat(finalMoney);
+            };
+
+
+
+        console.log('Token cards:', tokenCards);
+        
+        globalJSON["cards"] = tokenCards;
+      }
+      console.log('Final sdkResponseHandler');
+    
+    	$('#final_btn').trigger('click');
+  };
+  
+  
+  function setInstallmentInfo(status, response) {
+    console.log(response)
+    var selectorInstallments = document.querySelector(`#installments-${index}`),
+    fragment = document.createDocumentFragment();
+    selectorInstallments.options.length = 0;
+  
+    if (response.length > 0) {
+        var option = new Option("Escoja...", '-1');
+        //payerCosts = response[0].payer_costs;
+        let installments_gateway    = response.filter( installment => installment.processing_mode == 'gateway');
+        let installments_aggregator = response.filter( installment => installment.processing_mode == 'aggregator');
+        
+        console.log( installments_gateway );
+        console.log( installments_aggregator );
+        
+        payerCosts = installments_gateway[0].payer_costs;
+        payerCostsAggregator = installments_aggregator[0].payer_costs;
+
+        payerToMerge = [];
+
+        fragment.appendChild(option);
+  
+        for (i in payerCosts) {
+            var optNode = new Option(payerCosts[i].recommended_message, payerCosts[i].installments)
+            fragment.appendChild( optNode );
+            optNode.setAttribute('bank', installments_gateway[0].issuer.id)
+            optNode.setAttribute('payment_method_id', installments_gateway[0].payment_method_id);
+            optNode.setAttribute('payment_type_id', installments_gateway[0].payment_type_id)
+            optNode.setAttribute('processing_mode', installments_gateway[0].processing_mode)
+            optNode.setAttribute('issuer_id', installments_gateway[0].issuer.id)
+            optNode.setAttribute('merchant_account_id', installments_gateway[0].merchant_account_id)
+          }
+          
+          selectorInstallments.appendChild(fragment);
+          selectorInstallments.removeAttribute('disabled');
+          
+          installments_aggregator[0].payer_costs.forEach(function(elem){
+            //console.log( elem )
+            var check = [...document.querySelector(`#installments-${index}`).options].filter(option => option.textContent.split(' ')[0] == elem.recommended_message.split(' ')[0])
+            if(check == ''){
+              //console.log( elem.recommended_message )
+              elem.bank = installments_aggregator[0].issuer.id;
+              elem.payment_method_id = installments_aggregator[0].payment_method_id;
+              elem.payment_type_id = installments_aggregator[0].payment_type_id;
+              elem.processing_mode = installments_aggregator[0].processing_mode;
+              elem.issuer_id = installments_aggregator[0].issuer.id;
+              elem.merchant_account_id = installments_aggregator[0].merchant_account_id;
+              payerToMerge.push( elem )
+
+            }
+          });
+      
+          for(k in payerToMerge){
+            var optNode = new Option(payerToMerge[k].recommended_message, payerToMerge[k].installments)
+            fragment.appendChild( optNode );
+            optNode.setAttribute('bank', payerToMerge[k].bank)
+            optNode.setAttribute('payment_method_id', payerToMerge[k].payment_method_id)
+            optNode.setAttribute('payment_type_id', payerToMerge[k].payment_type_id)
+            optNode.setAttribute('processing_mode', payerToMerge[k].processing_mode)
+            optNode.setAttribute('issuer_id', payerToMerge[k].issuer_id)
+            optNode.setAttribute('merchant_account_id', payerToMerge[k].merchant_account_id)
+        }
+        selectorInstallments.appendChild(fragment);
+        console.log( payerToMerge );
+
+    }
+  };
+  
+  
+};
+
+
+
+  var dniMethods = {};
+  window.Mercadopago.getIdentificationTypes((status, data) => {
+    console.log(data);
+    dniMethods = data;
+  });
+
+  var conditions = {};
+
+  var settings = {
+    "url": "https://petenatti.com.ar/checkout-plus-test/web/v1/payment-condition",
+    "method": "GET",
+    "timeout": 0,
+    "headers": {
+      "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+  },
+  };
+  
+  $.ajax(settings).done(function (response) {
+    conditions = response.conditions;
+
+    console.log(conditions);
+  });
+  
+    var settings2 = {
+    "url": "https://petenatti.com.ar/checkout-plus-test/web/v1/payment/get-payment-methods",
+    "method": "GET",
+    "timeout": 0,
+    "headers": {
+      "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+  },
+  };
+  
+  $.ajax(settings2).done(function (response) {
+
+    console.log(response);
+  });
+  
+
+
+    $.getJSON(`https://api.mercadopago.com/v1/payment_methods?public_key=${public_key}#json`, data => {
+      console.log(data);
+
+      var contadorForms = 2;
+
+      function createCreditCardForms() {
+        let htmlForm = `<form class="card-form" method="post" id="pay-${contadorForms}" name="pay-${contadorForms}" >
+            <fieldset>
+				<span class="payment-method__title">Tarjeta de crédito ${contadorForms}</span>
+                <ul>
+                    <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                        <label class="field__label field__label--visible" for="parcial-amount-${contadorForms}">Cantidad parcial o total en $:</label>
+						<div style="display: flex;">
+						<input step="0.01" type="number" id="parcial-amount-${contadorForms}" name="parcialamount-${contadorForms}" style="/*width: 70%;*/" class="field__input parcial-amount money" placeholder="Cantidad parcial o total en $" />
+						<!--input type="button" value="Ajustar" class="btn adjust-money" data-qty="parcial-amount-${contadorForms}" data-card="cardNumber-${contadorForms}" data-hidden="amount-${contadorForms}" id="adjust-${contadorForms}"-->
+						<span class="error-span" style="display: none;" id="parcial-amount-2-error"></span>
+  					</div>
+                    </div>
+					</div>
+                    <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                        <label class="field__label field__label--visible" for="cardNumber-${contadorForms}">Número tarjeta:</label>
+                        <input type="text" id="cardNumber-${contadorForms}" class="field__input" data-checkout="cardNumber" placeholder="Número tarjeta (ej. 4509 9535 6623 3704)" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+						<span class="error-span" style="display: none;" id="cardNumber-error-${contadorForms}"></span>
+  					</div>
+					</div>
+                    <div id="payment_img-${contadorForms}"></div><br>
+                     <div class="field field--required field--third">
+                            <div class="field__input-wrapper">
+                        <label class="field__label field__label--visible" for="securityCode-${contadorForms}">Código de seguridad:</label>
+                        <input type="text" id="securityCode-${contadorForms}" class="field__input" data-checkout="securityCode" placeholder="Código de seguridad" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                    	<span class="error-span" style="display: none;" id="securityCode-error-${contadorForms}"></span>
+  					</div>
+					</div>
+                     <div class="field field--required field--third">
+                            <div class="field__input-wrapper">
+                        <label class="field__label field__label--visible" for="cardExpirationMonth-${contadorForms}">Mes de expiración:</label>
+                        <input type="text" id="cardExpirationMonth-${contadorForms}" class="field__input" data-checkout="cardExpirationMonth" placeholder="Mes de expiración" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                     	<span class="error-span" style="display: none;" id="cardExpirationMonth-error-${contadorForms}"></span>
+  					</div>
+					</div>
+                     <div class="field field--required field--third">
+                            <div class="field__input-wrapper">
+                        <label class="field__label field__label--visible" for="cardExpirationYear-${contadorForms}">Año de expiración:</label>
+                        <input type="text" id="cardExpirationYear-${contadorForms}" class="field__input" data-checkout="cardExpirationYear" placeholder="Año de expiración" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+                     	<span class="error-span" style="display: none;" id="cardExpirationYear-error-${contadorForms}"></span>
+  					</div>
+					</div>
+                    <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                        <label class="field__label field__label--visible" for="cardholderName-${contadorForms}">Titular de Tarjeta:</label>
+                        <input type="text" id="cardholderName-${contadorForms}" class="field__input" data-checkout="cardholderName" placeholder="Titular de Tarjeta" />
+                    	<span class="error-span" style="display: none;" id="cardholderName-error-${contadorForms}"></span>
+  					</div>
+					</div>
+                     <div class="field field--half">
+                            <div class="field__input-wrapper">
+                        <label class="field__label field__label--visible" for="docType-${contadorForms}">Tipo de documento:</label>
+                        <select id="docType-${contadorForms}" class="field__input field__input--select" placeholder="Tipo de documento" data-checkout="docType">
+                        <option disabled selected>Seleccione un tipo</option>
+                        </select>
+						<span class="error-span" style="display: none;" id="docType-error-${contadorForms}"></span>
+                    </div>
+					</div>
+                     <div class="field field--half">
+                            <div class="field__input-wrapper">
+                        <label class="field__label field__label--visible" for="docNumber-${contadorForms}">Número de documento:</label>
+                        <input type="text" id="docNumber-${contadorForms}" class="field__input" maxlength="8" minlength="7" data-checkout="docNumber" placeholder="Número de documento" />
+						<span class="error-span" style="display: none;" id="docNumber-error-${contadorForms}"></span>
+                    </div>
+					</div>
+                    <div class="field field--required field--show-floating-label">
+                              <div class="field__input-wrapper">
+                        <label class="field__label field__label--visible" for="installments-${contadorForms}">Cuotas:</label>
+                        <select id="installments-${contadorForms}" class="field__input field__input--select cuotas-select" name="installments-${contadorForms}"></select>
+                    </div>
+				</div>
+                </ul>
+				<input type="hidden" id="email-${contadorForms}" class="field__input" name="email-${contadorForms}" value="{{ checkout.email }}"  placeholder="your email"/>
+                <input type="hidden" name="amount-${contadorForms}" id="amount-${contadorForms}"/>
+                <input type="hidden" name="description-${contadorForms}"/>
+                <input type="hidden" name="paymentMethodId-${contadorForms}" />
+                <input type="submit" class="step__footer__continue-btn btn lock-btn" confirmed="false" data-button="pay-${contadorForms}" value="CONFIRMAR!" />
+            </fieldset>
+        </form>`;
+
+        $("#form_credit_card_container").append(htmlForm);
+
+        for (type in dniMethods) {
+          let htmlOptions = `<option value="${dniMethods[type].id}" input-min="${dniMethods[type].min_length}" input-max="${dniMethods[type].max_length}">${dniMethods[type].name}</option>`;
+          $(`#docType-${contadorForms}`).append(htmlOptions);
+        }
+
+        mercadoPagoFunction( contadorForms );
+        contadorForms++;
+        
+        $('input[data-button="pay-1"]').val('CONFIRMAR!');
+      }
+      
+      $(".method").click(function(e) {
+        
+        if(e.target.tagName.toLowerCase() == 'img'){
+          console.log(e.target);
+
+          if ($(e.target.parentElement).hasClass("icon-svg--active") == true) {
+            e.target.parentElement.classList.remove("icon-svg--active");
+            e.target.parentElement.setAttribute("selected", false);
+          } else {
+            if ($(e.target.parentElement).hasClass("icon-svg--active") == false) {
+              [...document.querySelectorAll(".icon-svg-all")].forEach(function(elem) {
+                elem.classList.remove("icon-svg--active");
+                elem.setAttribute("selected", false);
+              });
+
+              e.target.parentElement.classList.add("icon-svg--active");
+              e.target.parentElement.setAttribute("selected", true);
+            }
+          }
+          
+          
+          
+        }
+        
+        if(e.target.tagName.toLowerCase() == 'div'){
+          console.log(e.target);
+
+          if ($(e.target).hasClass("icon-svg--active") == true) {
+            e.target.classList.remove("icon-svg--active");
+            e.target.setAttribute("selected", false);
+          } else {
+            if ($(e.target).hasClass("icon-svg--active") == false) {
+              [...document.querySelectorAll(".icon-svg-all")].forEach(function(elem) {
+                elem.classList.remove("icon-svg--active");
+                elem.setAttribute("selected", false);
+              });
+
+              e.target.classList.add("icon-svg--active");
+              e.target.setAttribute("selected", true);
+            }
+          }
+        }
+        
+        $('#btn_select_methods').prop('disabled', false)
+        $('#btn_select_methods').css('background', '#ce1d76')
+        $('#btn_select_methods').css('opacity', '100%')
+      });
+      
+      /*
+
+      $(".icon-svg-card").click(function(e) {
+        
+        if(e.target.tagName.toLowerCase() == 'img'){
+          console.log(e.target);
+
+          if ($(e.target.parentElement).hasClass("icon-svg--active") == true) {
+            e.target.parentElement.classList.remove("icon-svg--active");
+            e.target.parentElement.setAttribute("selected", false);
+          } else {
+            if ($(e.target.parentElement).hasClass("icon-svg--active") == false) {
+              [...document.querySelectorAll(".icon-svg-card")].forEach(function(elem) {
+                elem.classList.remove("icon-svg--active");
+                elem.setAttribute("selected", false);
+              });
+
+              e.target.parentElement.classList.add("icon-svg--active");
+              e.target.parentElement.setAttribute("selected", true);
+            }
+          }
+        }
+      });
+
+      $(".icon-svg-cash").click(function(e) {
+        console.log(e.target);
+        if(e.target.tagName.toLowerCase() == 'img'){
+          if ($(e.target.parentElement).hasClass("icon-svg--active") == true) {
+            e.target.parentElement.classList.remove("icon-svg--active");
+            e.target.parentElement.setAttribute("selected", false);
+          } else {
+            if ($(e.target.parentElement).hasClass("icon-svg--active") == false) {
+              [...document.querySelectorAll(".icon-svg-cash")].forEach(function(elem) {
+                elem.classList.remove("icon-svg--active");
+                elem.setAttribute("selected", false);
+              });
+
+              e.target.parentElement.classList.add("icon-svg--active");
+              e.target.parentElement.setAttribute("selected", true);
+            }
+          }
+        }
+      });
+      
+      */
+      
+      /*
+
+      $("#btn_select_methods").on("click", function() {
+        [...document.querySelectorAll('.money')].forEach(function( input ){
+        	input.value = '';
+        });
+        
+        let htmlDefault = `<option value="">Cargando datos...</option>`;
+        $("#docType-1").html(htmlDefault);
+        $("#method-cash").html(htmlDefault);
+
+        var methods = {
+          credit: "",
+          cash: ""
+        };
+        [...document.querySelectorAll(".icon-svg--active")].forEach(function(
+          elem
+        ) {
+          let val = elem.getAttribute("value");
+          if (val.includes("credit")) {
+            methods.credit = val;
+          }
+          if (val.includes("payment")) {
+            methods.cash = val;
+          }
+        });
+        console.log(methods);
+
+        if (methods.credit == "" && methods.cash == "") {
+          if ($("#error_payment").length > 0) {
+            $("#error_payment").html(
+              `<div id="error_payment" style="color: red;">Seleccione al menos 1 método de pago</div>`
+            );
+            $("#error_payment").show();
+          } else {
+            $(this).before(
+              `<div id="error_payment" style="color: red;">Seleccione al menos 1 método de pago</div>`
+            );
+          }
+        } else {
+          if ($("#error_payment").length > 0) {
+            $("#error_payment").hide();
+          }
+        }
+
+        if (methods.credit !== "") {
+          $("#form_credit_card_container").slideDown();
+          console.log("func mp");
+          mercadoPagoFunction(1);
+        } else {
+          $("#form_credit_card_container").slideUp();
+        }
+
+        if (methods.credit.includes("multiple")) {
+          if ($("#create_forms").length == 0) {
+            $("#form_credit_card_container").before(
+              `<button type="button" class="btn" style="height: 40px;line-height: 2px;" id="create_forms">Agregar tarjeta</button><br>`
+            );
+          } else {
+            $("#create_forms").fadeIn();
+          }
+        }else{
+        	contadorForms = 2;
+        };
+
+        if (methods.credit.includes("multiple") == false) {
+          $("#create_forms").hide();
+          if ($("#form_credit_card_container form").length > 1) {
+            [
+              ...document.querySelectorAll("#form_credit_card_container form")
+            ].forEach(function(elem, index) {
+              if (index != 0) {
+                $(elem).slideUp();
+              }
+            });
+          }
+        }
+
+        if (methods.cash !== "") {
+          if (methods.cash.includes("cash")) {
+            $('input[data-button="cash_payment"]').prop('disabled', false)
+            										.css('background', '#ce1d76');
+            //Muestro form pago Offline
+            $("#form_cash_payment_container").slideDown();
+            $("#form_bank_payment_container").slideUp();
+            console.log("Muestro form pago offline");
+            $("#method-cash").empty();
+            for (i in data) {
+              if (
+                data[i].payment_type_id.includes("ticket") ||
+                data[i].payment_type_id.includes("atm")
+              ) {
+                let htmlOption = `<option value="${data[i].id}">${data[i].name}</option>`;
+                $("#method-cash").append(htmlOption);
+              }
+            }
+          }
+          if (methods.cash.includes("bank")) {
+            //Muestro form pago bancario
+            $("#form_bank_payment_container").slideDown();
+            console.log("Muestro form pago bancario");
+            $("#form_cash_payment_container").slideUp();
+          }
+        } else {
+          if ($("#form_cash_payment_container").length > 0) {
+            $("#form_cash_payment_container").slideUp();
+          }
+          if ($("#form_bank_payment_container").length > 0) {
+            $("#form_bank_payment_container").slideUp();
+          }
+        }
+
+        $("#docType-1").empty();
+        $("#docType-bank").empty();
+        $("#docType-cash").empty();
+        for (type in dniMethods) {
+          let htmlOptions = `<option value="${dniMethods[type].id}" input-type="${dniMethods[type].type}" input-min="${dniMethods[type].min_length}" input-max="${dniMethods[type].max_length}">${dniMethods[type].name}</option>`;
+          $("#docType-1").append(htmlOptions);
+          $('#docType-bank').append(htmlOptions);
+          $('#docType-cash').append(htmlOptions);
+        }
+        
+        
+        if(methods.cash != '' && methods.credit == ''){
+          if(methods.cash.includes('bank')){
+          	$('#bank-amount-1').addClass('disabled');
+            $('#bank-amount-1').attr('disabled', true);
+            $('#bank-amount-1').attr('placeholder', "MONTO TOTAL PREFIJADO");
+            $('#bank_amount-1').val(priceGlobal);
+            $('.lock-btn').val('Pago bancario!');
+            
+            
+          }else{
+          	
+            $('#cash-amount').addClass('disabled');
+            $('#cash-amount').attr('disabled', true);
+            $('#cash-amount').attr('placeholder', "MONTO TOTAL PREFIJADO");
+            $('#cash_amount').val(priceGlobal);
+            $('.lock-btn').val('Pagar OFFLINE!');
+          }
+
+        }else{
+          if(methods.credit != '' && methods.cash == ''){
+            if( methods.credit.includes('multiple') ){
+              $('#parcial-amount-1').removeClass('disabled');
+              $('#parcial-amount-1').attr('disabled', false);
+              $('#parcial-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+            }else{
+              $('#parcial-amount-1').addClass('disabled');
+              $('#parcial-amount-1').attr('disabled', true);
+              $('#parcial-amount-1').attr('placeholder', "MONTO TOTAL PREFIJADO");
+              $('#amount-1').val(priceGlobal);
+            }
+            
+          };
+          
+          if(methods.credit != '' && methods.cash != ''){
+            $('#parcial-amount-1').removeClass('disabled');
+            $('#parcial-amount-1').attr('disabled', false);
+            $('#parcial-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+            $('#amount-1').val(0);
+
+            $('#bank-amount-1').removeClass('disabled');
+            $('#bank-amount-1').attr('disabled', false);
+            $('#bank-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+            $('#bank_amount-1').val(0);
+
+            $('#cash-amount').removeClass('disabled');
+            $('#cash-amount').attr('disabled', false);
+            $('#cash-amount').attr('placeholder', "Cantidad parcial o total en $");
+            $('#cash_amount').val(0);
+            
+            [...document.querySelectorAll('.lock-btn')].forEach(function( btn ){
+            	btn.value = "CONFIRMAR!"
+                btn.setAttribute('confirmed', false);
+            });
+            
+          };
+        };
+        
+      }); */
+      
+      var methods = {
+          credit: "",
+          cash: ""
+        };
+      
+      $("#btn_select_methods").on("click", function() {
+        [...document.querySelectorAll('.money')].forEach(function( input ){
+        	input.value = '';
+        });
+        
+        let htmlDefault = `<option value="">Cargando datos...</option>`;
+        $("#docType-1").html(htmlDefault);
+        $("#method-cash").html(htmlDefault);
+
+        methods.credit = "";
+        methods.cash = "";
+
+        
+        [...document.querySelectorAll(".icon-svg--active")].forEach(function(elem) {
+          let val = elem.getAttribute("value");
+          if (val.includes("credit")) {
+            methods.credit = val;
+          }
+          if (val.includes("payment")) {
+            methods.cash = val;
+          }
+        });
+        console.log(methods);
+
+        if (methods.credit == "" && methods.cash == "") {
+          if ($("#error_payment").length > 0) {
+            $("#error_payment").html(
+              `<div id="error_payment" style="color: red;">Seleccione al menos 1 método de pago</div>`
+            );
+            $("#error_payment").show();
+          } else {
+            $(this).before(
+              `<div id="error_payment" style="color: red;">Seleccione al menos 1 método de pago</div>`
+            );
+          }
+        } else {
+          if ($("#error_payment").length > 0) {
+            $("#error_payment").hide();
+          }
+          
+          $('#btn_select_methods').prop('disabled', true)
+          $('#btn_select_methods').css('background', '#ccc')
+          $('#btn_select_methods').css('opacity', '40%')
+        }
+
+        if (methods.credit != "") {
+          $("#form_credit_card_container").slideDown();
+          console.log("func mp");
+            mercadoPagoFunction(1);
+          	document.getElementById('parcial-amount-1').parentElement.parentElement.parentElement.style.display = "none";
+        } else {
+          $("#form_credit_card_container").slideUp();
+        }
+
+        if (methods.credit.includes("multiple")) {
+          document.getElementById('parcial-amount-1').parentElement.parentElement.parentElement.style.display = "block";
+          document.getElementById('parcial-amount-1').value = ( priceGlobal / 2 ).toFixed(2);
+          document.getElementById('amount-1').value = ( priceGlobal / 2 ).toFixed(2);
+          if ($("#create_forms").length == 0) {
+            $("#form_credit_card_container").before(
+              `<button type="button" class="btn" style="height: 40px;line-height: 2px; display: none;" id="create_forms">Agregar tarjeta</button><br>`
+            );
+          } else {
+            //$("#create_forms").fadeIn();
+          }
+          setTimeout(function(){
+          	$('#create_forms').trigger('click');
+            
+            document.getElementById('parcial-amount-2').value = ( priceGlobal / 2 ).toFixed(2);
+            document.getElementById('amount-2').value = ( priceGlobal / 2 ).toFixed(2);
+            
+            $('#pay-2').slideUp();
+          }, 150)
+          
+          setTimeout(function(){
+          	mercadoPagoFunction(2);
+          }, 300)
+          
+          
+        }else{
+        	contadorForms = 2;
+        };
+
+        if (methods.credit.includes("multiple") == false) {
+          $("#create_forms").hide();
+          if ($("#form_credit_card_container form").length > 1) {
+            [...document.querySelectorAll("#form_credit_card_container form")].forEach(function(elem, index) {
+              if (index != 0) {
+                $(elem).slideUp();
+              }
+            });
+          }
+        }
+		
+
+        
+        if (methods.cash !== "") {
+          
+          
+          if (methods.cash.includes("cash")) {
+            $('input[data-button="cash_payment"]').prop('disabled', false)
+            										.css('background', '#ce1d76');
+            
+            if( priceGlobal <= 60000 ){
+
+              document.getElementById('cash-amount').parentElement.parentElement.parentElement.style.display = "none";
+              //Muestro form pago Offline
+              $("#form_cash_payment_container").slideDown();
+              $("#form_bank_payment_container").slideUp();
+              console.log("Muestro form pago offline");
+              $("#method-cash").empty();
+              let htmlOptionDef = `<option selected disabled>Seleccione un método</option>`;
+                  $("#method-cash").append(htmlOptionDef);
+
+              for (i in data) {
+                if (
+                  data[i].payment_type_id.includes("ticket") ||
+                  data[i].payment_type_id.includes("atm")
+                ) {
+                  let htmlOption = `<option processing_mode="${data[i].processing_modes[0]}" type="${data[i].payment_type_id}" value="${data[i].id}">${data[i].name}</option>`;
+                  $("#method-cash").append(htmlOption);
+                }
+              }
+              
+              $(document).on('change', '#method-cash', function(e){
+                
+                document.getElementById(`cash_amount`).value = priceGlobal;
+
+                var paymentMethodId = $(this).val();
+                var paymentTypeId = e.target.selectedOptions[0].getAttribute('type');
+                var processingMode = e.target.selectedOptions[0].getAttribute('processing_mode')
+
+                
+                  console.log(paymentMethodId);
+                  console.log(paymentTypeId);
+                  console.log(processingMode);
+                
+                var textCuota = e.target.selectedOptions[0].textContent;
+                
+                var conditionCheck = conditions.filter(condition => condition.payment_mode == processingMode && condition.payment_type == paymentTypeId && condition.payment_method == paymentMethodId );
+				
+                var amountTotal = document.getElementById(`cash_amount`).value;
+				
+                if(conditionCheck != ''){
+                  
+                  document.getElementById(`cash_amount`).value = priceGlobal;
+
+                  console.log( conditionCheck );
+                  var colorAlert = '';
+                  var msgAlert = '';
+
+                  //modificar total.
+                  if(conditionCheck[0].type == 1){
+                    //ver como capturar el total parcial por tarjeta
+
+                    colorAlert = '#008A00';
+                    msgAlert = 'Ahorrás $';
+
+                    var discountPerc = conditionCheck[0].percentage;
+                    var descuento = 0;
+                    if(discountPerc > 10){
+                    	descuento = amountTotal*parseFloat(`0.${discountPerc}`)
+                    }else{
+                    	descuento = amountTotal*parseFloat(`0.0${discountPerc}`)
+                    }
+                    
+                    var newTotal = parseInt(amountTotal) - descuento;
+
+                    document.getElementById(`cash_amount`).value = newTotal.toFixed(2);
+                    
+                    cashDiscount.discount = descuento;
+                    shopifyPriceModifier(1,newTotal.toFixed(2));
+                  };
+                  if(conditionCheck[0].type == 0){
+                    //ver como capturar el total parcial por tarjeta
+
+                    colorAlert = 'red';
+                    msgAlert = 'Recargo de $';
+
+                    var discountPerc = conditionCheck[0].percentage;
+                    var descuento = 0;
+                    if(discountPerc > 10){
+                    	descuento = amountTotal*parseFloat(`0.${discountPerc}`)
+                    }else{
+                    	descuento = amountTotal*parseFloat(`0.0${discountPerc}`)
+                    }
+
+                    var newTotal = parseFloat(amountTotal) + descuento;
+
+                    document.getElementById(`cash_amount`).value = newTotal.toFixed(2);
+                    
+                    cashDiscount.discount = descuento;
+                    shopifyPriceModifier(1,newTotal.toFixed(2));
+                  };
+
+                  if($(`#condition_msg-cash`).length == 0){
+                    $(this).after(`<br><div style="color: white; background: ${colorAlert}; text-align: center; border-radius: 8px; padding: 10px;" id="condition_msg-cash"><small>${textCuota}</small><br><span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${descuento.toFixed(2)}!</span></div>`)
+                  }else{
+                    $(`#condition_msg-cash`).fadeIn();
+                    $('#condition_msg-cash').css('background', `${colorAlert}`);
+                    $(`#condition_msg-cash`).html(`<small>${textCuota}</small><br><span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${descuento.toFixed(2)}!</span>`)
+                  };
+
+                }else{
+                  shopifyPriceModifier(0);
+                  console.log(methods);
+
+                  document.getElementById(`cash_amount`).value = priceGlobal;
+
+                  if($(`#condition_msg-cash`).length != 0){
+                    $(`#condition_msg-cash`).empty();
+                    $(`#condition_msg-cash`).hide();
+                  };
+                };
+                
+              });
+              
+            }else{
+              $("#error_payment").html(`<div id="error_payment" style="color: red;">El método seleccionado se limita a montos de $60.000.</div>`);
+              $("#error_payment").show();
+            };
+            
+          }
+          if (methods.cash.includes("bank")) {
+            //Muestro form pago bancario
+            $("#form_bank_payment_container").slideDown();
+            console.log("Muestro form pago bancario");
+            $("#form_cash_payment_container").slideUp();
+            
+            document.getElementById('bank-amount-1').parentElement.parentElement.parentElement.style.display = "none";
+            //$('#form_credit_card_container').slideDown();
+            //mercadoPagoFunction(1);
+            //document.getElementById('parcial-amount-1').value = ( priceGlobal / 2 ).toFixed(2);
+            //document.getElementById('amount-1').value = ( priceGlobal / 2 ).toFixed(2);
+            
+            //document.getElementById('bank-amount-1').value = ( priceGlobal / 2 ).toFixed(2);
+            //document.getElementById('bank_amount-1').value = ( priceGlobal / 2 ).toFixed(2);
+            
+            [...document.querySelectorAll('.lock-btn')].forEach( btn => {
+				btn.value = "CONFIRMAR!";
+			});
+            
+            $(document).on('change', '#accounts-bank', function(e){
+                
+                document.getElementById(`bank_amount-1`).value = priceGlobal;
+
+                
+                var textCuota = e.target.selectedOptions[0].textContent;
+                
+                var conditionCheck = conditions.filter(condition => condition.payment_type == 'ticket' || condition.payment_type == 'atm' );
+				
+                var amountTotal = document.getElementById(`bank_amount-1`).value;
+				
+                if(conditionCheck != ''){
+                  
+                  document.getElementById(`bank_amount-1`).value = priceGlobal;
+
+                  console.log( conditionCheck );
+                  var colorAlert = '';
+                  var msgAlert = '';
+
+                  //modificar total.
+                  if(conditionCheck[0].type == 1){
+                    //ver como capturar el total parcial por tarjeta
+
+                    colorAlert = '#008A00';
+                    msgAlert = 'Ahorrás $';
+
+                    var discountPerc = conditionCheck[0].percentage;
+                    var descuento = 0;
+                    if(discountPerc > 10){
+                    	descuento = amountTotal*parseFloat(`0.${discountPerc}`)
+                    }else{
+                    	descuento = amountTotal*parseFloat(`0.0${discountPerc}`)
+                    }
+
+                    var newTotal = parseInt(amountTotal) - descuento;
+
+                    document.getElementById(`bank_amount-1`).value = newTotal.toFixed(2);
+                    
+                    cashDiscount.discount = descuento;
+                    shopifyPriceModifier(1,newTotal.toFixed(2));
+                  };
+                  if(conditionCheck[0].type == 0){
+                    //ver como capturar el total parcial por tarjeta
+
+                    colorAlert = 'red';
+                    msgAlert = 'Recargo de $';
+
+                    var discountPerc = conditionCheck[0].percentage;
+                    var descuento = 0;
+                    if(discountPerc > 10){
+                    	descuento = amountTotal*parseFloat(`0.${discountPerc}`)
+                    }else{
+                    	descuento = amountTotal*parseFloat(`0.0${discountPerc}`)
+                    }
+
+                    var newTotal = parseFloat(amountTotal) + descuento;
+
+                    document.getElementById(`bank_amount-1`).value = newTotal.toFixed(2);
+                    
+                    cashDiscount.discount = descuento;
+                    shopifyPriceModifier(1,newTotal.toFixed(2));
+                  };
+
+                  if($(`#condition_msg-bank`).length == 0){
+                    $(this).after(`<br><div style="color: white; background: ${colorAlert}; text-align: center; border-radius: 8px; padding: 10px;" id="condition_msg-bank"><small>${textCuota}</small><br><span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${descuento.toFixed(2)}!</span></div>`)
+                  }else{
+                    $(`#condition_msg-bank`).fadeIn();
+                    $('#condition_msg-bank').css('background', `${colorAlert}`);
+                    $(`#condition_msg-bank`).html(`<small>${textCuota}</small><br><span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${descuento.toFixed(2)}!</span>`)
+                  };
+
+                }else{
+                  shopifyPriceModifier(0);
+                  console.log(methods);
+
+                  document.getElementById(`bank_amount-1`).value = priceGlobal;
+
+                  if($(`#condition_msg-bank`).length != 0){
+                    $(`#condition_msg-bank`).empty();
+                    $(`#condition_msg-bank`).hide();
+                  };
+                };
+                
+              });
+            
+          }
+        } else {
+          if ($("#form_cash_payment_container").length > 0) {
+            $("#form_cash_payment_container").slideUp();
+          }
+          if ($("#form_bank_payment_container").length > 0) {
+            $("#form_bank_payment_container").slideUp();
+          }
+        }
+
+        $("#docType-1").empty();
+        $("#docType-bank").empty();
+        $("#docType-cash").empty();
+        for (type in dniMethods) {
+          let htmlOptions = `<option value="${dniMethods[type].id}" input-type="${dniMethods[type].type}" input-min="${dniMethods[type].min_length}" input-max="${dniMethods[type].max_length}">${dniMethods[type].name}</option>`;
+          $("#docType-1").append(htmlOptions);
+          $('#docType-bank').append(htmlOptions);
+          $('#docType-cash').append(htmlOptions);
+        }
+        
+        
+        
+        
+        if(methods.cash != '' && methods.credit == ''){
+          if(methods.cash.includes('bank')){
+          	//$('#bank-amount-1').addClass('disabled');
+            //$('#bank-amount-1').attr('disabled', true);
+            //$('#bank-amount-1').attr('placeholder', "MONTO TOTAL PREFIJADO");
+            //$('#bank_amount-1').val(priceGlobal);
+            //$('.lock-btn').val('Pago bancario!');
+            $('#parcial-amount-1').removeClass('disabled');
+            $('#parcial-amount-1').attr('disabled', false);
+            $('#parcial-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+            
+          }else{
+          	
+            $('#cash-amount').addClass('disabled');
+            $('#cash-amount').attr('disabled', true);
+            $('#cash-amount').attr('placeholder', "MONTO TOTAL PREFIJADO");
+            $('#cash_amount').val(priceGlobal);
+            $('.lock-btn').val('Pagar OFFLINE!');
+          }
+
+        }else{
+          if(methods.credit != '' && methods.cash == ''){
+            if( methods.credit.includes('multiple') ){
+              $('#parcial-amount-1').removeClass('disabled');
+              $('#parcial-amount-1').attr('disabled', false);
+              $('#parcial-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+              $('label[for="parcial-amount-1"]').text('Cantidad parcial o total en $');
+            }else{
+              $('#parcial-amount-1').addClass('disabled');
+              $('#parcial-amount-1').attr('disabled', true);
+              $('#parcial-amount-1').attr('placeholder', "MONTO TOTAL PREFIJADO");
+              $('label[for="parcial-amount-1"]').text('MONTO TOTAL PREFIJADO');
+              $('#amount-1').val(priceGlobal);
+            }
+            
+          };
+          
+          if(methods.credit != '' && methods.cash != ''){
+            $('#parcial-amount-1').removeClass('disabled');
+            $('#parcial-amount-1').attr('disabled', false);
+            $('#parcial-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+            $('#amount-1').val(0);
+
+            $('#bank-amount-1').removeClass('disabled');
+            $('#bank-amount-1').attr('disabled', false);
+            $('#bank-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+            $('#bank_amount-1').val(0);
+
+            $('#cash-amount').removeClass('disabled');
+            $('#cash-amount').attr('disabled', false);
+            $('#cash-amount').attr('placeholder', "Cantidad parcial o total en $");
+            $('#cash_amount').val(0);
+            
+            [...document.querySelectorAll('.lock-btn')].forEach(function( btn ){
+            	btn.value = "CONFIRMAR!"
+                btn.setAttribute('confirmed', false);
+            });
+            
+          };
+        };
+        
+        
+        
+        
+        /*
+        if(methods.cash != '' && methods.credit == ''){
+          if(methods.cash.includes('bank')){
+          	$('#bank-amount-1').addClass('disabled');
+            $('#bank-amount-1').attr('disabled', true);
+            $('#bank-amount-1').attr('placeholder', "MONTO TOTAL PREFIJADO");
+            $('#bank_amount-1').val(priceGlobal);
+            $('.lock-btn').val('Pago bancario!');
+            
+            
+          }else{
+          	
+            $('#cash-amount').addClass('disabled');
+            $('#cash-amount').attr('disabled', true);
+            $('#cash-amount').attr('placeholder', "MONTO TOTAL PREFIJADO");
+            $('#cash_amount').val(priceGlobal);
+            $('.lock-btn').val('Pagar OFFLINE!');
+          }
+
+        }else{
+          if(methods.credit != '' && methods.cash == ''){
+            if( methods.credit.includes('multiple') ){
+              $('#parcial-amount-1').removeClass('disabled');
+              $('#parcial-amount-1').attr('disabled', false);
+              $('#parcial-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+            }else{
+              $('#parcial-amount-1').addClass('disabled');
+              $('#parcial-amount-1').attr('disabled', true);
+              $('#parcial-amount-1').attr('placeholder', "MONTO TOTAL PREFIJADO");
+              $('#amount-1').val(priceGlobal);
+            }
+            
+          };
+          
+          if(methods.credit != '' && methods.cash != ''){
+            $('#parcial-amount-1').removeClass('disabled');
+            $('#parcial-amount-1').attr('disabled', false);
+            $('#parcial-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+            $('#amount-1').val(0);
+
+            $('#bank-amount-1').removeClass('disabled');
+            $('#bank-amount-1').attr('disabled', false);
+            $('#bank-amount-1').attr('placeholder', "Cantidad parcial o total en $");
+            $('#bank_amount-1').val(0);
+
+            $('#cash-amount').removeClass('disabled');
+            $('#cash-amount').attr('disabled', false);
+            $('#cash-amount').attr('placeholder', "Cantidad parcial o total en $");
+            $('#cash_amount').val(0);
+            
+            [...document.querySelectorAll('.lock-btn')].forEach(function( btn ){
+            	btn.value = "CONFIRMAR!"
+                btn.setAttribute('confirmed', false);
+            });
+            
+          };
+        };*/
+        
+      });
+    
+    
+
+      $(document).on("click", "#create_forms", function() {
+        if(contadorForms < 5){
+          createCreditCardForms();
+        }else{
+          alert("Ha alcanzado el maximo permitido de tarjetas.")
+        };
+        
+      });
+
+      $(document).on("change", "#docType-1", function(e) {
+        console.log("Dni changed");
+        console.log($(this).children("option:selected"));
+        var inputType = $(this)
+          .children("option:selected")
+          .attr("input-type");
+        var minLength = $(this)
+          .children("option:selected")
+          .attr("input-min");
+        var maxLength = $(this)
+          .children("option:selected")
+          .attr("input-max");
+        console.log(minLength, maxLength, inputType);
+
+        //$('#docNumber-1').attr('type', inputType);
+        $("#docNumber-1").attr("maxlength", maxLength);
+        $("#docNumber-1").attr("minlength", minLength);
+      });
+    
+    $(document).on("change", "#docType-cash", function(e) {
+      console.log("Dni changed");
+      console.log($(this).children("option:selected"));
+      var inputType = $(this)
+      .children("option:selected")
+      .attr("input-type");
+      var minLength = $(this)
+      .children("option:selected")
+      .attr("input-min");
+      var maxLength = $(this)
+      .children("option:selected")
+      .attr("input-max");
+      console.log(minLength, maxLength, inputType);
+
+      //$('#docNumber-1').attr('type', inputType);
+      $("#docNumber-cash").attr("maxlength", maxLength);
+      $("#docNumber-cash").attr("minlength", minLength);
+    });
+    
+    $(document).on("change", "#docType-bank", function(e) {
+      console.log("Dni changed");
+      console.log($(this).children("option:selected"));
+      var inputType = $(this)
+      .children("option:selected")
+      .attr("input-type");
+      var minLength = $(this)
+      .children("option:selected")
+      .attr("input-min");
+      var maxLength = $(this)
+      .children("option:selected")
+      .attr("input-max");
+      console.log(minLength, maxLength, inputType);
+
+      //$('#docNumber-1').attr('type', inputType);
+      $("#docNumber-bank").attr("maxlength", maxLength);
+      $("#docNumber-bank").attr("minlength", minLength);
+    });
+
+      var amount_saved = { "amounts": {} };
+		
+    
+
+      $(document).on('change', '.cuotas-select', function(e){
+        var indexSelectr = e.target.getAttribute('name').split('-')[1];
+        //console.log(indexSelectr);
+        
+        var bankVal = e.target.selectedOptions[0].getAttribute('bank');
+        var idInstallment = $(this).val();
+        var paymentMethodId = e.target.selectedOptions[0].getAttribute('payment_method_id');
+        var paymentTypeId = e.target.selectedOptions[0].getAttribute('payment_type_id');
+        var processingMode = e.target.selectedOptions[0].getAttribute('processing_mode')
+
+        /*console.log(bankVal);
+        console.log(idInstallment);
+        console.log(paymentMethodId);
+        console.log(paymentTypeId);
+        console.log(processingMode);*/
+        var textCuota = e.target.selectedOptions[0].textContent;
+
+        //var conditionCheck = conditions.filter(condition => condition.payment_mode == processingMode && condition.payment_type == paymentTypeId && condition.payment_method == paymentMethodId && condition.bank_id == bankVal && condition.installment == parseInt(idInstallment));
+        var conditionCheck = conditions.filter(condition => condition.payment_mode == processingMode && condition.payment_type == paymentTypeId && condition.payment_method == paymentMethodId && condition.installment == parseInt(idInstallment));
+        
+        document.getElementById(`amount-${indexSelectr}`).value = priceGlobal;
+        
+        
+        var amountTotal = document.getElementById(`amount-${indexSelectr}`).value;
+
+        if(conditionCheck != ''){
+          
+          document.getElementById(`amount-${indexSelectr}`).value = priceGlobal;
+          
+          globalJSON["condition"].condition = true;
+          globalJSON["condition"].percentage = conditionCheck[0].percentage;
+
+          console.log( conditionCheck );
+			var colorAlert = '';
+          	var msgAlert = '';
+          
+          //modificar total.
+          if(conditionCheck[0].type == 1){
+            //ver como capturar el total parcial por tarjeta
+            globalJSON["condition"].type = 1;
+            
+            colorAlert = '#008A00';
+            msgAlert = 'Ahorrás $';
+            
+            var discountPerc = conditionCheck[0].percentage;
+            var descuento = 0;
+            if(discountPerc > 10){
+              descuento = amountTotal*parseFloat(`0.${discountPerc}`)
+            }else{
+              descuento = amountTotal*parseFloat(`0.0${discountPerc}`)
+            }
+  
+            var newTotal = parseInt(amountTotal) - descuento;
+
+            document.getElementById(`amount-${indexSelectr}`).value = newTotal.toFixed(2);
+            shopifyPriceModifier(1,newTotal.toFixed(2));
+          };
+          if(conditionCheck[0].type == 0){
+             //ver como capturar el total parcial por tarjeta
+            globalJSON["condition"].type = 0;
+            
+            colorAlert = 'red';
+            msgAlert = 'Recargo de $';
+            
+            var discountPerc = conditionCheck[0].percentage;
+            var descuento = 0;
+            if(discountPerc > 10){
+              descuento = amountTotal*parseFloat(`0.${discountPerc}`)
+            }else{
+              descuento = amountTotal*parseFloat(`0.0${discountPerc}`)
+            }
+  
+            var newTotal = parseFloat(amountTotal) + descuento;
+
+            document.getElementById(`amount-${indexSelectr}`).value = newTotal.toFixed(2);
+            shopifyPriceModifier(1,newTotal.toFixed(2));
+          };
+          
+          if($(`#condition_msg-${indexSelectr}`).length == 0){
+            $(this).after(`<br><div style="color: white; background: ${colorAlert}; text-align: center; border-radius: 8px; padding: 10px;" id="condition_msg-${indexSelectr}"><small>${textCuota}</small><br><span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${descuento.toFixed(2)}!</span></div>`)
+          }else{
+            $(`#condition_msg-${indexSelectr}`).fadeIn();
+            $(`#condition_msg-${indexSelectr}`).css('background', `${colorAlert}`);
+            $(`#condition_msg-${indexSelectr}`).html(`<small>${textCuota}</small><br><span style="font-weight: 600; font-size: 24px;">¡${msgAlert} ${descuento.toFixed(2)}!</span>`)
+          };
+
+        }else{
+          shopifyPriceModifier(0);
+          
+          globalJSON["condition"].condition = false;
+          console.log(methods);
+          
+          if(methods.credit == "credit_card"){
+          	document.getElementById(`amount-${indexSelectr}`).value = priceGlobal;
+          };
+          if(methods.cash.includes('bank')){
+          	document.getElementById(`amount-${indexSelectr}`).value = parseFloat(document.querySelector('#parcial-amount-1').value);
+          };
+          if(methods.credit.includes('multiple')){
+            document.getElementById(`amount-${indexSelectr}`).value = parseFloat(amount_saved.amounts[indexSelectr]);
+          };
+          
+          if($(`#condition_msg-${indexSelectr}`).length != 0){
+            $(`#condition_msg-${indexSelectr}`).empty();
+            $(`#condition_msg-${indexSelectr}`).hide();
+          };
+        };
+      });
+
+      var eventCard = new Event('keyup');
+
+    
+    var inputsMoney = 0;
+    $(document).on('keyup', '.parcial-amount', function(e){
+      inputsMoney = 0;
+      var indexAmount = this.getAttribute('name').split("-")[1];
+
+      document.getElementById(`amount-${indexAmount}`).value = this.value;
+      amount_saved["amounts"][indexAmount] = parseFloat(this.value);
+      document.querySelector(`#cardNumber-${indexAmount}`).dispatchEvent( eventCard );
+
+      console.log(amount_saved);
+
+      [...document.querySelectorAll('.money')].forEach(function( elem ){
+        
+        if(elem.value != ''){
+          inputsMoney = inputsMoney + parseFloat(elem.value);
+        }
+      });
+
+      if( inputsMoney < priceGlobal || inputsMoney > priceGlobal + 1){
+        [...document.querySelectorAll('.lock-btn')].forEach(function( btn ){
+          $(btn).prop('disabled', true)
+          $(btn).css('background', '#ccc')
+          $(btn).css('opacity', '40%')
+        });
+      }else{
+        [...document.querySelectorAll('.lock-btn')].forEach(function( btn ){
+          $(btn).prop('disabled', false)
+          $(btn).attr('style', '')
+        });
+      };
+      console.log( inputsMoney );
+
+      
+    });
+    	
+    var offline_amounts = {"amounts": {} };
+    
+    
+    $(document).on('keyup', '.parcial-amount-offline', function(e){
+      inputsMoney = 0;
+      var indexAmount = this.getAttribute('name').split("-");
+      if(indexAmount.includes('1')){
+      	document.getElementById(`bank_amount-1`).value = this.value;
+        offline_amounts["amounts"]["bank"] = parseFloat(this.value);
+      }else{
+      	document.getElementById(`cash_amount`).value = this.value;
+        offline_amounts["amounts"]["cash"] = parseFloat(this.value);
+      }
+      
+
+      console.log(offline_amounts);
+      
+      [...document.querySelectorAll('.money')].forEach(function( elem ){
+      	if(elem.value != ''){
+          
+          inputsMoney = inputsMoney + parseFloat(elem.value);
+        }
+      });
+      
+      if( inputsMoney < priceGlobal){
+        [...document.querySelectorAll('.lock-btn')].forEach(function( btn ){
+          $(btn).prop('disabled', true)
+          $(btn).css('background', '#ccc')
+          $(btn).css('opacity', '40%')
+        });
+      }else{
+      	[...document.querySelectorAll('.lock-btn')].forEach(function( btn ){
+        	$(btn).prop('disabled', false)
+            $(btn).attr('style', '')
+            
+        });
+      };
+      
+      console.log( inputsMoney );
+     
+    });
+      
+      
+    $(document).on('keyup', '.money', function(e){
+        
+        var index = parseInt(e.target.getAttribute('name').split('-')[1]);
+        
+        console.log(index);
+        
+      	inputsMoney = 0;
+        
+        [...document.querySelectorAll('.money')].forEach(function( elem ){
+          if(elem.value != ''){
+
+            inputsMoney = inputsMoney + parseFloat(elem.value);
+          }
+
+      });
+        
+        var resto = priceGlobal - inputsMoney;
+        [...document.querySelectorAll('.adjust-money')].forEach( btn => {
+
+          btn.setAttribute('data-money', resto.toFixed(2));
+          
+
+        });
+        
+        
+        if(methods.credit.includes('multiple')){
+          if( index == 2 ){
+          	var qtyUser = parseFloat($('#parcial-amount-1').val());
+            var resto = parseFloat(priceGlobal - qtyUser).toFixed(2);
+            
+            console.log(qtyUser , resto);
+            
+            if(parseFloat($('#parcial-amount-2').val()) > parseFloat(resto)){
+              $('#parcial-amount-2').val(resto);
+              $('#parcial-amount-2').trigger('keyup');
+            }
+          }
+        };
+ 
+        
+      });
+      
+    
+    $(document).on('click', '.lock-btn', function(e){
+      
+      $('#confirm_lock_alert').slideDown();
+      $('#container_payment_multiple_cards').css('opacity', '0%');
+      var dataButton = e.target.getAttribute('data-button');
+      $('#lock_confirm').attr('data', dataButton);
+      
+      if(window.innerWidth > 768){
+        location.href = '#confirm_lock_alert';
+      }else{
+      	location.href = '#confirm_lock_alert';
+        var px = scrollY;
+        
+        scrollTo(0 , px-185);
+      }
+      
+      
+    });
+    
+    $(document).on('click', '#lock_confirm', function(e){
+      
+      var selectorForm = e.target.getAttribute('data');
+      
+        $(`#${selectorForm}`).prop('disabled', true);
+        $(`#${selectorForm}`).css('opacity', '30%');
+        [...document.querySelectorAll(`#${selectorForm} input`)].forEach(function(elem){
+          $(elem).prop('disabled', true);
+        });
+
+        [...document.querySelectorAll(`#${selectorForm} select`)].forEach(function(elem){
+          $(elem).prop('disabled', true);
+        });
+
+        $('#confirm_lock_alert').fadeOut();
+        $('#container_payment_multiple_cards').css('opacity', '100%');
+
+        $(`input[data-button="${selectorForm}"]`).attr('confirmed', true);
+        $(`input[data-button="${selectorForm}"]`).prop('disabled', true);
+
+        var buttonsCounter = 0;
+        var qtyButtons = [...document.querySelectorAll('input[confirmed]')].length;
+
+        [...document.querySelectorAll('input[confirmed]')].forEach(function( elem ){
+          if(elem.getAttribute('confirmed') == "true"){
+
+            [...document.querySelectorAll('.money')].forEach( input => {
+              //$(input).prop('disabled', true);
+            });
+
+            buttonsCounter++;
+          };
+
+        });
+
+        if( selectorForm == 'cash_payment' ){
+          var divLoading = `<div style="width: 100%;position: fixed;height: 100%;z-index: 9999;text-align: center;background: white;"><div style="top: 35%;position: fixed;right: 47%;"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px.gif?v=1587060679" /><br><strong>Procesando...</strong><div></div>`;
+          $('.content').before(divLoading);
+          
+          var amountCash = parseFloat($('#cash_amount').val());
+          var cashPaymentMethod = $('#method-cash option:selected').val();
+          var docNumber = $('#docNumber-cash').val();
+          var docType = $('#docType-cash').val();
+          var cashPaymentType = $('#method-cash option:selected').attr('type');
+          var emailPayer = $('#email-cash').val();
+          var cashName = $('#method-cash option:selected').text();
+
+          //post a API INNOVATE CON ESTOS DATOS DE ABOVE.
+          offline_payment.amount = amountCash;
+          offline_payment.payment_id = cashPaymentMethod;
+          offline_payment.payment_type = cashPaymentType;
+          offline_payment["payer_data"].doc_type = docType;
+          offline_payment["payer_data"].doc_number = docNumber;
+          offline_payment["payer_data"].email = emailPayer;
+
+          console.log(offline_payment);
+          
+          localStorage.setItem('cash_name', cashName);
+
+        };
+
+        if( selectorForm == 'bank_payment' ){
+          
+          var divLoading = `<div style="width: 100%;position: fixed;height: 100%;z-index: 9999;text-align: center;background: white;"><div style="top: 35%;position: fixed;right: 47%;"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px.gif?v=1587060679" /><br><strong>Procesando...</strong><div></div>`;
+          $('.content').before(divLoading);
+			
+          var dataCbu = document.getElementById('data_cbu').textContent;
+          var dataSuc = document.getElementById('data_suc').textContent;
+          var dataBank = $('#accounts-bank option:selected').text();
+          
+          var bankObj = {
+            cbu: dataCbu,
+            suc: dataSuc,
+            bank: dataBank
+          };
+          
+          localStorage.setItem('bank-data', JSON.stringify(bankObj));
+          
+          
+          //$('#continue_button').trigger('click');
+          
+          var formDiscount = $('#checkout_reduction_code').closest('form');
+          
+          if(methods.cash == 'bank_payment'){
+            console.log("Pagando con bank");
+
+            $('#alert-payment').empty();
+            var dniBank = document.getElementById('docNumber-bank').value;
+
+            location.href = '#alert-payment';
+            createInput( 'dni_payer',  dniBank );
+
+            if(cashDiscount.discount != ''){
+              console.log("Hay discount");
+
+              var settingsDiscount = {
+                "url": "https://petenatti.com.ar/checkout-plus-test/web/v1/discount/create-discount",
+                "method": "POST",
+                "data" : {
+                  'amount': cashDiscount.discount
+                },
+                "timeout": 0,
+                "headers": {
+                  "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+                },
+              };
+
+              $.ajax(settingsDiscount).done(function (Dcode) {
+                console.log(Dcode);
+
+                if( Dcode.length > 0 ){
+
+                  $('#continue_button').hide();
+
+                  var discountCode = Dcode;
+
+                  if(window.innerWidth > 749){
+
+                    var divLoading = `<div style="width: 100%;position: fixed;height: 100%;z-index: 9999;text-align: center;background: white;"><div style="top: 35%;position: fixed;right: 47%;"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px.gif?v=1587060679" /><br><strong>Procesando...</strong><div></div>`;
+
+                    document.getElementById('checkout_reduction_code').value = discountCode;
+                    $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[1]).prop('disabled', false)
+                    $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[1]).removeClass('btn--disabled')
+
+                    setTimeout(function(){
+                      $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[1]).trigger('click')
+
+
+                    }, 250)
+
+                    $('.content').before(divLoading);
+
+                    setTimeout(function(){
+                      
+                      var bankObjLS = JSON.parse(localStorage.getItem('bank-data'))
+                      
+                      var facData = JSON.parse(localStorage.getItem('facturacion'));
+                      createInput( 'facturacion', facData.type );
+                      createInput( 'facturacion-num', facData.num );
+                      
+                      createInput('data-cbu', bankObjLS.cbu );
+                      createInput('data-suc', bankObjLS.suc );
+                      createInput('data-bank', bankObjLS.bank );
+                      
+                      $('#continue_button').trigger('click');
+                    }, 5000)
+
+                  }else{
+
+                    var divLoading = `<div style="width: 100%;position: fixed;height: 100%;z-index: 9999;text-align: center;background: white;"><div style="top: 35%;position: fixed;right: 23%;"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px.gif?v=1587060679" /><br><strong>Procesando...</strong><div></div>`;
+
+                    formDiscount = $('#checkout_reduction_code_mobile').closest('form');
+
+                    document.getElementById('checkout_reduction_code_mobile').value = discountCode;
+                    $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[0]).prop('disabled', false)
+                    $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[0]).removeClass('btn--disabled')
+
+                    setTimeout(function(){
+                      $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[0]).trigger('click')
+
+                    }, 250)
+
+                    setTimeout(function(){
+                      var bankObjLS = JSON.parse(localStorage.getItem('bank-data'))
+                      
+                      var facData = JSON.parse(localStorage.getItem('facturacion'));
+                      createInput( 'facturacion', facData.type );
+                      createInput( 'facturacion-num', facData.num );
+                      
+                      createInput('data-cbu', bankObjLS.cbu );
+                      createInput('data-suc', bankObjLS.suc );
+                      createInput('data-bank', bankObjLS.bank );
+                      
+                      $('#continue_button').trigger('click');
+                    }, 5000)
+
+
+                  }
+
+                };
+
+              });
+
+            }else{
+              
+              
+              createInput('data-cbu', bankObj.cbu );
+              createInput('data-suc', bankObj.suc );
+              createInput('data-bank', bankObj.bank );
+              
+              console.log("No hay discount");
+              setTimeout(function(){
+                $('#continue_button').trigger('click');
+              }, 5000)
+            };
+
+          };
+          
+          
+          
+          return true;
+          
+
+        };
+
+        if( selectorForm == 'pay-1' && methods.cash == 'bank_payment' ){
+
+        }else{
+
+          if(buttonsCounter == qtyButtons){
+            if(document.getElementById('final_btn') == null ){
+              $('#container_payment_multiple_cards').append(`<input type="button" class="step__footer__continue-btn btn" style="float: none;" id="final_btn" value="FINALIZAR PAGO" />`);
+            };
+          };
+        }
+
+        if( buttonsCounter == 1 ){
+          
+          //setTimeout(function(){
+            console.log('Trigger click btn final')
+            if( selectorForm == 'pay-1' && localStorage.getItem('mp_form_error') === 'false' ){
+                //console.log('Trigger click btn final en credit card form')
+            	//$('#final_btn').trigger('click');
+            }
+            if( selectorForm != 'pay-1'){
+              	console.log('Trigger click btn final en otro metodo de pago')
+            	$('#final_btn').trigger('click');
+            }
+            
+            
+            
+          //}, 500)        
+        };
+		
+      /*
+        if( selectorForm == 'pay-1' ){
+          $('#pay-2').slideDown();
+
+          var qtyUser = parseFloat(document.getElementById('parcial-amount-1').value).toFixed(2);
+          document.getElementById('parcial-amount-2').value = ( priceGlobal - qtyUser ).toFixed(2);
+          document.getElementById('amount-2').value = ( priceGlobal - qtyUser ).toFixed(2);
+
+          $('#parcial-amount-2').prop('disabled', true);
+        };*/
+
+      
+    });
+    
+    $(document).on('click', '#lock_goback', function(e){
+    	$('#confirm_lock_alert').slideUp();
+      	$('#container_payment_multiple_cards').css('opacity', '100%');
+    });
+    
+    
+    $(document).on('change', '#method-cash', function(e){
+      var valSelect = $('#method-cash option:selected').val();
+      
+      data.forEach(function( elem ){
+        if(elem.id == valSelect){
+          $('#payment_offline_img').html(`<img src="${elem.secure_thumbnail}" />`);
+        
+        };
+      });
+    	
+    });
+      
+    $(document).on('click', '.adjust-money', function(e){
+        e.stopPropagation();
+        
+      	var inputSelect = e.target.getAttribute('data-qty');
+        var cardSelect = e.target.getAttribute('data-card');
+        var hiddenInput = e.target.getAttribute('data-hidden');
+        var moneyLeft = e.target.getAttribute('data-money');
+        var moneyOnInput = $(`#${inputSelect}`).val();
+        
+        var moneyTotal;
+        if(moneyOnInput != ''){
+          moneyTotal = parseFloat(moneyOnInput) + parseFloat(moneyLeft);
+          $(`#${inputSelect}`).val(parseFloat(moneyTotal).toFixed(2));
+          $(`#${hiddenInput}`).val(parseFloat(moneyTotal).toFixed(2));
+        }else{
+          $(`#${inputSelect}`).val(parseFloat(moneyLeft).toFixed(2));
+          $(`#${hiddenInput}`).val(parseFloat(moneyLeft).toFixed(2));
+        };
+        
+        
+        $(`#${cardSelect}`).trigger('keyup');
+      });
+      
+
+      
+    $(document).on('click', '#final_btn', function(e){
+        console.log('click en boton final');
+        $(this).hide();
+      
+      if($(this).attr('status') != 'error'){
+        
+        console.log('sending data, no errors yet.');
+        
+        $('#container_payment_multiple_cards').append(`<br><br><div id="alert-payment" style="font-size: 19px;padding: 20px;"></div>`);
+        
+        
+        
+        globalJSON["cards"] = tokenCards;
+        globalJSON["offline"] = offline_payment;
+      	console.log('Global JSON' , globalJSON);
+      	
+      	var newGlobalJSON = globalJSON;
+      
+      	console.log('New Global JSON', newGlobalJSON);
+        
+        var settingsFinal = {
+          "url": "https://petenatti.com.ar/checkout-plus-test/web/v1/payment/create-payment",
+          "method": "POST",
+          "dataType": 'json',
+          "data": newGlobalJSON,
+          "headers": {
+            "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+          },
+          beforeSend: function(){
+          	$('#alert-payment').html('Procesando...<br><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px.gif?v=1587060679" />');
+          },
+          success: function(data){
+            
+            console.log(data);
+            var formDiscount = $('#checkout_reduction_code').closest('form');
+            
+            localStorage.setItem('data-payment', JSON.stringify(data));
+            
+            
+            $(formDiscount).submit(function(e){
+            	$('#continue_button').hide();
+            });
+            
+            if( data.canCreate == true ){
+              
+              if(methods.cash != ''){
+                console.log("Pagando con cash");
+                
+                if(methods.cash == 'cash_payment'){
+                  console.log("Pagando con punto de pago");
+
+                  $('#alert-payment').empty();
+                  //$('#container_payment_multiple_cards').append(`<br><div id="msg-payment" style="font-size: 19px;padding: 20px;">${data.status_detail}</div>`);
+                  $('#alert-payment').html(`<a class="link-offline" href="${data.offline}" target="_blank" id="link-payment-off" style="font-size: 19px;padding: 20px;">Click aquí - Ver ticket de pago</a>`);
+                  $('#final_btn').css('background', '#ccc');
+                  $('#final_btn').css('opacity', '40%');
+                  $('#final_btn').prop('disabled', true);
+                  var dniBank = document.getElementById('docNumber-bank').value;
+
+                  location.href = '#alert-payment';
+                  
+
+
+                  offlineData.url = data.offline;
+				
+                  /*
+                setTimeout(function(){
+                	$('#link-payment-off').trigger('click');
+                }, 1000)
+
+                $(document).on('click', '#link-payment-off', function(e){
+                  setTimeout(function(){
+                    $('#continue_button').trigger('click');
+                  }, 5000)
+                });*/
+
+                  $('.content').before(divLoading);
+					
+                  var cashOffName = localStorage.getItem('cash_name');
+                  
+                  if(cashDiscount.discount != ''){
+                    var settingsDiscount = {
+                      "url": "https://petenatti.com.ar/checkout-plus-test/web/v1/discount/create-discount",
+                      "method": "POST",
+                      "data" : {
+                        'amount': cashDiscount.discount
+                      },
+                      "timeout": 0,
+                      "headers": {
+                        "Authorization": "Bearer jByYUpM6ZNXgfsvOBVD3s_BxDePmfaog"
+                      },
+                    };
+
+                    $.ajax(settingsDiscount).done(function (Dcode) {
+                      console.log(Dcode);
+                      console.log("Hay discount");
+
+                      if( Dcode.length > 0 ){
+
+                        $('#continue_button').hide();
+
+                        var discountCode = Dcode;
+                        
+                        
+
+                        if(window.innerWidth > 749){
+
+                          var divLoading = `<div style="width: 100%;position: fixed;height: 100%;z-index: 9999;text-align: center;background: white;"><div style="top: 35%;position: fixed;right: 47%;"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px.gif?v=1587060679" /><br><strong>Procesando...</strong><div></div>`;
+
+                          document.getElementById('checkout_reduction_code').value = discountCode;
+                          $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[1]).prop('disabled', false)
+                          $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[1]).removeClass('btn--disabled')
+
+                          setTimeout(function(){
+                            $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[1]).trigger('click')
+
+
+                          }, 250)
+
+                          $('.content').before(divLoading);
+                          
+                          
+							
+                          setTimeout(function(){
+                            
+                            var newData = JSON.parse(localStorage.getItem('data-payment'));
+                            
+                            var facData = JSON.parse(localStorage.getItem('facturacion'));
+                            createInput( 'facturacion', facData.type );
+                            createInput( 'facturacion-num', facData.num );
+                            
+                            createInput( 'checkout_id_offline', data.checkout_id );
+                            createInput( 'mercado_pago_payment_id', data.payment_app[0].payment.mercado_pago_payment_id );
+                            //createInput( 'email_offline', data.payment_app[0].payment.email );
+                            //createInput( 'transaction_amount_innovate', data.payment_app[0].payment.transaction_amount );
+                            createInput( 'ticket_url', data.offline );
+                            
+                            createInput( 'cash_name', cashOffName );
+                            
+                            
+                            console.log('inputs creados nuevamente');
+                            
+                            $('#continue_button').trigger('click');
+                          }, 5000)
+
+                        }else{
+
+                          var divLoading = `<div style="width: 100%;position: fixed;height: 100%;z-index: 9999;text-align: center;background: white;"><div style="top: 35%;position: fixed;right: 23%;"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px.gif?v=1587060679" /><br><strong>Procesando...</strong><div></div>`;
+
+                          formDiscount = $('#checkout_reduction_code_mobile').closest('form');
+
+                          document.getElementById('checkout_reduction_code_mobile').value = discountCode;
+                          $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[0]).prop('disabled', false)
+                          $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[0]).removeClass('btn--disabled')
+
+                          setTimeout(function(){
+                            $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[0]).trigger('click')
+
+                          }, 250)
+                          
+
+                          setTimeout(function(){
+                            
+                            
+                            var newData = JSON.parse(localStorage.getItem('data-payment'));
+                            var facData = JSON.parse(localStorage.getItem('facturacion'));
+                            createInput( 'facturacion', facData.type );
+                            createInput( 'facturacion-num', facData.num );
+                            
+                            createInput( 'checkout_id_offline', newData.checkout_id );
+                            createInput( 'mercado_pago_payment_id', newData.payment_app[0].payment.mercado_pago_payment_id );
+                            //createInput( 'email', newData.payment_app[0].payment.email );
+                            //createInput( 'transaction_amount_innovate', newData.payment_app[0].payment.transaction_amount );
+                            createInput( 'ticket_url', newData.offline );
+                            createInput( 'cash_name', cashOffName );
+                            
+                            console.log('inputs creados nuevamente');
+                            
+                            $('#continue_button').trigger('click');
+ 
+                            
+                          }, 5000)
+
+
+                        }
+
+                      };
+
+                    });
+
+                  }else{
+                    
+                    var facData = JSON.parse(localStorage.getItem('facturacion'));
+                    createInput( 'facturacion', facData.type );
+                    createInput( 'facturacion-num', facData.num );
+                    			
+                    createInput( 'checkout_id_cash', data.checkout_id );
+                    createInput( 'mercado_pago_payment_id', data.payment_app[0].payment.mercado_pago_payment_id );
+                    createInput( 'email_cash', data.payment_app[0].payment.email );
+                    createInput( 'transaction_amount_innovate', data.payment_app[0].payment.transaction_amount );
+                    createInput( 'ticket_url', data.offline );
+                    createInput( 'dni_payer',  dniBank );
+                    
+                    createInput( 'cash_name', cashOffName );
+                    
+                    console.log("No hay discount");
+                    setTimeout(function(){
+                      $('#continue_button').trigger('click');
+                    }, 5000)
+                  };
+
+                };
+                
+              
+              }else{
+				$('#alert-payment').empty();
+                
+                
+                $('#alert-payment').html(`${data.status_detail}`);
+                $('#final_btn').css('background', '#ccc');
+                $('#final_btn').css('opacity', '40%');
+                $('#final_btn').prop('disabled', true);
+
+                location.href = '#alert-payment';
+                
+                var facData = JSON.parse(localStorage.getItem('facturacion'));
+                createInput( 'facturacion', facData.type );
+                createInput( 'facturacion-num', facData.num );
+
+                createInput( 'checkout_id_card', data.checkout_id );
+                createInput( 'mercado_pago_payment_id', data.payment_app[0].payment.mercado_pago_payment_id );
+                createInput( 'transaction_amount_innovate', data.payment_app[0].payment.transaction_amount );
+                
+                $('.content').before(divLoading);
+                
+                if( data.condition == undefined ){
+                	setTimeout(function(){
+                    	$('#continue_button').trigger('click');
+                  	}, 5000)
+                }else{
+                
+                	if( data.condition.condition == true ){
+                  
+                  	 $('#continue_button').hide();
+                  
+                  	 var discountCode = data.condition.key;
+                  
+                     if(window.innerWidth > 749){
+
+                        var divLoading = `<div style="width: 100%;position: fixed;height: 100%;z-index: 9999;text-align: center;background: white;"><div style="top: 35%;position: fixed;right: 47%;"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px.gif?v=1587060679" /><br><strong>Procesando...</strong><div></div>`;
+                       
+                        document.getElementById('checkout_reduction_code').value = discountCode;
+                        $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[1]).prop('disabled', false)
+                        $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[1]).removeClass('btn--disabled')
+
+                        setTimeout(function(){
+                            $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[1]).trigger('click')
+
+
+                        }, 250)
+
+                        $('.content').before(divLoading);
+
+                        setTimeout(function(){
+                          var facData = JSON.parse(localStorage.getItem('facturacion'));
+                          createInput( 'facturacion', facData.type );
+                          createInput( 'facturacion-num', facData.num );
+                          
+                          var newData = JSON.parse(localStorage.getItem('data-payment'));
+                          
+                          createInput( 'checkout_id_card', newData.checkout_id );
+                          createInput( 'mercado_pago_payment_id', newData.payment_app[0].payment.mercado_pago_payment_id );
+                          createInput( 'transaction_amount_innovate', newData.payment_app[0].payment.transaction_amount );
+                          
+                          $('#continue_button').trigger('click');
+                        }, 5000)
+
+                      }else{
+
+                        var divLoading = `<div style="width: 100%;position: fixed;height: 100%;z-index: 9999;text-align: center;background: white;"><div style="top: 35%;position: fixed;right: 23%;"><img src="https://cdn.shopify.com/s/files/1/0329/4458/6885/files/Spinner-1s-200px.gif?v=1587060679" /><br><strong>Procesando...</strong><div></div>`;
+
+                        formDiscount = $('#checkout_reduction_code_mobile').closest('form');
+
+                        document.getElementById('checkout_reduction_code_mobile').value = discountCode;
+                        $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[0]).prop('disabled', false)
+                        $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[0]).removeClass('btn--disabled')
+
+                        setTimeout(function(){
+                          $(document.querySelectorAll('button[data-trekkie-id="apply_discount_button"]')[0]).trigger('click')
+
+                        }, 250)
+
+                        setTimeout(function(){
+                          
+                          var facData = JSON.parse(localStorage.getItem('facturacion'));
+                          createInput( 'facturacion', facData.type );
+                          createInput( 'facturacion-num', facData.num );
+                          
+                          var newData = JSON.parse(localStorage.getItem('data-payment'));
+                          
+                          createInput( 'checkout_id_card', newData.checkout_id );
+                          createInput( 'mercado_pago_payment_id', newData.payment_app[0].payment.mercado_pago_payment_id );
+                          createInput( 'transaction_amount_innovate', newData.payment_app[0].payment.transaction_amount );
+                          
+                          $('#continue_button').trigger('click');
+                        }, 5000)
+
+
+                      }
+
+                    }else{
+                      
+
+                      setTimeout(function(){
+                        $('#continue_button').trigger('click');
+                      }, 5000)
+
+                    }
+                }
+                
+                
+                
+              }
+              
+            }else{
+              console.log(data.status_detail);
+              console.log(data.observations);
+              var status_detail = data.status_detail;
+              $('#alert-payment').empty();
+              
+              	$('#final_btn').show();
+              	$('#final_btn').val("RECARGAR");
+              	$('#final_btn').attr('status', 'error')
+                $('#alert-payment').html('');
+                status_detail.forEach(error => {
+                  $('#alert-payment').append(`<span style="color:red;">*${error}</span><br>`);
+                });
+              	$('#alert-payment').append('<br><strong>Haga click sobre "Recargar" para intentarlo nuevamente.</strong>');
+            	//$('#alert-payment').html(`${data.status_detail}, haga click sobre "Recargar" para intentarlo nuevamente.`);
+              	
+              	location.href = '#alert-payment';
+            };
+          
+          },
+          error: function(data){
+            
+            $('#final_btn').val("RECARGAR");
+            $('#final_btn').attr('status', 'error')
+            
+            $('#container_payment_multiple_cards').empty();
+            $('#container_payment_multiple_cards').append(`<br><div id="alert-payment" style="font-size: 19px;padding: 20px;">Servidores fuera de servicio, intente nuevamente más tarde.</div>`);
+            location.href = '#alert-payment';
+          
+          }
+        };
+
+        console.log( 'Settings Final ' , settingsFinal )
+        $.ajax(settingsFinal);
+        
+      }else{
+        console.log('error detected during the last request, user needs to reload page.');
+        
+      	window.location.reload();
+      }
+      
+      });
+    
+    
+    });
+    
+    });
+  
+  if(Shopify.Checkout.step == "thank_you"){
+    
+    
+    
+
+    //document.querySelectorAll('.wrap')[2].style.display = "none";
+
+    {% assign url_attr = '' %}
+    {% assign bank_cbu = '' %}
+    {% assign bank_suc = '' %}
+    {% assign bank_name = '' %}
+    {% assign mp_cash = false %}
+    {% assign bank_cash = false %}
+
+
+    {% for attribute in checkout.order.attributes %}
+    {% assign attribute_first = attribute | first %}
+    {% assign attribute_last = attribute | last %}
+
+    {% if attribute_first == 'ticket_url' %}
+    {% assign url_attr = attribute_last %}
+    {% assign mp_cash = true %}
+    {% endif %}
+    
+    {% if attribute_first == 'cash_name' %}
+    {% assign name_cash = attribute_last %}
+    {% endif %}
+    
+    {% if attribute_first == 'data-cbu' %}
+    {% assign bank_cbu = attribute_last %}
+    {% assign bank_cash = true %}
+    {% endif %}
+    
+    {% if attribute_first == 'data-suc' %}
+    {% assign bank_suc = attribute_last %}
+    {% assign bank_cash = true %}
+    {% endif %}
+    
+    {% if attribute_first == 'data-bank' %}
+    {% assign bank_name = attribute_last %}
+    {% assign bank_cash = true %}
+    {% endif %}
+
+    console.log( {{ attribute | json }} );
+
+    {% endfor %}
+
+    {% if mp_cash %}
+    document.querySelectorAll('.wrap')[2].style.display = "block";
+
+
+    let html = `<!--div style="margin-top: 25px;padding: 10px;margin-right: 12%;width: 72%;float: right;border: 1px solid #ddd;"-->
+<div class="section">
+<label>Usted seleccionó método <strong>{{ name_cash }}</strong> - Descargue su cupón de pago:</label><br>
+<div id="btns_container" style="display: flex; text-align: center; justify-content: space-between;">
+<a id="pdf_btn_url" class="step__footer__continue-btn btn" href="{{ url_attr }}" target="_blank" style="margin-top: 10px; width: 200px;">Ver o descargar cupón/ticket PDF</a>
+  </div>
+  </div>`
+
+    //$(document.querySelectorAll('.section__content')[1]).append(html)
+
+    $(document.querySelectorAll('.section')[0]).after(html)
+    if(window.innerWidth < 460){
+      $('#btns_container').css('flex-direction', 'column')
+      .css('align-items', 'center');
+
+    }
+    var contador = 0;
+    document.getElementById('pdf_btn_url').addEventListener('click', function(){
+      contador++;
+    })
+
+    setTimeout(function(){
+      if(contador == 0){
+        var simulateClick = function (elem) {
+          // Create our event (with options)
+          var evt = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+          });
+          // If cancelled, don't dispatch our event
+          var canceled = !elem.dispatchEvent(evt);
+        };
+
+        var boton = document.getElementById('pdf_btn_url')
+
+        simulateClick(boton)
+
+      }
+    }, 10)
+
+
+    {% endif %}
+    
+    
+    {% if bank_cash %}
+    document.querySelectorAll('.wrap')[2].style.display = "block";
+
+
+      let html = `<!--div style="margin-top: 25px;padding: 10px;margin-right: 12%;width: 72%;float: right;border: 1px solid #ddd;"-->
+<div class="section">
+<label>Usted seleccionó el banco: <strong>{{ bank_name }}</strong> | Aquí los datos para realizar la transferencia:</label><br>
+<div id="btns_container" style="text-align: center;">
+<span style="border-radius: 20px;border: 2px solid  black;padding: 7px;">{{ bank_cbu }}</span><br><br><br>
+<span style="border-radius: 20px;border: 2px solid  black;padding: 7px;">{{ bank_suc }}</span>
+  </div>
+  </div>`
+
+      //$(document.querySelectorAll('.section__content')[1]).append(html)
+
+      $(document.querySelectorAll('.section')[0]).after(html)
+      if(window.innerWidth < 535){
+        $('#btns_container').css('margin-top', '20px')
+      }
+
+
+    {% endif %}
+
+
+  }                
+
+  if( Shopify.Checkout.OrderStatus != undefined ){
+    if(Shopify.Checkout.OrderStatus.addContentBox().length > 0 && Shopify.Checkout.step == undefined ){
+
+
+    {% assign url_attr = '' %}
+    {% assign bank_cbu = '' %}
+    {% assign bank_suc = '' %}
+    {% assign bank_name = '' %}
+    {% assign mp_cash = false %}
+    {% assign bank_cash = false %}
+
+
+    {% for attribute in checkout.order.attributes %}
+    {% assign attribute_first = attribute | first %}
+    {% assign attribute_last = attribute | last %}
+
+    {% if attribute_first == 'ticket_url' %}
+    {% assign url_attr = attribute_last %}
+    {% assign mp_cash = true %}
+    {% endif %}
+    
+    {% if attribute_first == 'cash_name' %}
+    {% assign name_cash = attribute_last %}
+    {% endif %}
+    
+    {% if attribute_first == 'data-cbu' %}
+    {% assign bank_cbu = attribute_last %}
+    {% assign bank_cash = true %}
+    {% endif %}
+    
+    {% if attribute_first == 'data-suc' %}
+    {% assign bank_suc = attribute_last %}
+    {% assign bank_cash = true %}
+    {% endif %}
+    
+    {% if attribute_first == 'data-bank' %}
+    {% assign bank_name = attribute_last %}
+    {% assign bank_cash = true %}
+    {% endif %}
+
+    console.log( {{ attribute | json }} );
+
+    {% endfor %}
+
+      {% if mp_cash %}
+
+      //window.location.href = '{{ url_attr }}';
+
+
+      let html = `<!--div style="margin-top: 25px;padding: 10px;margin-right: 12%;width: 72%;float: right;border: 1px solid #ddd;"-->
+<div class="section">
+<label>Usted seleccionó método <strong>{{ name_cash }}</strong> - Descargue su cupón de pago:</label><br>
+<div id="btns_container" style="display: flex; text-align: center; justify-content: space-between;">
+<a id="pdf_btn_url" class="step__footer__continue-btn btn" href="{{ url_attr }}" target="_blank" style="margin-top: 10px; width: 200px;">Ver o descargar cupón/ticket PDF</a>
+  </div>
+  </div>`
+
+      //$(document.querySelectorAll('.section__content')[1]).append(html)
+      $(document.querySelectorAll('.section')[0]).after(html)
+
+      if(window.innerWidth < 460){
+        $('#btns_container').css('flex-direction', 'column')
+        .css('align-items', 'center');
+
+      }
+
+      {% endif %}
+      
+      {% if bank_cash %}
+      document.querySelectorAll('.wrap')[2].style.display = "block";
+
+
+      let html = `<!--div style="margin-top: 25px;padding: 10px;margin-right: 12%;width: 72%;float: right;border: 1px solid #ddd;"-->
+<div class="section">
+<label>Usted seleccionó el banco: <strong>{{ bank_name }}</strong> | Aquí los datos para realizar la transferencia:</label><br>
+<div id="btns_container" style="text-align: center;">
+<span style="border-radius: 20px;border: 2px solid  black;padding: 7px;">{{ bank_cbu }}</span><br><br><br>
+<span style="border-radius: 20px;border: 2px solid  black;padding: 7px;">{{ bank_suc }}</span>
+  </div>
+  </div>`
+
+      //$(document.querySelectorAll('.section__content')[1]).append(html)
+
+      $(document.querySelectorAll('.section')[0]).after(html)
+      if(window.innerWidth < 535){
+        $('#btns_container').css('margin-top', '20px')
+      }
+
+
+      {% endif %}
+      
+      
+    }
+  };
+  
+  if( Shopify.Checkout.step == "contact_information" ){
+  	var html = `<div class="field field--half field--required field--show-floating-label" data-address-field="facturacion" data-autocomplete-field-container="true">
+                            <div class="field__input-wrapper">
+
+                                <label class="field__label field__label--visible" for="facturacion">Facturación:</label>
+                                <select id="facturacion"class="field__input field__input--select" autocomplete="shipping facturacion" data-trekkie-id="shipping_facturacion_field" data-backup="facturacion" name="checkout[shipping_address][facturacion]" placeholder="Facturación" data-checkout="facturacion">
+									<option selected value="Consumidor_final">Consumidor Final</option>
+									<option value="R.I.">Responsable Inscripto</option>
+                                    <option value="Monotributista">Monotributista</option>
+                                    <option value="Exento">Exento</option>
+                                </select>
+                              	<span class="error-span" style="display: none;" id="facturacion-error"></span>
+                            </div>
+                          </div>
+
+						<div class="field field--half field--required field--show-floating-label" data-address-field="facturacion-num" data-autocomplete-field-container="true">
+                            <div class="field__input-wrapper">
+                                <label class="field__label field__label--visible" for="facturacion-num">DNI/CUIT/CUIL:</label>
+                                <input type="text" autocomplete="shipping facturacion-num" aria-required="true" data-trekkie-id="shipping_facturacion-num_field" data-backup="facturacion-num" name="checkout[shipping_address][facturacion-num]" id="facturacion-num" required class="field__input required" maxlength="13" data-checkout="facturacion-num" placeholder="Número de documento/CUIT/CUIL" />
+                              <span class="error-span" style="display: none;" id="facturacion-num-error"></span>
+                              </div>
+                          </div>`
+    
+    $('div[data-address-field="address1"]').before( html );
+    
+    
+    $('#continue_button').click(function(e){
+      if($('#facturacion-num').val() != ''){
+        var facturacionType = $('#facturacion').val();
+        var facturacionNum = $('#facturacion-num').val();
+        var facturacionObj = {
+          type: facturacionType,
+          num: facturacionNum
+        };
+
+        localStorage.setItem('facturacion', JSON.stringify(facturacionObj));
+
+        createInput2( 'facturacion', facturacionType );
+        createInput2( 'facturacion-num', facturacionNum );
+
+        console.log( facturacionType, facturacionNum );
+        return true;
+        
+        $('#continue_button').closest('form').trigger('submit');
+        
+      }else{
+        e.preventDefault();
+        $('#facturacion-num').css('border-color','#ff0000');
+        $('#facturacion-num').parent().after('<span style="color:red;">El campo no puede estar vacío</span>');
+        $('#facturacion-num').trigger('focus');
+      }
+      
+    });
+    
+    if( document.getElementById('facturacion-num').value == '' && document.querySelector('input[name="checkout[attributes][facturacion-num]"]') != null ){
+    	document.getElementById('facturacion-num').value = document.querySelector('input[name="checkout[attributes][facturacion-num]"]').getAttribute('value')
+    };
+    
+  };
+  
+});
+
+
+
+</script>
+
+{% comment %}
+Vinculo la tipografía
+{% endcomment %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
+{% comment %}
+ CSS for Checkout Innovate
+{% endcomment %}
+<style>
+  .general-container{
+    width: 45%;
+    height: 100%;
+    position: fixed;
+    background: white;
+    display: flex;
+    overflow: scroll;
+  }
+  .multiple-credit-cards{
+    background: white;
+    width: 25%;
+    left: 10%;
+    top: 15%;
+    position: fixed;
+    height: 255px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 18px;
+    line-height: 135px;
+    cursor:pointer;
+    z-index: 9999;
+  }
+  .multiple-credit-cards:hover{
+    box-shadow: 1px 1px 10px black;
+  }
+  .credit-card-and-cash{
+    background: white;
+    width: 25%;
+    left: 10%;
+    top: 60%;
+    position: fixed;
+    height: 255px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 18px;
+    line-height: 135px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+  .credit-card-and-cash:hover{
+    box-shadow: 1px 1px 10px black;
+  }
+  .payment-icons{
+    display: flex;
+    justify-content: space-around;
+  }
+  .container-payment-1{
+    text-align: center;
+  }
+  .icon-svg-card{
+    cursor: pointer;
+  }
+  .icon-svg-cash{
+    cursor: pointer;
+  }
+  .icon-svg--active{
+    box-shadow: 1px 1px 5px black;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  .lock-alert-background{
+    display: none;
+    position: absolute;
+    background: #ccc;
+    width: 95%;
+    opacity: 95%;
+    top: 35%;
+    text-align: center;
+    z-index: 9999;
+  }
+  .lock-alert-container{
+    height: 100%;
+    padding: 45px;
+    color: black;
+  }
+  .innovate-disabled{
+    cursor: not-allowed;
+
+  }
+  .error-span{
+    color: red;
+    font-weight: 500;
+  }
+  
+    .edit_checkout .section--payment-method .content-box{
+      border:none;
+      border-radius:0;
+    }
+    .edit_checkout .section--payment-method .content-box .content-box__row[data-select-gateway="46369439877"] {
+      display:none;
+    }
+    #payment-gateway-subfields-46369439877{
+      border:none;
+      border-radius:0;
+      background-color:#f3f5f6;
+    }
+    #methods{
+      text-align:left;
+      font-family: 'Roboto', sans-serif;
+    }
+    #methods h4{
+      color: #000;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    #methods p{
+      font-weight:300;
+      font-size:13px;
+    }
+    #methods p small{
+      color:#ce1d76;
+    }
+    #payment_icons{
+      margin-top:15px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position:relative;
+    }
+    #payment_icons .icon-svg-all{
+      width: calc(100% / 4 - 15px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      padding: 8px 5px;
+      line-height: 1em;
+      border-radius: 5px;
+      border: 1px solid #d9d9d9;
+      flex-direction: column;
+      text-align: center;
+      height: 80px;
+    }
+    #payment_icons  .icon-svg-all.icon-svg--active{
+      background: #a71a61;
+      border-color:#a71a61;
+      box-shadow:none!important;
+    }
+    #payment_icons  .icon-svg-all.icon-svg--active span{
+      color:#fff;
+    }
+    #payment_icons .icon-svg-all img{
+      margin-bottom: 5px;
+      width: 35px;
+    }
+   	#payment_icons .icon-svg-all span{
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1em;
+      color: #000;
+    }
+    #payment_icons:after{
+      content: '';
+      width: 99%;
+      position: absolute;
+      bottom: -30px;
+      height: 1px;
+      background:#A71A61;
+      right: 0;
+    }
+    .step__footer__continue-btn{
+      border: 1px solid #A71A61;
+      background-color: #a71a61!important;
+      color: #fff;
+      height: auto;
+      float: right;
+      margin-top: 10px;
+      display: inline-block;
+      line-height: 1em;
+      padding: 13px 15px;
+      font-size: 10px;
+      width: 32%;
+      opacity:1!important;
+    }
+    .step__footer__continue-btn:focus,
+    .step__footer__continue-btn:hover,
+    .step__footer__continue-btn.active{
+      background-color:#fff!important;
+      color:#a71a61;
+    }
+  .payment-method__title{
+    color:#a71a61;
+    font-weight:bold;
+    margin-left:10px;
+    font-size:15px;
+  }
+  .animate-floating-labels fieldset{
+ 	text-align:left;
+  }
+  .bank__information{
+ 	margin:15px 0 0 10px;
+  }
+  .adjust-money{
+ 	margin-left:10px;
+    width:30%;
+    height:auto;
+    line-height:1em;
+  }
+  .payment-due-label__taxes{
+ 	display:none;
+  }
+  @media (max-width:425px){
+    #payment_icons .icon-svg-all span{
+      font-size: 8px;
+    }
+    #payment_icons .icon-svg-all{
+      height:50px;
+    }
+  }
+</style>
